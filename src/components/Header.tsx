@@ -1,13 +1,18 @@
 import { Box, Button, HStack, useColorMode } from '@chakra-ui/react';
 
-const Header = () => {
+export interface HeaderProps {
+  setSelectedPage: (page: string) => void;
+}
+
+
+const Header: React.FC<HeaderProps> = ({ setSelectedPage }) => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <HStack
       as="header"
       p={6}
-      justifyContent={{ base: "center", md: "flex-start" }} // Centrado en móviles, pegado en mayor tamaño
+      justifyContent={{ base: "center", md: "flex-start" }}
       spacing={6}
       bg="transparent"
       ml={{ base: "0", md: "23vw" }}
@@ -25,11 +30,13 @@ const Header = () => {
           transition="all 0.3s ease-in-out"
           borderRadius="8px"
           px={{ base: 4, md: 8 }}
+          onClick={() => setSelectedPage(text)}  // Set the page on click
         >
           {text}
         </Button>
       ))}
-      {/* Botón para cambiar el tema claro/oscuro */}
+      
+      {/* Dark/Light mode toggle button */}
       <Box display={"flex"} ml={"auto"}>
         <Button
           onClick={toggleColorMode}
