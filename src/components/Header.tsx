@@ -1,14 +1,15 @@
 import React from 'react';
-import { Box, Button, HStack, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, VStack, HStack, useColorModeValue } from '@chakra-ui/react';
 
 interface HeaderProps {
   selectedSection: string;
   setSelectedSection: (section: string) => void;
   colorMode: 'light' | 'dark';
   toggleColorMode: () => void;
+  isMobile: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, colorMode, toggleColorMode }) => {
+const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, colorMode, toggleColorMode, isMobile }) => {
   const buttonBg = useColorModeValue('gray.200', 'gray.700');
   const buttonColor = useColorModeValue('gray.800', 'gray.300');
   const buttonHoverBg = useColorModeValue('gray.300', 'gray.600');
@@ -16,15 +17,16 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
 
   const sections = ['Home', 'Projects', 'About', 'Resume', 'Contact'];
 
+  const Container = isMobile ? VStack : HStack;
+
   return (
-    <HStack
+    <Container
       as="header"
       p={6}
-      justifyContent={{ base: "center", md: "flex-start" }}
+      justifyContent={isMobile ? "flex-start" : { base: "center", md: "flex-start" }}
       spacing={6}
       bg="transparent"
-      ml={{ base: "0", md: "23vw" }}
-      alignItems="center"
+      ml={isMobile ? 0 : { base: "0", md: "23vw" }}
       wrap="wrap"
     >
       {sections.map((section, index) => (
@@ -33,19 +35,20 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
           onClick={() => setSelectedSection(section)}
           color={buttonColor}
           bg={selectedSection === section ? buttonActiveBg : buttonBg}
-          fontFamily="monospace"
+          fontFamily="'Orbitron', sans-serif"
           fontSize={{ base: "sm", md: "md", lg: "lg" }}
           _hover={{
-            boxShadow: "0px 0px 14px 1px #414358",
+            boxShadow: "0px 0px 14px 1px #ce3072",
             bg: buttonHoverBg
           }}
           _active={{
-            boxShadow: "0px 0px 22px 0px #414358",
+            boxShadow: "0px 0px 22px 0px #ce3072",
             bg: buttonActiveBg
           }}
           transition="all 0.3s ease-in-out"
           borderRadius="8px"
           px={{ base: 4, md: 8 }}
+          width={isMobile ? "100%" : "auto"}
         >
           {section}
         </Button>
@@ -72,12 +75,18 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
           {colorMode === 'light' ? 'Dark Mode' : 'Light Mode'}
         </Button>
         <Button
-          color="gray.300"
+          color={buttonColor}
+          bg={buttonBg}
           fontFamily="monospace"
           fontSize={{ base: "sm", md: "md", lg: "lg" }}
-          bg="gray.700"
-          _hover={{ boxShadow: "0px 0px 8px 1px #4EC6C9", bg: "gray.600" }}
-          _active={{ boxShadow: "0px 0px 12px 2px #4EC6C9", bg: "gray.500" }}
+          _hover={{
+            boxShadow: "0px 0px 8px 1px #4EC6C9",
+            bg: buttonHoverBg
+          }}
+          _active={{
+            boxShadow: "0px 0px 12px 2px #4EC6C9",
+            bg: buttonActiveBg
+          }}
           transition="all 0.2s ease-in-out"
           borderRadius="8px"
           px={{ base: 4, md: 6 }}
@@ -85,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
           Let's Talk
         </Button>
       </Box>
-    </HStack>
+    </Container>
   );
 };
 
