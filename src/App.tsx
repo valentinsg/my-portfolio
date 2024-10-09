@@ -1,20 +1,21 @@
-import './App.css';
+import React, { useState } from 'react';
+import { Box, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
-import { Box } from '@chakra-ui/react';
-import { useState } from 'react';
-
-const Home = () => <Box p={8} fontSize="2xl">This is Home</Box>;
-const Projects = () => <Box p={8} fontSize="2xl">These are Projects</Box>;
-const About = () => <Box p={8} fontSize="2xl">About Me</Box>;
-const Resume = () => <Box p={8} fontSize="2xl">Resume Section</Box>;
-const Contact = () => <Box p={8} fontSize="2xl">Contact Info</Box>;
+import Home from './components/Home';
+import Projects from './components/Projects';
+import About from './components/About';
+import Resume from './components/Resume';
+import Contact from './components/Contact';
 
 function App() {
-  const [selectedPage, setSelectedPage] = useState("Home");
+  const [selectedSection, setSelectedSection] = useState('Home');
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bgColor = useColorModeValue('gray.100', 'gray.900');
+  const color = useColorModeValue('gray.900', 'gray.100');
 
-  const renderPage = () => {
-    switch (selectedPage) {
+  const renderSection = () => {
+    switch (selectedSection) {
       case 'Home':
         return <Home />;
       case 'Projects':
@@ -31,13 +32,17 @@ function App() {
   };
 
   return (
-    <Box className="App">
-      <Box display="flex">
+    <Box className="App" bg={bgColor} color={color} transition="all 0.3s ease-in-out">
+      <Box p={10}>
         <Sidebar />
-        <Box flex="1" ml={{ base: 0, md: "23vw" }} mt={10} p={6}>
-          <Header setSelectedPage={setSelectedPage} />
-          {/* Render the selected page in the center */}
-          {renderPage()}
+        <Header 
+          selectedSection={selectedSection} 
+          setSelectedSection={setSelectedSection}
+          colorMode={colorMode}
+          toggleColorMode={toggleColorMode}
+        />
+        <Box ml={{ base: 0, md: "23vw" }} mt={8} p={6}>
+          {renderSection()}
         </Box>
       </Box>
     </Box>
