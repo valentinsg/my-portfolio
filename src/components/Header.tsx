@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, VStack, HStack, useColorModeValue, IconButton } from '@chakra-ui/react';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { ExternalLinkIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 interface HeaderProps {
   selectedSection: string;
@@ -70,20 +70,12 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
 
         />
         <Button
-          color={buttonColor}
-          bg={buttonBg}
-          fontFamily="monospace"
+          size={['md', 'lg']}
+          variant="outline"
+          boxShadow={'md'}
+          colorScheme="pink"
           fontSize={{ base: "sm", md: "md", lg: "lg" }}
-          _hover={{
-            boxShadow: "0px 0px 8px 1px #4EC6C9",
-            bg: buttonHoverBg
-          }}
-          _active={{
-            boxShadow: "0px 0px 12px 2px #4EC6C9",
-            bg: buttonActiveBg
-          }}
-          transition="all 0.2s ease-in-out"
-          borderRadius="8px"
+          rightIcon={<ExternalLinkIcon />}
           px={{ base: 4, md: 6 }}
         >
           Let's Talk
