@@ -11,7 +11,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
   const accentColor = 'pink.400';
 
   const handleScrollToContact = () => {
-    setSelectedSection('Contact'); // O si usas anclas, puedes hacer scroll directo
+    setSelectedSection('Contact'); 
     const contactSection = document.getElementById('contact-section');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -22,61 +22,53 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
     <Box
       minH="70vh"
       w="full"
+      ml={{ base: 0, md: 6 }}
       display="flex"
       flexDir="column"
       alignItems="flex-start"
     >
-      <VStack alignItems="flex-start" mt={8} userSelect={"none"}>
+      <VStack alignItems="flex-start" userSelect={"none"}>
         <Text
-          fontSize={['6xl', '7xl', '8xl', '8xl']}
-          fontWeight="bold"
-          fontFamily={"monospace"}
+          fontSize={['6xl', '7xl', '8xl', '9xl']}
+          fontWeight="1000"
           color={textColor}
-          letterSpacing="wide"
         >
           I'm
         </Text>
         <Text
-          fontSize={['6xl', '7xl', '8xl', '8xl']}
-          fontWeight="bold"
-          fontFamily={"monospace"}
+          fontSize={['6xl', '7xl', '8xl', '9xl']}
+          fontWeight="1000"
           color={textColor}
-          lineHeight={9}
-          letterSpacing="wide"
+          lineHeight={10}
         >
           Valentín
         </Text>
         <Text
-          fontSize={['6xl', '7xl', '8xl', '8xl']}
-          fontWeight="bold"
+          fontSize={['6xl', '7xl', '8xl', '9xl']}
+          fontWeight="1000"
           color={textColor}
-          fontFamily={"monospace"}
-          letterSpacing="wide"
-        >
+        > 
           Sánchez Guevara
         </Text>
         <Text
-          fontSize={['xl', '2xl', '4xl']}
+          fontSize={['xl', '2xl', '5xl']}
           color={accentColor}
-          fontWeight="bold"
           fontFamily={"monospace"}
-          letterSpacing="wide"
-          mt={-6}
+          mt={-10}
         >
           Helping businesses thrive through digitalization.    
         </Text>
         <Text
-          fontSize={['md', 'lg', '2xl']}
+          fontSize={['md', 'lg', 'xl']}
           color={textColor}
           fontWeight="light"
-          letterSpacing="wide"          
           mt={-4}
         >
           Based in Mar del Plata, Argentina
         </Text>
       </VStack>
 
-      <HStack spacing={8} mt={"auto"} mb={2} alignItems="center">
+      <HStack spacing={4} mt={"auto"} alignItems="center">
         <Button
           size={['md', 'lg']}
           boxShadow={'md'}

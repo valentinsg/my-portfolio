@@ -67,10 +67,10 @@ function App() {
         </Drawer>
 
         <Box display="flex" flexDirection={{ base: 'column', md: 'row' }}>
-          <Box display={{ base: 'none', md: 'block' }} width={{ md: '23vw' }} m={12}>
+          <Box display={{ base: 'none', md: 'block' }} width={{ md: '21vw' }} mx={8} my={12}>
             <Sidebar />
           </Box>
-          <Box flex={1} px={{ base: 4, md: 6 }} py={{base: 6, md: 12}}>
+          <Box flex={1} px={{ base: 4, md: 2 }} py={{base: 6, md: 12}}>
             <Box display={{ base: 'none', md: 'block' }}>
               <Header
                 selectedSection={selectedSection}
@@ -80,7 +80,7 @@ function App() {
                 isMobile={false}
               />
             </Box>
-            <Box mt={{ base: 16, md: 8 }} mr={10}>
+            <Box mt={{ base: 16, md: 8 }} mr={8} >
               {renderSection()}
             </Box>
           </Box>
