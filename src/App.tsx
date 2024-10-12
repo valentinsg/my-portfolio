@@ -80,7 +80,7 @@ function App() {
                 isMobile={false}
               />
             </Box>
-            <Box mt={{ base: 16, md: 8 }} mr={8} >
+            <Box mr={8} >
               {renderSection()}
             </Box>
           </Box>
