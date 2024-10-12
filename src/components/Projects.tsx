@@ -18,8 +18,10 @@ const Projects = () => {
           gifUrl={StakingGif}
           title="Staking Project"
           description="A decentralized staking platform for cryptocurrency"
-          technologies={['react', 'nodejs', 'mongodb']}
-        />        <ProjectsContainer title={''} description={''} technologies={[]} />
+          technologies={['React', 'NodeJS', 'MongoDB']}
+          url='https://stake.smithii.io/'
+        />        
+        <ProjectsContainer title={''} description={''} technologies={[]} />
         <ProjectsContainer title={''} description={''} technologies={[]} />
         <ProjectsContainer title={''} description={''} technologies={[]} />
       </Grid>

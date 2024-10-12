@@ -54,7 +54,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           fontSize={['xl', '2xl', '5xl']}
           color={accentColor}
           fontFamily={"monospace"}
-          mt={-10}
+          mt={-12}
         >
           Helping businesses thrive through digitalization.    
         </Text>
