@@ -3,6 +3,8 @@ import { Heading, Grid, useColorModeValue, Box } from '@chakra-ui/react'
 import ProjectsContainer from './ProjectsContainer.';
 import StakingImage from '../img/staking.jpg';
 import StakingGif from '../img/video-staking.gif';
+import ToolsImage from '../img/tools.jpg';
+import ToolsGif from '../img/video-tools.gif';
 
 const Projects = () => {
   const headingColor = useColorModeValue('black', 'whiteAlpha.900');
@@ -20,7 +22,13 @@ const Projects = () => {
           technologies={['React', 'NodeJS', 'MongoDB']}
           url='https://stake.smithii.io/'
         />        
-        <ProjectsContainer title={''} description={''} technologies={[]} />
+        <ProjectsContainer 
+          bgImage={ToolsImage} 
+          gifUrl={ToolsGif} 
+          title={"Crypto Tools"} 
+          description={"A decentralized toolset for cryptocurrency users"} 
+          technologies={['React', 'ChakraUI']} 
+        />
         <ProjectsContainer title={''} description={''} technologies={[]} />
         <ProjectsContainer title={''} description={''} technologies={[]} />
       </Grid>

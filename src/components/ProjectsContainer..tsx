@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Heading, Text, useColorModeValue, Flex, Icon, Tooltip } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaPython, FaHtml5, FaCss3Alt, FaJsSquare, FaGitAlt } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaPython, FaHtml5, FaCss3Alt, FaJsSquare, FaGitAlt, FaDharmachakra } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiPostgresql } from 'react-icons/si';
 
 interface ProjectsContainerProps {
@@ -146,6 +146,8 @@ const getIconForTechnology = (tech: string) => {
       return FaHtml5;
     case 'css':
       return FaCss3Alt;
+    case 'chakraui':
+      return FaDharmachakra;
     case 'javascript':
       return FaJsSquare;
     case 'typescript':
