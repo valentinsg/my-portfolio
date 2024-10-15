@@ -1,26 +1,10 @@
 import React from 'react';
-import { Box, Flex, Image, Text, Heading, Button } from '@chakra-ui/react';
+import { Box, Flex, Text, Heading} from '@chakra-ui/react';
 
 const About = () => {
   return (
-    <Box bg="#111" color="white" py={10} px={5}>
+    <Box py={10} px={5}>
       <Flex justify="center" direction={["column", "row"]} maxW="1200px" mx="auto" gap={8}>
-        
-        {/* Columna izquierda: Información personal */}
-        <Box textAlign="center">
-          <Image 
-            src="/path-to-your-image.jpg" 
-            alt="Your Name" 
-            borderRadius="full" 
-            boxSize="150px" 
-            objectFit="cover"
-            mx="auto"
-          />
-          <Heading as="h2" size="lg" mt={4}>Your Name</Heading>
-          <Text mt={2}>UI/UX Designer and Frontend Developer</Text>
-          <Text>Mar del Plata, Argentina</Text>
-          <Button colorScheme="pink" mt={4}>Let's Work Together</Button>
-        </Box>
 
         {/* Columna derecha: Información de logros y experiencia */}
         <Box flex="1">
@@ -29,15 +13,15 @@ const About = () => {
           </Heading>
           <Flex justify="space-between" mb={6}>
             <Box textAlign="center">
-              <Heading as="h2" size="lg">40+</Heading>
-              <Text>Happy clients</Text>
+              <Heading as="h2" size="lg">100%</Heading>
+              <Text>Custom Solutions</Text>
             </Box>
             <Box textAlign="center">
-              <Heading as="h2" size="lg">2+</Heading>
-              <Text>Years of experience</Text>
+              <Heading as="h2" size="lg">2021+</Heading>
+              <Text>Delivering Quality Solutions Since</Text>
             </Box>
             <Box textAlign="center">
-              <Heading as="h2" size="lg">50+</Heading>
+              <Heading as="h2" size="lg">10+</Heading>
               <Text>Projects done</Text>
             </Box>
           </Flex>
