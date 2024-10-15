@@ -69,7 +69,7 @@ const Projects = () => {
           </MenuList>
         </Menu>
       </Flex>
-      <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }} gap={8}>
+      <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }} gap={16}>
         {filteredProjects.map((project, index) => (
           <ProjectsContainer
             key={index}
