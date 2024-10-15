@@ -22,7 +22,7 @@ function App() {
         return <Home setSelectedSection={setSelectedSection} />;
       case 'Projects':
         return <Projects />;
-      case 'About':
+      case 'About Me':
         return <About />;
       case 'Resume':
         return <Resume />;

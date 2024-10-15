@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
   const buttonHoverBg = useColorModeValue('gray.300', 'gray.600');
   const buttonActiveBg = useColorModeValue('gray.400', 'gray.500');
 
-  const sections = ['Home', 'Projects', 'About', 'Resume', 'Contact'];
+  const sections = ['Home', 'Projects', 'About Me', 'Resume', 'Contact'];
   const Container = isMobile ? VStack : HStack;
 
   return (
