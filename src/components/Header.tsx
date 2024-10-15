@@ -76,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
           colorScheme="pink"
           fontSize={{ base: "sm", md: "md", lg: "lg" }}
           rightIcon={<ExternalLinkIcon />}
-          px={{ base: 4, md: 6 }}
+          px={{ base: 4, md: 8 }}
         >
           Let's Talk
         </Button>

@@ -58,7 +58,7 @@ const Projects = () => {
           Featured Projects
         </Heading>
         <Menu>
-          <MenuButton as={Button} rightIcon={<ChevronDownIcon />} mb={4}>
+          <MenuButton as={Button} rightIcon={<ChevronDownIcon />} mb={3}>
             {filter.charAt(0).toUpperCase() + filter.slice(1)}
           </MenuButton>
           <MenuList>
