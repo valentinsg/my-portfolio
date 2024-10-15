@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Text, Heading, Stack, Link, Divider } from '@chakra-ui/react';
+import { Box, Flex, Text, Heading, Stack } from '@chakra-ui/react';
 
 const About = () => {
 
@@ -7,8 +7,9 @@ const About = () => {
   const accentColor = 'pink.400';
 
   return (
-    <Flex direction="column" p={[4, 8]}  minH="100vh" color={textColor}>
+    <Flex direction="column" p={[4, 10]}  minH="100vh" color={textColor}>
       {/* Columna principal: Título y Logros */}
+      
       <Box w={["100%", "70%"]} mb={8} textAlign="left">
         <Heading as="h1" fontSize={["4xl", "6xl"]} lineHeight="1.1" mb={12}>
           Turning complex problems into simple design
@@ -31,7 +32,7 @@ const About = () => {
       </Box>
 
       {/* Cuerpo principal: Biografía y Contacto */}
-      <Flex direction={["column", "row"]} gap={20} justify="space-between" alignItems={"center"}>
+      <Flex direction={["column", "row"]} gap={16} justify="space-between">
         {/* Columna izquierda: Biografía */}
         <Box mb={[8, 0]}>
           <Text fontSize={["lg", "xl"]} lineHeight="tall" textAlign="justify">
@@ -43,10 +44,9 @@ const About = () => {
 
         {/* Columna derecha: Contacto */}
         <Box w={["100%", "70%"]}  >
-          <Stack spacing={4}>
-            <Text fontSize="xl"><Text as="span" color={accentColor}>Email:</Text> your-email@example.com</Text>
-            <Divider />
-            <Text fontSize="xl"><Text as="span" color={accentColor}>Phone:</Text> +54 123 4567890</Text>
+          <Stack spacing={6}>
+            <Text fontSize="xl"><Text as="span" color={accentColor}>Mail:</Text> sanchezguevaravalentin@gmail.com</Text>
+            <Text fontSize="xl"><Text as="span" color={accentColor}>Phone:</Text> +54 9 2236680041</Text>
           </Stack>  
         </Box>
       </Flex>
