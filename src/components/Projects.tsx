@@ -7,6 +7,7 @@ import ToolsImage from '../img/tools.jpg';
 import ToolsGif from '../img/video-tools.gif';
 import SoftwareImage from '../img/smithii-software.jpg';
 import SoftwareGif from '../img/video-software.gif';
+import BusyLandingImage from '../img/busy-landing-image.jpg';
 
 const Projects = () => {
   const headingColor = useColorModeValue('black', 'whiteAlpha.900');
@@ -38,7 +39,13 @@ const Projects = () => {
           description={"A software development company"} 
           technologies={['React', 'TypeScript', 'ChakraUI', 'Redux', "Springboot", 'MongoDB']} 
         />
-        <ProjectsContainer title={''} description={''} technologies={[]} />
+        <ProjectsContainer 
+          bgImage={BusyLandingImage}
+          title={'Busy Landing'} 
+          description={"A Clothing Brand landing page with some visual interactive functions"} 
+          technologies={['React', 'TypeScript', 'ChakraUI']} 
+
+        />
       </Grid>
     </Box>
   )
