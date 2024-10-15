@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Heading, Text, useColorModeValue, Flex, Icon, Tooltip } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaPython, FaHtml5, FaCss3Alt, FaJsSquare, FaGitAlt, FaDharmachakra } from 'react-icons/fa';
-import { SiTypescript, SiMongodb, SiPostgresql } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaPython, FaHtml5, FaCss3Alt, FaJsSquare, FaGitAlt } from 'react-icons/fa';
+import { SiTypescript, SiMongodb, SiPostgresql, SiRedux, SiChakraui, SiRust, SiSpringboot } from 'react-icons/si';
 
 interface ProjectsContainerProps {
   bgImage?: string;
@@ -23,7 +23,6 @@ const ProjectsContainer: React.FC<ProjectsContainerProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   
-  // Uso de useColorModeValue para manejar colores en modo oscuro/claro
   const bgColor = useColorModeValue('gray.100', 'gray.800');
   const titleColor = useColorModeValue('brand.600', 'brand.300');
   const descriptionColor = useColorModeValue('gray.700', 'gray.300');
@@ -140,6 +139,10 @@ const getIconForTechnology = (tech: string) => {
       return FaReact;
     case 'nodejs':
       return FaNodeJs;
+    case 'rust':
+      return SiRust;
+    case 'springboot':
+      return SiSpringboot;
     case 'python':
       return FaPython;
     case 'html':
@@ -147,7 +150,7 @@ const getIconForTechnology = (tech: string) => {
     case 'css':
       return FaCss3Alt;
     case 'chakraui':
-      return FaDharmachakra;
+      return SiChakraui;
     case 'javascript':
       return FaJsSquare;
     case 'typescript':
@@ -158,6 +161,8 @@ const getIconForTechnology = (tech: string) => {
       return SiPostgresql;
     case 'git':
       return FaGitAlt;
+    case 'redux':	
+      return SiRedux;
     default:
       return FaReact;
   }

@@ -5,6 +5,8 @@ import StakingImage from '../img/staking.jpg';
 import StakingGif from '../img/video-staking.gif';
 import ToolsImage from '../img/tools.jpg';
 import ToolsGif from '../img/video-tools.gif';
+import SoftwareImage from '../img/smithii-software.jpg';
+import SoftwareGif from '../img/video-software.gif';
 
 const Projects = () => {
   const headingColor = useColorModeValue('black', 'whiteAlpha.900');
@@ -19,7 +21,7 @@ const Projects = () => {
           gifUrl={StakingGif}
           title="Staking Project"
           description="A decentralized staking platform for cryptocurrency"
-          technologies={['React', 'NodeJS', 'MongoDB']}
+          technologies={['React', 'TypeScript', 'ChakraUI', "Rust"]}
           url='https://stake.smithii.io/'
         />        
         <ProjectsContainer 
@@ -27,9 +29,15 @@ const Projects = () => {
           gifUrl={ToolsGif} 
           title={"Crypto Tools"} 
           description={"A decentralized toolset for cryptocurrency users"} 
-          technologies={['React', 'ChakraUI']} 
+          technologies={['React', 'TypeScript', 'ChakraUI',  "Rust"]} 
         />
-        <ProjectsContainer title={''} description={''} technologies={[]} />
+        <ProjectsContainer 
+          bgImage={SoftwareImage} 
+          gifUrl={SoftwareGif}
+          title={"Smithii Software"} 
+          description={"A software development company"} 
+          technologies={['React', 'TypeScript', 'ChakraUI', 'Redux', "Springboot", 'MongoDB']} 
+        />
         <ProjectsContainer title={''} description={''} technologies={[]} />
       </Grid>
     </Box>
