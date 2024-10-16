@@ -5,7 +5,7 @@ import { CopyIcon } from '@chakra-ui/icons';
 const About = () => {
 
   const textColor = 'whiteAlpha.900';
-  const accentColor = 'pink.400';
+  const accentColor = 'pink.300';
 
   return (
     <Flex direction="column" p={[4, 10]} minH="100vh" color={textColor}>
@@ -45,8 +45,8 @@ const About = () => {
       <HStack spacing={36} justifyContent={"center"} mt={20}>
 
         <Flex gap={6} alignItems={"center"}>
-          <Text fontSize="2xl" fontFamily={"monospace"}>
-            <Text as="span" fontSize={"2xl"} fontFamily={"monospace"} color={accentColor}>Mail: </Text>
+          <Text fontSize="xl" fontFamily={"monospace"}>
+            <Text as="span" fontSize={"xl"} fontFamily={"monospace"} color={accentColor}>Mail: </Text>
             sanchezguevaravalentin@gmail.com
           </Text>
           <Tooltip label="Copy Email" aria-label="Copy Email Tooltip">
@@ -62,8 +62,8 @@ const About = () => {
         </Flex>
 
         <Flex gap={6} alignItems={"center"}>
-          <Text fontSize="2xl" fontFamily={"monospace"}>
-            <Text as="span" fontSize={"2xl"} fontFamily={"monospace"} color={accentColor}>Phone: </Text>
+          <Text fontSize="xl" fontFamily={"monospace"}>
+            <Text as="span" fontSize={"xl"} fontFamily={"monospace"} color={accentColor}>Phone: </Text>
             +54 9 2236680041
           </Text>
           <Tooltip label="Copy phone number" aria-label="Copy Phone Number Tooltip">

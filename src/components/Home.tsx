@@ -8,7 +8,7 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
   const textColor = 'whiteAlpha.900';
-  const accentColor = 'pink.400';
+  const accentColor = 'pink.300';
 
   const handleScrollToContact = () => {
     setSelectedSection('Contact'); 
