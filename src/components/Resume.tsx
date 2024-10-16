@@ -26,34 +26,34 @@ const Resume = () => {
           width="150px"
           height="150px"
           mx="auto"
-          mb={4}
         >
           <Image src={Valentin} boxSize="150px" objectFit="cover" />
         </Box>
-        <Heading as="h1" size="2xl" mb={4} color={accentColor}>
+        <Heading as="h1" size="2xl" m={4} color={accentColor}>
           Valentín Sánchez Guevara
         </Heading>
-        <Text fontSize="lg" color={textColor} mb={4}>
+        <Text fontSize="xl" color={textColor} letterSpacing="tight">
           Developer | Creative | Entrepreneur
         </Text>
-        <Flex justifyContent="center" gap={10} >
 
-            <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowEmail(!showEmail)}>
-            <Icon as={SiMailgun} color={accentColor} />
+        <Flex justifyContent="center" gap={8} m={6} >
+
+          <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowEmail(!showEmail)}>
+            <Icon as={SiMailgun} color={"whiteAlpha.900"} />
             <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showEmail ? '300px' : '0'} transition="max-width 0.4s ease-out">
               <Text>{showEmail ? 'sanchezguevaravalentin@gmail.com' : ''}</Text>
             </Box>
-            </Flex>
+          </Flex>
 
-            <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowPhone(!showPhone)}>
-            <Icon as={FaPhone} color={accentColor} />
+          <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowPhone(!showPhone)}>
+            <Icon as={FaPhone} color={"whiteAlpha.900"} />
             <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showPhone ? '200px' : '0'} transition="max-width 0.4s ease-out">
               <Text>{showPhone ? '+54 9 2236680041' : ''}</Text>
             </Box>
-            </Flex>
+          </Flex>
 
           <Link href="https://github.com/tu-usuario" isExternal>
-            <FaGithub size="30px"/>
+            <FaGithub size="30px" />
           </Link>
           <Link href="https://linkedin.com/in/tu-usuario" isExternal>
             <FaLinkedin size="30px" />
@@ -96,9 +96,6 @@ const Resume = () => {
 
         {/* Sección de Experiencia */}
         <Box mb={10}>
-          <Heading color={accentColor} as="h2" fontSize="3xl" mb={6}>
-            Experience
-          </Heading>
           <Box mb={8}>
             <Heading fontSize="2xl" color={accentColor}>
               JR. Front-End Developer @Smithii (Remote)
