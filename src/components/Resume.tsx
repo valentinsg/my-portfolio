@@ -1,19 +1,20 @@
-import React from 'react';
-import { Box, Heading, Text, List, ListItem, ListIcon, Link, Button, Image, Grid, Flex, Icon } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Box, Heading, Text, List, ListItem, ListIcon, Link, Button, Image, Grid, Flex, Icon, Tooltip, Modal, ModalOverlay, ModalContent, ModalBody, ModalCloseButton, Avatar } from '@chakra-ui/react';
 import { FaCheckCircle, FaGithub, FaLinkedin, FaPhone } from 'react-icons/fa';
-import Valentin from '../img/valentin.png';
-
-import { useState } from 'react';
 import { SiMailgun } from 'react-icons/si';
+import Valentin from '../img/valentin.png';
 
 const Resume = () => {
   // Colores y temas
   const accentColor = 'pink.300';
   const textColor = 'gray.600';
 
-  // State for showing email
+  // State for showing email and phone
   const [showEmail, setShowEmail] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
+
+  // State for modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <Box p={8}>
@@ -26,6 +27,8 @@ const Resume = () => {
           width="150px"
           height="150px"
           mx="auto"
+          cursor="pointer"
+          onClick={() => setIsModalOpen(true)}
         >
           <Image src={Valentin} boxSize="150px" objectFit="cover" />
         </Box>
@@ -37,27 +40,33 @@ const Resume = () => {
         </Text>
 
         <Flex justifyContent="center" gap={8} m={6} >
+          <Tooltip label="Click to show email" aria-label="Email Tooltip">
+            <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowEmail(!showEmail)}>
+              <SiMailgun size={"25px"} color='white'/>
+              <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showEmail ? '300px' : '0'} transition="max-width 0.4s ease-out">
+                <Text>{showEmail ? 'sanchezguevaravalentin@gmail.com' : ''}</Text>
+              </Box>
+            </Flex>
+          </Tooltip>
+          <Tooltip label="Click to show phone number" aria-label="Phone Tooltip">
+            <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowPhone(!showPhone)}>
+              <FaPhone size={"25px"} color='white' />
+              <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showPhone ? '200px' : '0'} transition="max-width 0.4s ease-out">
+                <Text>{showPhone ? '+54 9 2236680041' : ''}</Text>
+              </Box>
+            </Flex>
+          </Tooltip>
 
-          <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowEmail(!showEmail)}>
-            <Icon as={SiMailgun} color={"whiteAlpha.900"} />
-            <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showEmail ? '300px' : '0'} transition="max-width 0.4s ease-out">
-              <Text>{showEmail ? 'sanchezguevaravalentin@gmail.com' : ''}</Text>
-            </Box>
-          </Flex>
-
-          <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowPhone(!showPhone)}>
-            <Icon as={FaPhone} color={"whiteAlpha.900"} />
-            <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showPhone ? '200px' : '0'} transition="max-width 0.4s ease-out">
-              <Text>{showPhone ? '+54 9 2236680041' : ''}</Text>
-            </Box>
-          </Flex>
-
-          <Link href="https://github.com/tu-usuario" isExternal>
-            <FaGithub size="30px" />
-          </Link>
-          <Link href="https://linkedin.com/in/tu-usuario" isExternal>
-            <FaLinkedin size="30px" />
-          </Link>
+          <Tooltip label="GitHub Profile" aria-label="GitHub Tooltip">
+            <Link href="https://github.com/tu-usuario" isExternal>
+              <FaGithub size="30px" />
+            </Link>
+          </Tooltip>
+          <Tooltip label="LinkedIn Profile" aria-label="LinkedIn Tooltip">
+            <Link href="https://linkedin.com/in/tu-usuario" isExternal>
+              <FaLinkedin size="30px" />
+            </Link>
+          </Tooltip>
         </Flex>
       </Box>
 
@@ -122,7 +131,7 @@ const Resume = () => {
 
           <Box mb={8}>
             <Heading fontSize="2xl" color={accentColor}>
-              Freelance Developer (Remote)
+              Freelance
             </Heading>
             <Text fontSize="lg" color={textColor}>June 2022 - Present</Text>
             <Text fontSize="lg" color={textColor} mt={2}>
@@ -131,7 +140,7 @@ const Resume = () => {
             <List spacing={3} mt={2} color={textColor}>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color={accentColor} />
-                Development of business websites and online stores using modern frameworks.
+                Development of business websites and online stores.
               </ListItem>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color={accentColor} />
@@ -139,7 +148,11 @@ const Resume = () => {
               </ListItem>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color={accentColor} />
-                Maintenance and support for web and mobile apps.
+                Branding and presence on internet platforms for business
+              </ListItem>
+              <ListItem>
+                <ListIcon as={FaCheckCircle} color={accentColor} />
+                Digital marketing strategies.
               </ListItem>
             </List>
           </Box>
@@ -148,10 +161,21 @@ const Resume = () => {
 
       {/* Botón de descarga */}
       <Box textAlign="center" mt={8}>
-        <Button bg={accentColor} size="lg">
-          Download Resume (PDF)
-        </Button>
+        <Tooltip label="Download Resume as PDF" aria-label="Download Tooltip">
+          <Button bg={accentColor} size="lg">
+            Download Resume (PDF) 
+          </Button>
+        </Tooltip>
       </Box>
+
+      {/* Modal for image */}
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} >
+        <ModalOverlay />
+        <ModalContent w={"10vw"}>
+          <ModalCloseButton />
+            <Avatar size={"full"} src={Valentin} />
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };
