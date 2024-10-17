@@ -119,7 +119,15 @@ const Resume = () => {
               boxShadow={'md'}
               colorScheme="pink"
               fontSize={{ base: "sm", md: "md", lg: "lg" }}
-              mt={8}>
+              mt={10}
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = '/img/cv-valen.pdf';  
+                link.download = 'Valentin_Sanchez_Guevara_Resume.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}>
               Download Resume (PDF)
             </Button>
           </Tooltip>

@@ -11,7 +11,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
   const accentColor = 'pink.300';
 
   const handleScrollToContact = () => {
-    setSelectedSection('Contact'); 
+    setSelectedSection('Contact');
     const contactSection = document.getElementById('contact-section');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -47,7 +47,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           fontSize={['6xl', '7xl', '8xl', '9xl']}
           fontWeight="1000"
           color={textColor}
-        > 
+        >
           Sánchez Guevara
         </Text>
         <Text
@@ -56,7 +56,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           fontFamily={"monospace"}
           mt={-12}
         >
-          Helping businesses thrive through digitalization.    
+          Helping businesses thrive through digitalization.
         </Text>
         <Text
           fontSize={['md', 'lg', 'xl']}
@@ -74,8 +74,16 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           boxShadow={'md'}
           colorScheme="pink"
           leftIcon={<DownloadIcon />}
-          _hover={{ bg: 'pink.300' }}  
-          _active={{ bg: 'pink.500' }}  
+          _hover={{ bg: 'pink.300' }}
+          _active={{ bg: 'pink.500' }}
+          onClick={() => {
+            const link = document.createElement('a');
+            link.href = '/img/cv-valen.pdf';
+            link.download = 'Valentin_Sanchez_Guevara_Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }}
         >
           Download CV
         </Button>
