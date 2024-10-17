@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import React, { useState } from 'react';
 import {
   Input,
@@ -11,9 +12,12 @@ import {
   Tooltip,
   useToast,
 } from '@chakra-ui/react';
+import emailjs from 'emailjs-com';
 import "./btn-donate.css";
 
 const Contact = () => {
+  {/* ESTADO PARA LOS DATOS DEL FORMULARIO */ }
+
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -21,8 +25,10 @@ const Contact = () => {
     phone: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const toast = useToast();
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -32,18 +38,62 @@ const Contact = () => {
     }));
   };
 
+  const isValid = () => {
+    return formData.name && formData.email && formData.message;
+  }
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you soon.",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-    });
+
+    {/* VALIDAR QUE LOS CAMPOS REQUERIDOS ESTÉN LLENOS */ }
+
+    if (!isValid()) {
+      toast({
+        title: "Error!",
+        description: "Please fill in all required fields.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    {/* EMAILJS: CONFIGURATION */ }
+
+    const serviceId = 'service_giwh9l1';
+    const templateId = 'template_zfkuijy';
+    const userId = 'UpnhC2i2TP-flmSc-';
+
+    {/* EMAILJS: SEND MESSAGE */ }
+
+    emailjs.send(serviceId, templateId, formData, userId)
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        setIsSubmitting(false);
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you soon.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      })
+      .catch((error) => {
+        console.log('FAILED...', error);
+        setIsSubmitting(false);
+        toast({
+          title: "Error!",
+          description: "There was an error sending the message.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      });
   };
 
+  {/* MEJORAR LUEGO CON LOS THEMES PARA MODO OSCURO Y CLARO */ }
   const headingColor = useColorModeValue('#ce3072', '#ff8dc7');
   const inputBgColor = useColorModeValue('white', 'gray.700');
   const labelColor = useColorModeValue('gray.700', 'gray.200');
@@ -136,8 +186,9 @@ const Contact = () => {
 
         <button
           className="btn-donate"
+          disabled={isSubmitting}
         >
-          Send Message
+          {isSubmitting ? "Sending..." : "Send Message"}
         </button>
       </form>
     </VStack>
