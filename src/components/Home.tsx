@@ -78,7 +78,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           _active={{ bg: 'pink.500' }}
           onClick={() => {
             const link = document.createElement('a');
-            link.href = '/img/cv-valen.pdf';
+            link.href = '/cv-valen.pdf';
             link.download = 'Valentin_Sanchez_Guevara_Resume.pdf';
             document.body.appendChild(link);
             link.click();

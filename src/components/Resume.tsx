@@ -122,7 +122,7 @@ const Resume = () => {
               mt={10}
               onClick={() => {
                 const link = document.createElement('a');
-                link.href = '/img/cv-valen.pdf';  
+                link.href = '/cv-valen.pdf';  
                 link.download = 'Valentin_Sanchez_Guevara_Resume.pdf';
                 document.body.appendChild(link);
                 link.click();
