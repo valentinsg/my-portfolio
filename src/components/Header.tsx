@@ -77,6 +77,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
           fontSize={{ base: "sm", md: "md", lg: "lg" }}
           rightIcon={<ExternalLinkIcon />}
           px={{ base: 4, md: 8 }}
+          onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0aKsiCw2ol12PWw6vXoe4hlEkeje1TK5ldpY29MFj-cclKi8ALgE1peSmD7JCH4jYw5pay1Rx7', '_blank')}
         >
           Let's Talk
         </Button>
