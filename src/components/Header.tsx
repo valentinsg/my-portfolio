@@ -31,22 +31,23 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
     <HStack justify="space-between" alignItems="center" p={4} w="100%">
       <Container spacing={4}>
         {sections.map((section, index) => (
-          <Button
-            key={index}
-            onClick={() => setSelectedSection(section)}
-            color={buttonColor}
-            bg={selectedSection === section ? buttonActiveBg : buttonBg}
-            fontFamily="monospace"
-            fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}
-            transition="all 0.3s ease-in-out"
-            borderRadius="8px"
-            px={{ base: 4, md: 8 }}
-            width={isMobile ? '100%' : 'auto'}
-            _hover={{ bg: buttonHoverBg }}
-            _active={{ bg: buttonActiveBg }}
-          >
-            {section}
-          </Button>
+          <Tooltip key={index} label={isSpanish ? `${section}` : `${section}`} fontSize="sm">
+            <Button
+              onClick={() => setSelectedSection(section)}
+              color={buttonColor}
+              bg={selectedSection === section ? buttonActiveBg : buttonBg}
+              fontFamily="monospace"
+              fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}
+              transition="all 0.3s ease-in-out"
+              borderRadius="8px"
+              px={{ base: 4, md: 8 }}
+              width={isMobile ? '100%' : 'auto'}
+              _hover={{ bg: buttonHoverBg }}
+              _active={{ bg: buttonActiveBg }}
+            >
+              {section}
+            </Button>
+          </Tooltip>
         ))}
       </Container>
 
