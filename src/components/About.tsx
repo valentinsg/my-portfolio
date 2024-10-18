@@ -3,7 +3,7 @@ import { Box, Flex, Text, Heading, HStack, Tooltip, IconButton } from '@chakra-u
 import { CopyIcon } from '@chakra-ui/icons';
 
 const About = () => {
-
+  
   const textColor = 'whiteAlpha.900';
   const accentColor = 'pink.300';
 

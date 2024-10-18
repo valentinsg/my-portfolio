@@ -4,7 +4,6 @@ import { ExternalLinkIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useLanguage } from '../context/LanguageProvider';
 import { Menu, MenuButton, MenuList, MenuItem, Tooltip } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { FaFlagUsa, FaFlag } from 'react-icons/fa';
 
 interface HeaderProps {
   selectedSection: string;

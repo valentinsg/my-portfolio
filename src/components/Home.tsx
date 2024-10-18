@@ -1,12 +1,16 @@
 import React from 'react';
-import { Box, Button, Text, VStack, HStack, IconButton } from '@chakra-ui/react';
-import { DownloadIcon, ExternalLinkIcon, ChevronDownIcon } from '@chakra-ui/icons';
+import { Box, Button, Text, VStack, HStack, IconButton, Tooltip } from '@chakra-ui/react';
+import { DownloadIcon, ExternalLinkIcon } from '@chakra-ui/icons';
+import { useLanguage } from '../context/LanguageProvider';
+import { FaAddressBook } from 'react-icons/fa';
 
 interface HomeProps {
   setSelectedSection: (section: string) => void;
 }
 
 const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
+  const { isSpanish } = useLanguage();
+
   const textColor = 'whiteAlpha.900';
   const accentColor = 'pink.300';
 
@@ -33,13 +37,13 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           fontWeight="1000"
           color={textColor}
         >
-          I'm
+          {isSpanish ? 'Soy' : 'I am'}
         </Text>
         <Text
           fontSize={['6xl', '7xl', '8xl', '9xl']}
           fontWeight="1000"
           color={textColor}
-          lineHeight={10}
+          lineHeight={0.5}
         >
           Valentín
         </Text>
@@ -56,7 +60,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           fontFamily={"monospace"}
           mt={-12}
         >
-          Helping businesses thrive through digitalization.
+          {isSpanish ? 'Mejorando empresas a través de la digitalización.' : 'Helping businesses thrive through digitalization.'}
         </Text>
         <Text
           fontSize={['md', 'lg', 'xl']}
@@ -64,52 +68,62 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           fontWeight="light"
           mt={-4}
         >
-          Based in Mar del Plata, Argentina
+          {isSpanish ? 'Viviendo en Mar del Plata, Argentina' : 'Based in Mar del Plata, Argentina'}
         </Text>
       </VStack>
 
       <HStack spacing={4} mt={"auto"} alignItems="center">
-        <Button
-          size={['md', 'lg']}
-          boxShadow={'md'}
-          colorScheme="pink"
-          leftIcon={<DownloadIcon />}
-          _hover={{ bg: 'pink.300' }}
-          _active={{ bg: 'pink.500' }}
-          onClick={() => {
-            const link = document.createElement('a');
-            link.href = '/cv-valen.pdf';
-            link.download = 'Valentin_Sanchez_Guevara_Resume.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }}
-        >
-          Download CV
-        </Button>
-        <Button
-          size={['md', 'lg']}
-          variant="outline"
-          boxShadow={'md'}
-          colorScheme="pink"
-          rightIcon={<ExternalLinkIcon />}
-          onClick={() => setSelectedSection('Projects')}
-        >
-          View My Works
-        </Button>
+        <Tooltip label={isSpanish ? 'Descargar CV' : 'Download CV'} placement="top">
+          <span>
+            <Button
+              size={['md', 'lg']}
+              boxShadow={'md'}
+              colorScheme="pink"
+              leftIcon={<DownloadIcon />}
+              _hover={{ bg: 'pink.300' }}
+              _active={{ bg: 'pink.500' }}
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = '/cv-valen.pdf';
+                link.download = isSpanish ? 'Valentin_Sanchez_Guevara_Curriculum.pdf' : 'Valentin_Sanchez_Guevara_Resume.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+            >
+              {isSpanish ? 'Descargar CV' : 'Download CV'}
+            </Button>
+          </span>
+        </Tooltip>
+        <Tooltip label={isSpanish ? 'Ver mis proyectos' : 'View my projects'} placement="top">
+          <span>
+            <Button
+              size={['md', 'lg']}
+              variant="outline"
+              boxShadow={'md'}
+              colorScheme="pink"
+              rightIcon={<ExternalLinkIcon />}
+              onClick={() => setSelectedSection('Projects')}
+            >
+              {isSpanish ? 'Mis Trabajos' : 'View My Works'}
+            </Button>
+          </span>
+        </Tooltip>
 
         {/* Nueva flecha que lleva a la sección de contacto */}
-        <IconButton
-          size="lg"
-          aria-label="Scroll to contact"
-          icon={<ChevronDownIcon />}
-          isRound
-          onClick={handleScrollToContact}
-          colorScheme="pink"
-          boxShadow={'md'}
-          _hover={{ bg: 'pink.300' }}
-          _active={{ bg: 'pink.500' }}
-        />
+        <Tooltip label={isSpanish ? 'Contactarme' : 'Scroll to Contact'} placement="top">
+          <IconButton
+            size="lg"
+            aria-label="Scroll to contact"
+            icon={<FaAddressBook />} 
+            isRound
+            onClick={handleScrollToContact}
+            colorScheme="pink"
+            boxShadow={'md'}
+            _hover={{ bg: 'pink.300' }}
+            _active={{ bg: 'pink.500' }}
+          />
+        </Tooltip>
       </HStack>
     </Box>
   );

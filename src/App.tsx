@@ -8,25 +8,26 @@ import Projects from './components/Projects';
 import About from './components/About';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
+import { useLanguage } from './context/LanguageProvider';
 
 function App() {
+  const { isSpanish } = useLanguage();
   const [selectedSection, setSelectedSection] = useState('Home');
   const { colorMode, toggleColorMode } = useColorMode();
   const bgColor = useColorModeValue('gray.100', 'gray.900');
   const color = useColorModeValue('gray.900', 'gray.100');
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const renderSection = () => {
     switch (selectedSection) {
-      case 'Home':
+      case isSpanish ? 'Inicio': 'Home':
         return <Home setSelectedSection={setSelectedSection} />;
-      case 'Projects':
+      case isSpanish ? 'Proyectos': 'Projects':
         return <Projects />;
-      case 'About Me':
+      case isSpanish ? 'Sobre Mí' : 'About Me':
         return <About />;
-      case 'Resume':
+      case isSpanish ? 'Currículum' : 'Resume':
         return <Resume />;
-      case 'Contact':
+      case isSpanish ? 'Contacto' : 'Contact':
         return <Contact />;
       default:
         return <Home setSelectedSection={setSelectedSection} />;

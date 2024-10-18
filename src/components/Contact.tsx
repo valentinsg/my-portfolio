@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import emailjs from 'emailjs-com';
 import "./btn-donate.css";
+import { useLanguage } from '../context/LanguageProvider';
 
 const Contact = () => {
 
