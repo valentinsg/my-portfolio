@@ -1,4 +1,3 @@
-/* eslint-disable no-lone-blocks */
 import React, { useState } from 'react';
 import {
   Input,
@@ -11,13 +10,14 @@ import {
   VStack,
   Tooltip,
   useToast,
+  Button
 } from '@chakra-ui/react';
 import emailjs from 'emailjs-com';
 import "./btn-donate.css";
 
 const Contact = () => {
-  {/* ESTADO PARA LOS DATOS DEL FORMULARIO */ }
 
+  // Estado para los datos del formulario
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -26,10 +26,9 @@ const Contact = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const toast = useToast();
 
-
+  // Manejar los cambios en los campos del formulario
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -38,54 +37,50 @@ const Contact = () => {
     }));
   };
 
+  // Validar campos requeridos
   const isValid = () => {
     return formData.name && formData.email && formData.message;
-  }
+  };
 
+  // Manejar el envío del formulario
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    {/* VALIDAR QUE LOS CAMPOS REQUERIDOS ESTÉN LLENOS */ }
-
+    // Verificar que los campos requeridos estén llenos
     if (!isValid()) {
       toast({
-        title: "Error!",
-        description: "Please fill in all required fields.",
+        title: "Error",
+        description: "Por favor completa todos los campos requeridos.",
         status: "error",
         duration: 3000,
         isClosable: true,
       });
       return;
     }
-
     setIsSubmitting(true);
 
-    {/* EMAILJS: CONFIGURATION */ }
-
+    // Configuración de EmailJS
     const serviceId = 'service_giwh9l1';
     const templateId = 'template_zfkuijy';
     const userId = 'UpnhC2i2TP-flmSc-';
 
-    {/* EMAILJS: SEND MESSAGE */ }
-
+    // Enviar correo con EmailJS
     emailjs.send(serviceId, templateId, formData, userId)
       .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
         setIsSubmitting(false);
         toast({
-          title: "Message sent!",
-          description: "We'll get back to you soon.",
+          title: "Mensaje enviado",
+          description: "Nos pondremos en contacto pronto.",
           status: "success",
           duration: 3000,
           isClosable: true,
         });
       })
       .catch((error) => {
-        console.log('FAILED...', error);
         setIsSubmitting(false);
         toast({
-          title: "Error!",
-          description: "There was an error sending the message.",
+          title: "Error",
+          description: "Hubo un error al enviar el mensaje.",
           status: "error",
           duration: 3000,
           isClosable: true,
@@ -93,18 +88,22 @@ const Contact = () => {
       });
   };
 
-  {/* MEJORAR LUEGO CON LOS THEMES PARA MODO OSCURO Y CLARO */ }
-  const headingColor = useColorModeValue('#ce3072', '#ff8dc7');
+  // Colores para temas claro/oscuro
+  const headingColor = useColorModeValue('#ff8dc7', '#fff');
   const inputBgColor = useColorModeValue('white', 'gray.700');
   const labelColor = useColorModeValue('gray.700', 'gray.200');
 
   return (
-    <VStack spacing={14} align="stretch" p={10} ml={-6} >
+    <VStack spacing={10} align="stretch" p={10}>
+      {/* Título del formulario */}
       <Heading size="3xl" color={headingColor} textAlign="left">
         Get in Touch with Me!
       </Heading>
+
+      {/* Formulario */}
       <form onSubmit={handleSubmit}>
         <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={4}>
+          {/* Nombre */}
           <FormControl isRequired>
             <FormLabel color={labelColor} fontFamily={"monospace"}>Your Name</FormLabel>
             <Tooltip label="Enter your full name" placement="top">
@@ -120,6 +119,7 @@ const Contact = () => {
             </Tooltip>
           </FormControl>
 
+          {/* Empresa */}
           <FormControl>
             <FormLabel color={labelColor} fontFamily={"monospace"}>Company</FormLabel>
             <Tooltip label="Optional: Enter your company name" placement="top">
@@ -135,6 +135,7 @@ const Contact = () => {
             </Tooltip>
           </FormControl>
 
+          {/* Email */}
           <FormControl isRequired>
             <FormLabel color={labelColor} fontFamily={"monospace"}>Email</FormLabel>
             <Tooltip label="I'll never share your email" placement="top">
@@ -151,6 +152,7 @@ const Contact = () => {
             </Tooltip>
           </FormControl>
 
+          {/* Teléfono */}
           <FormControl>
             <FormLabel color={labelColor} fontFamily={"monospace"}>Phone</FormLabel>
             <Tooltip label="Optional: Enter your phone number" placement="top">
@@ -168,9 +170,10 @@ const Contact = () => {
           </FormControl>
         </Grid>
 
+        {/* Mensaje */}
         <FormControl isRequired mt={6}>
           <FormLabel color={labelColor} fontFamily={"monospace"}>Message</FormLabel>
-          <Tooltip label="Tell us how we can help you" placement="top">
+          <Tooltip label="Tell me how can help you" placement="top">
             <Textarea
               name="message"
               value={formData.message}
@@ -184,12 +187,22 @@ const Contact = () => {
           </Tooltip>
         </FormControl>
 
-        <button
-          className="btn-donate"
-          disabled={isSubmitting}
+        {/* Botón de envío */}
+        <Button
+          mt={6}
+          size="lg"
+          colorScheme="pink"
+          bg="#ce3072"
+          isLoading={isSubmitting}
+          type="submit"
+          _hover={{
+            bg: "#ff8dc7",
+          }}
+          width="100%"
         >
           {isSubmitting ? "Sending..." : "Send Message"}
-        </button>
+        </Button>
+
       </form>
     </VStack>
   );

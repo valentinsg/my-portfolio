@@ -4,14 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
+import { LanguageProvider } from './context/LanguageProvider'; 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
-  <React.StrictMode>
-    <ChakraProvider>
-      <App />
+  <React.StrictMode> {/* Modo estricto de React */}
+    <ChakraProvider> {/* Proveedor de estilos */}
+      <LanguageProvider> {/* Proveedor de idiomas */}
+        <App /> {/* Componente principal de la aplicación */}
+      </LanguageProvider>
     </ChakraProvider>
   </React.StrictMode>
 );

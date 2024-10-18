@@ -1,6 +1,10 @@
 import React from 'react';
 import { Button, VStack, HStack, useColorModeValue, IconButton } from '@chakra-ui/react';
 import { ExternalLinkIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { useLanguage } from '../context/LanguageProvider';
+import { Menu, MenuButton, MenuList, MenuItem, Tooltip } from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import { FaFlagUsa, FaFlag } from 'react-icons/fa';
 
 interface HeaderProps {
   selectedSection: string;
@@ -11,12 +15,17 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, colorMode, toggleColorMode, isMobile }) => {
+  const { isSpanish, toggleLanguage } = useLanguage();
+
   const buttonBg = useColorModeValue('gray.200', 'gray.700');
   const buttonColor = useColorModeValue('gray.800', 'gray.300');
   const buttonHoverBg = useColorModeValue('gray.300', 'gray.600');
   const buttonActiveBg = useColorModeValue('gray.400', 'gray.500');
 
-  const sections = ['Home', 'Projects', 'About Me', 'Resume', 'Contact'];
+  const sections = isSpanish
+    ? ['Inicio', 'Proyectos', 'Sobre Mí', 'Currículum', 'Contacto']
+    : ['Home', 'Projects', 'About Me', 'Resume', 'Contact'];
+
   const Container = isMobile ? VStack : HStack;
 
   return (
@@ -30,18 +39,12 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
             bg={selectedSection === section ? buttonActiveBg : buttonBg}
             fontFamily="monospace"
             fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}
-            _hover={{
-              boxShadow: '0px 0px 12px 1px #ce3072',
-              bg: buttonHoverBg,
-            }}
-            _active={{
-              boxShadow: '0px 0px 22px 0px #ce3072',
-              bg: buttonActiveBg,
-            }}
             transition="all 0.3s ease-in-out"
             borderRadius="8px"
             px={{ base: 4, md: 8 }}
             width={isMobile ? '100%' : 'auto'}
+            _hover={{ bg: buttonHoverBg }}
+            _active={{ bg: buttonActiveBg }}
           >
             {section}
           </Button>
@@ -49,37 +52,42 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
       </Container>
 
       <HStack spacing={4}>
+
+        <Tooltip label={isSpanish ? 'Cambiar idioma' : 'Change language'} fontSize="md">
+          <Menu>
+            <MenuButton as={Button} fontFamily="monospace" color={buttonColor} bg={buttonBg} _hover={{ bg: buttonHoverBg }} fontSize={{ base: "sm", md: "md", lg: "lg" }} rightIcon={<ChevronDownIcon />}>
+              {isSpanish ? <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt="Argentina Flag" width="20" height="20" /> : <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="USA Flag" width="20" height="20" />}
+            </MenuButton>
+            <MenuList>
+              <MenuItem icon={<img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt="Argentina Flag" width="20" height="20" />} onClick={toggleLanguage}>
+                Español
+              </MenuItem>
+              <MenuItem icon={<img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="USA Flag" width="20" height="20" />} onClick={toggleLanguage}>
+                English
+              </MenuItem>
+            </MenuList>
+          </Menu>
+        </Tooltip>
         <IconButton
-          aria-label="Toggle Color Mode"
+          aria-label="Dark Mode Toggle"
           icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
           onClick={toggleColorMode}
           bg={buttonBg}
-          size={isMobile ? 'md' : 'md'}
+          fontSize={{ base: "sm", md: "md", lg: "lg" }}
           color={buttonColor}
-          transition="all 0.2s ease-in-out"
-          borderRadius="8px"
-          _hover={{
-            boxShadow: "0px 0px 8px 1px #4EC6C9",
-            bg: buttonHoverBg
-          }}
-          _active={{
-            boxShadow: "0px 0px 12px 2px #4EC6C9",
-            bg: buttonActiveBg
-          }}
-          px={{ base: 2, md: 4 }}
-
+          _hover={{ bg: buttonHoverBg }}
+          _active={{ bg: buttonActiveBg }}
         />
         <Button
-          size={['md', 'lg']}
           variant="outline"
           boxShadow={'md'}
           colorScheme="pink"
           fontSize={{ base: "sm", md: "md", lg: "lg" }}
+          px={{ base: 2, md: 4 }}
           rightIcon={<ExternalLinkIcon />}
-          px={{ base: 4, md: 8 }}
           onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0aKsiCw2ol12PWw6vXoe4hlEkeje1TK5ldpY29MFj-cclKi8ALgE1peSmD7JCH4jYw5pay1Rx7', '_blank')}
         >
-          Let's Talk
+          {isSpanish ? 'Habla conmigo' : "Let's Talk"}
         </Button>
       </HStack>
     </HStack>
