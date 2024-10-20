@@ -98,7 +98,7 @@ const Contact = () => {
   return (
     <VStack spacing={10} align="stretch" p={10}>
       {/* Título del formulario */}
-      <Heading size="3xl" color={headingColor} textAlign="left">
+      <Heading size="3xl" color={headingColor} textAlign="left" mb={6}>
         {isSpanish ? "¡Contáctame directamente!" : "Get in Touch with Me!"}
       </Heading>
 

@@ -15,7 +15,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
   const accentColor = 'pink.300';
 
   const handleScrollToContact = () => {
-    setSelectedSection('Contact');
+    setSelectedSection(isSpanish ? 'Contacto' : 'Contact');
     const contactSection = document.getElementById('contact-section');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -103,7 +103,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
               boxShadow={'md'}
               colorScheme="pink"
               rightIcon={<ExternalLinkIcon />}
-              onClick={() => setSelectedSection('Projects')}
+              onClick={() => setSelectedSection('Projects' )}
             >
               {isSpanish ? 'Mis Trabajos' : 'View My Works'}
             </Button>

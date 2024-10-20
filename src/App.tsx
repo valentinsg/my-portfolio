@@ -9,20 +9,20 @@ import About from './components/About';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
 import { useLanguage } from './context/LanguageProvider';
+import AnimatedBackground from './components/AnimatedBackground';
 
 function App() {
   const { isSpanish } = useLanguage();
   const [selectedSection, setSelectedSection] = useState('Home');
   const { colorMode, toggleColorMode } = useColorMode();
-  const bgColor = useColorModeValue('gray.100', 'gray.900');
   const color = useColorModeValue('gray.900', 'gray.100');
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const renderSection = () => {
     switch (selectedSection) {
-      case isSpanish ? 'Inicio': 'Home':
+      case isSpanish ? 'Inicio' : 'Home':
         return <Home setSelectedSection={setSelectedSection} />;
-      case isSpanish ? 'Proyectos': 'Projects':
+      case isSpanish ? 'Proyectos' : 'Projects':
         return <Projects />;
       case isSpanish ? 'Sobre Mí' : 'About Me':
         return <About />;
@@ -36,7 +36,8 @@ function App() {
   };
 
   return (
-      <Box className="App" bg={bgColor} color={color} transition="all 0.3s ease-in-out" minHeight="100vh">
+    <Box position="relative" minHeight="100vh">
+      <Box position="relative" zIndex={1} color={color} transition="all 0.3s ease-in-out">
         <Box display={{ base: 'block', md: 'none' }} position="fixed" top={4} left={4} zIndex={20}>
           <IconButton
             icon={<HamburgerIcon />}
@@ -71,7 +72,7 @@ function App() {
           <Box display={{ base: 'none', md: 'block' }} width={{ md: '21vw' }} mx={8} my={12}>
             <Sidebar />
           </Box>
-          <Box flex={1} px={{ base: 4, md: 2 }} py={{base: 6, md: 12}}>
+          <Box flex={1} px={{ base: 4, md: 2 }} py={{ base: 6, md: 12 }}>
             <Box display={{ base: 'none', md: 'block' }}>
               <Header
                 selectedSection={selectedSection}
@@ -81,12 +82,14 @@ function App() {
                 isMobile={false}
               />
             </Box>
-            <Box mr={8} >
+            <Box mr={8}>
+              <AnimatedBackground />
               {renderSection()}
             </Box>
           </Box>
         </Box>
       </Box>
+    </Box>
   );
 }
 
