@@ -15,7 +15,7 @@ const About = () => {
 
       <Box mb={20} textAlign="center">
         <Heading as="h1" fontSize={["4xl", "6xl"]} lineHeight="1.1" mb={16}>
-          {isSpanish ? 'Convirtiendo problemas complejos en un diseño simple' : 'Turning complex problems into simple design'}
+          {isSpanish ? 'Resolviendo problemas complejos con un diseño simple' : 'Turning complex problems into simple design'}
         </Heading>
         {/* Logros */}
         <Flex justify="space-between" mx={20}>

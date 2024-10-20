@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
         </Tooltip>
         <IconButton
           aria-label="Dark Mode Toggle"
-          icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+          icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
           onClick={toggleColorMode}
           bg={buttonBg}
           fontSize={{ base: "sm", md: "md", lg: "lg" }}

@@ -17,6 +17,7 @@ import "./btn-donate.css";
 import { useLanguage } from '../context/LanguageProvider';
 
 const Contact = () => {
+  const { isSpanish } = useLanguage();
 
   // Estado para los datos del formulario
   const [formData, setFormData] = useState({
@@ -50,8 +51,8 @@ const Contact = () => {
     // Verificar que los campos requeridos estén llenos
     if (!isValid()) {
       toast({
-        title: "Error",
-        description: "Por favor completa todos los campos requeridos.",
+        title: isSpanish ? "Error" : "Error",
+        description: isSpanish ? "Por favor completa todos los campos requeridos." : "Please fill out all required fields.",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -70,8 +71,8 @@ const Contact = () => {
       .then((response) => {
         setIsSubmitting(false);
         toast({
-          title: "Mensaje enviado",
-          description: "Nos pondremos en contacto pronto.",
+          title: isSpanish ? "Mensaje enviado" : "Message sent",
+          description: isSpanish ? "Nos pondremos en contacto pronto." : "We will get in touch soon.",
           status: "success",
           duration: 3000,
           isClosable: true,
@@ -80,8 +81,8 @@ const Contact = () => {
       .catch((error) => {
         setIsSubmitting(false);
         toast({
-          title: "Error",
-          description: "Hubo un error al enviar el mensaje.",
+          title: isSpanish ? "Error" : "Error",
+          description: isSpanish ? "Hubo un error al enviar el mensaje." : "There was an error sending the message.",
           status: "error",
           duration: 3000,
           isClosable: true,
@@ -98,7 +99,7 @@ const Contact = () => {
     <VStack spacing={10} align="stretch" p={10}>
       {/* Título del formulario */}
       <Heading size="3xl" color={headingColor} textAlign="left">
-        Get in Touch with Me!
+        {isSpanish ? "¡Contáctame directamente!" : "Get in Touch with Me!"}
       </Heading>
 
       {/* Formulario */}
@@ -106,13 +107,13 @@ const Contact = () => {
         <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={4}>
           {/* Nombre */}
           <FormControl isRequired>
-            <FormLabel color={labelColor} fontFamily={"monospace"}>Your Name</FormLabel>
-            <Tooltip label="Enter your full name" placement="top">
+            <FormLabel color={labelColor} fontFamily={"monospace"}>{isSpanish ? "Tu Nombre" : "Your Name"}</FormLabel>
+            <Tooltip label={isSpanish ? "Ingresa tu nombre completo" : "Enter your full name"} placement="top">
               <Input
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                placeholder="Valentín Sánchez Guevara"
+                placeholder={isSpanish ? "Valentín Sánchez Guevara" : "Valentín Sánchez Guevara"}
                 bg={inputBgColor}
                 _hover={{ borderColor: '#ce3072' }}
                 _focus={{ borderColor: '#ce3072', boxShadow: '0 0 0 1px #ce3072' }}
@@ -122,13 +123,13 @@ const Contact = () => {
 
           {/* Empresa */}
           <FormControl>
-            <FormLabel color={labelColor} fontFamily={"monospace"}>Company</FormLabel>
-            <Tooltip label="Optional: Enter your company name" placement="top">
+            <FormLabel color={labelColor} fontFamily={"monospace"}>{isSpanish ? "Empresa" : "Company"}</FormLabel>
+            <Tooltip label={isSpanish ? "Opcional: Ingresa el nombre de tu empresa" : "Optional: Enter your company name"} placement="top">
               <Input
                 name="company"
                 value={formData.company}
                 onChange={handleInputChange}
-                placeholder="Busy Streetwear"
+                placeholder={isSpanish ? "Busy Streetwear" : "Busy Streetwear"}
                 bg={inputBgColor}
                 _hover={{ borderColor: '#ce3072' }}
                 _focus={{ borderColor: '#ce3072', boxShadow: '0 0 0 1px #ce3072' }}
@@ -139,7 +140,7 @@ const Contact = () => {
           {/* Email */}
           <FormControl isRequired>
             <FormLabel color={labelColor} fontFamily={"monospace"}>Email</FormLabel>
-            <Tooltip label="I'll never share your email" placement="top">
+            <Tooltip label={isSpanish ? "Nunca compartiré tu email" : "I'll never share your email"} placement="top">
               <Input
                 name="email"
                 value={formData.email}
@@ -155,8 +156,8 @@ const Contact = () => {
 
           {/* Teléfono */}
           <FormControl>
-            <FormLabel color={labelColor} fontFamily={"monospace"}>Phone</FormLabel>
-            <Tooltip label="Optional: Enter your phone number" placement="top">
+            <FormLabel color={labelColor} fontFamily={"monospace"}>{isSpanish ? "Teléfono" : "Phone"}</FormLabel>
+            <Tooltip label={isSpanish ? "Opcional: Ingresa tu número de teléfono" : "Optional: Enter your phone number"} placement="top">
               <Input
                 name="phone"
                 value={formData.phone}
@@ -173,13 +174,13 @@ const Contact = () => {
 
         {/* Mensaje */}
         <FormControl isRequired mt={6}>
-          <FormLabel color={labelColor} fontFamily={"monospace"}>Message</FormLabel>
-          <Tooltip label="Tell me how can help you" placement="top">
+          <FormLabel color={labelColor} fontFamily={"monospace"}>{isSpanish ? "Mensaje" : "Message"}</FormLabel>
+          <Tooltip label={isSpanish ? "Contáme cómo puedo ayudarte" : "Tell me how can help you"} placement="top">
             <Textarea
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              placeholder="Your message here..."
+              placeholder={isSpanish ? "Tu mensaje acá..." : "Your message here..."}
               bg={inputBgColor}
               _hover={{ borderColor: '#ce3072' }}
               _focus={{ borderColor: '#ce3072', boxShadow: '0 0 0 1px #ce3072' }}
@@ -201,7 +202,7 @@ const Contact = () => {
           }}
           width="100%"
         >
-          {isSubmitting ? "Sending..." : "Send Message"}
+          {isSubmitting ? (isSpanish ? "Enviando..." : "Sending...") : (isSpanish ? "Enviar Mensaje" : "Send Message")}
         </Button>
 
       </form>

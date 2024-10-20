@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChakraProvider, Box, useColorMode, useColorModeValue, IconButton, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, useDisclosure } from '@chakra-ui/react';
+import { Box, useColorMode, useColorModeValue, IconButton, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, useDisclosure } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
@@ -17,6 +17,7 @@ function App() {
   const bgColor = useColorModeValue('gray.100', 'gray.900');
   const color = useColorModeValue('gray.900', 'gray.100');
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const renderSection = () => {
     switch (selectedSection) {
       case isSpanish ? 'Inicio': 'Home':
@@ -35,7 +36,6 @@ function App() {
   };
 
   return (
-    <ChakraProvider>
       <Box className="App" bg={bgColor} color={color} transition="all 0.3s ease-in-out" minHeight="100vh">
         <Box display={{ base: 'block', md: 'none' }} position="fixed" top={4} left={4} zIndex={20}>
           <IconButton
@@ -87,7 +87,6 @@ function App() {
           </Box>
         </Box>
       </Box>
-    </ChakraProvider>
   );
 }
 
