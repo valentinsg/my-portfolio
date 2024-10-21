@@ -9,7 +9,6 @@ import About from './components/About';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
 import { useLanguage } from './context/LanguageProvider';
-import AnimatedBackground from './components/AnimatedBackground';
 
 function App() {
   const { isSpanish } = useLanguage();
@@ -83,7 +82,6 @@ function App() {
               />
             </Box>
             <Box mr={8}>
-              <AnimatedBackground />
               {renderSection()}
             </Box>
           </Box>

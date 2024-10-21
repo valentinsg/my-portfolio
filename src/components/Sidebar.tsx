@@ -172,16 +172,18 @@ const Sidebar = () => {
           </Tooltip>
         </HStack>
 
-        <Button
-          variant="outline"
-          p={6}
-          w={"15vw"}
-          boxShadow={'md'}
-          colorScheme="pink"
-          fontSize={{ base: "sm", md: "md", lg: "lg" }}
-        >
-          {isSpanish ? "Trabajemos Juntos" : "Work Together"}
-        </Button>
+        <Tooltip label={isSpanish ? "Ver como podemos trabajar" : "How we can work"} aria-label={isSpanish ? "Trabajemos Juntos" : "Work Together"}>
+          <Button
+            variant="outline"
+            p={6}
+            w={"15vw"}
+            boxShadow={'md'}
+            colorScheme="pink"
+            fontSize={{ base: "sm", md: "md", lg: "lg" }}
+          >
+            {isSpanish ? "Trabajemos Juntos" : "Work Together"}
+          </Button>
+        </Tooltip>
       </Flex>
     </Box>
   );

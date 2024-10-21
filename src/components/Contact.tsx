@@ -91,9 +91,9 @@ const Contact = () => {
   };
 
   // Colores para temas claro/oscuro
-  const headingColor = useColorModeValue('#ff8dc7', '#fff');
-  const inputBgColor = useColorModeValue('white', 'gray.700');
-  const labelColor = useColorModeValue('gray.700', 'gray.200');
+  const headingColor = useColorModeValue("gray.700", "gray.100");
+  const inputBgColor = useColorModeValue('white.100', 'gray.700');
+  const labelColor = useColorModeValue('gray.900', 'gray.200');
 
   return (
     <VStack spacing={10} align="stretch" p={10}>
@@ -115,6 +115,7 @@ const Contact = () => {
                 onChange={handleInputChange}
                 placeholder={isSpanish ? "Valentín Sánchez Guevara" : "Valentín Sánchez Guevara"}
                 bg={inputBgColor}
+                border={useColorModeValue('1px solid #ce3072', 'none')}
                 _hover={{ borderColor: '#ce3072' }}
                 _focus={{ borderColor: '#ce3072', boxShadow: '0 0 0 1px #ce3072' }}
               />
@@ -131,6 +132,7 @@ const Contact = () => {
                 onChange={handleInputChange}
                 placeholder={isSpanish ? "Busy Streetwear" : "Busy Streetwear"}
                 bg={inputBgColor}
+                border={useColorModeValue('1px solid #ce3072', 'none')}
                 _hover={{ borderColor: '#ce3072' }}
                 _focus={{ borderColor: '#ce3072', boxShadow: '0 0 0 1px #ce3072' }}
               />
@@ -148,6 +150,7 @@ const Contact = () => {
                 type="email"
                 placeholder="busy@example.com"
                 bg={inputBgColor}
+                border={useColorModeValue('1px solid #ce3072', 'none')}
                 _hover={{ borderColor: '#ce3072' }}
                 _focus={{ borderColor: '#ce3072', boxShadow: '0 0 0 1px #ce3072' }}
               />
@@ -165,6 +168,7 @@ const Contact = () => {
                 type="tel"
                 placeholder="+1 (555) 123-4567"
                 bg={inputBgColor}
+                border={useColorModeValue('1px solid #ce3072', 'none')}
                 _hover={{ borderColor: '#ce3072' }}
                 _focus={{ borderColor: '#ce3072', boxShadow: '0 0 0 1px #ce3072' }}
               />
@@ -175,35 +179,37 @@ const Contact = () => {
         {/* Mensaje */}
         <FormControl isRequired mt={6}>
           <FormLabel color={labelColor} fontFamily={"monospace"}>{isSpanish ? "Mensaje" : "Message"}</FormLabel>
-          <Tooltip label={isSpanish ? "Contáme cómo puedo ayudarte" : "Tell me how can help you"} placement="top">
+            <Tooltip label={isSpanish ? "Contáme cómo puedo ayudarte" : "Tell me how can help you"} placement="top">
             <Textarea
               name="message"
               value={formData.message}
               onChange={handleInputChange}
               placeholder={isSpanish ? "Tu mensaje acá..." : "Your message here..."}
               bg={inputBgColor}
+              border={useColorModeValue('1px solid #ce3072', 'none')}
               _hover={{ borderColor: '#ce3072' }}
-              _focus={{ borderColor: '#ce3072', boxShadow: '0 0 0 1px #ce3072' }}
+              _focus={{ borderColor: '#ce3072', boxShadow: '0 0 0 1px #ce3072' }}              
               rows={8}
             />
-          </Tooltip>
+            </Tooltip>
         </FormControl>
 
         {/* Botón de envío */}
-        <Button
-          mt={6}
-          size="lg"
-          colorScheme="pink"
-          bg="#ce3072"
-          isLoading={isSubmitting}
-          type="submit"
-          _hover={{
-            bg: "#ff8dc7",
-          }}
-          width="100%"
-        >
-          {isSubmitting ? (isSpanish ? "Enviando..." : "Sending...") : (isSpanish ? "Enviar Mensaje" : "Send Message")}
-        </Button>
+        <Tooltip label={isSpanish ? "Enviar el mensaje" : "Send the message"} placement="top">
+          <Button
+            variant="outline"
+            p={6}
+            w={"15vw"}
+            boxShadow={'md'}
+            colorScheme="pink"
+            fontSize={{ base: "sm", md: "md", lg: "lg" }}
+            isLoading={isSubmitting}
+            type="submit"
+            mt={6}
+          >
+            {isSubmitting ? (isSpanish ? "Enviando..." : "Sending...") : (isSpanish ? "Enviar Mensaje" : "Send Message")}
+          </Button>
+        </Tooltip>
 
       </form>
     </VStack>

@@ -52,7 +52,7 @@ const Resume = () => {
           <Tooltip label={isSpanish ? "Mostrar número de teléfono" : "Show phone number"} aria-label="Phone Tooltip">
             <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowPhone(!showPhone)}>
               <FaPhone size={"25px"} color={accentColor} />
-              <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showPhone ? '200px' : '0'} transition="max-width 0.4s ease-out">
+              <Box ml={2} overflow="higut dden" whiteSpace="nowrap" maxWidth={showPhone ? '200px' : '0'} transition="max-width 0.4s ease-out">
                 <Text>{showPhone ? '+54 9 2236680041' : ''}</Text>
               </Box>
             </Flex>
