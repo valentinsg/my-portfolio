@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heading, Grid, useColorModeValue, Box, Menu, MenuButton, MenuList, MenuItem, Button, Flex } from '@chakra-ui/react';
+import { Heading, Grid, useColorModeValue, Box, Menu, MenuButton, MenuList, MenuItem, Button, Flex, Tooltip} from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { useLanguage } from '../context/LanguageProvider';
 import ProjectsContainer from './ProjectsContainer';
@@ -15,7 +15,8 @@ const Projects = () => {
   const [filter, setFilter] = useState('all');
 
   const { isSpanish } = useLanguage();
-  const headingColor = useColorModeValue('black', 'whiteAlpha.900');
+  const headerColor = useColorModeValue("gray.700", "gray.100");
+  const textColor = useColorModeValue("gray.700", "whiteAlpha.900");
 
   const projectsData = [
     {
@@ -57,13 +58,16 @@ const Projects = () => {
   return (
     <Box>
       <Flex alignItems={"center"} gap={10}>
-        <Heading as="h2" fontSize={"5xl"} color={headingColor} mb={12} mt={6}>
-          {isSpanish ? "Proyectos Destacados" : "Featured Projects"}
+        <Heading as="h2" fontSize={"5xl"} color={headerColor} mb={12} mt={6}>
+          {isSpanish ? "Proyectos" : "Featured Projects"}
         </Heading>
         <Menu>
-          <MenuButton as={Button} rightIcon={<ChevronDownIcon />} mb={3}>
-            {filter === 'all' ? (isSpanish ? "Todos" : "All") : filter.charAt(0).toUpperCase() + filter.slice(1)}
-          </MenuButton>
+          <Tooltip label={isSpanish ? "Filtrar proyectos" : "Filter projects"} aria-label="Filter projects tooltip">
+            <MenuButton as={Button} borderRadius="8px" bg={useColorModeValue('gray.200', 'gray.700')}
+              color={textColor} rightIcon={<ChevronDownIcon />} mb={3} fontFamily={"monospace"}>
+              {filter === 'all' ? (isSpanish ? "Todos" : "All") : filter.charAt(0).toUpperCase() + filter.slice(1)}
+            </MenuButton>
+          </Tooltip>
           <MenuList>
             <MenuItem onClick={() => setFilter('all')}>{isSpanish ? "Todos" : "All"}</MenuItem>
             <MenuItem onClick={() => setFilter('software')}>Software</MenuItem>

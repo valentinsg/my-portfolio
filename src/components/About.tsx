@@ -1,20 +1,23 @@
 import React from 'react';
-import { Box, Flex, Text, Heading, HStack, Tooltip, IconButton } from '@chakra-ui/react';
+import { Box, Flex, Text, Heading, HStack, Tooltip, IconButton, useColorModeValue,useToast } from '@chakra-ui/react';
 import { CopyIcon } from '@chakra-ui/icons';
 import { useLanguage } from '../context/LanguageProvider';
 
 const About = () => {
   const { isSpanish } = useLanguage();
   
-  const textColor = 'whiteAlpha.900';
-  const accentColor = 'pink.300';
+  const headerColor = useColorModeValue("gray.700", "gray.100");
+  const textColor = useColorModeValue("gray.500", "whiteAlpha.900");
+  const accentColor = useColorModeValue('pink.600', 'pink.300');
+
+  const toast = useToast();
 
   return (
     <Flex direction="column" p={[4, 10]} minH="100vh" color={textColor}>
       {/* Columna principal: Título y Logros */}
 
       <Box mb={20} textAlign="center">
-        <Heading as="h1" fontSize={["4xl", "6xl"]} lineHeight="1.1" mb={16}>
+        <Heading color={headerColor} as="h1" fontSize={["4xl", "6xl"]} lineHeight="1.1" mb={16}>
           {isSpanish ? 'Resolviendo problemas complejos con un diseño simple' : 'Turning complex problems into simple design'}
         </Heading>
         {/* Logros */}
@@ -60,34 +63,46 @@ const About = () => {
 
         <Flex gap={6} alignItems={"center"}>
           <Text fontSize="xl" fontFamily={"monospace"}>
-            <Text as="span" fontSize={"xl"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Correo: ' : 'Mail: '}</Text>
-            sanchezguevaravalentin@gmail.com
+        <Text as="span" fontSize={"xl"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Correo: ' : 'Mail: '}</Text>
+        sanchezguevaravalentin@gmail.com
           </Text>
           <Tooltip label={isSpanish ? 'Copiar Correo' : 'Copy Email'} aria-label={isSpanish ? 'Copiar Correo Tooltip' : 'Copy Email Tooltip'}>
-            <IconButton
-              icon={<CopyIcon />}
-              size={"sm"}
-              onClick={() => {
-                navigator.clipboard.writeText("sanchezguevaravalentin@gmail.com");
-              }}
-              aria-label={isSpanish ? 'Copiar Correo' : 'Copy Email'}
-            />
+        <IconButton
+          icon={<CopyIcon />}
+          size={"sm"}
+          onClick={() => {
+            navigator.clipboard.writeText("sanchezguevaravalentin@gmail.com");
+            toast({
+          title: isSpanish ? "Correo copiado" : "Email copied",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+            });
+          }}
+          aria-label={isSpanish ? 'Copiar Correo' : 'Copy Email'}
+        />
           </Tooltip>
         </Flex>
 
         <Flex gap={6} alignItems={"center"}>
           <Text fontSize="xl" fontFamily={"monospace"}>
-            <Text as="span" fontSize={"xl"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Teléfono: ' : 'Phone: '}</Text>
-            +54 9 2236680041
+        <Text as="span" fontSize={"xl"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Teléfono: ' : 'Phone: '}</Text>
+        +54 9 2236680041
           </Text>
           <Tooltip label={isSpanish ? 'Copiar número de teléfono' : 'Copy phone number'} aria-label={isSpanish ? 'Copiar número de teléfono Tooltip' : 'Copy Phone Number Tooltip'}>
           <IconButton
-            aria-label={isSpanish ? 'Copiar número de teléfono' : 'Copy phone number'} 
-            icon={<CopyIcon />} 
-            size={"sm"}
-            onClick={() => {
-              navigator.clipboard.writeText("+54 9 2236680041");
-            }}
+        aria-label={isSpanish ? 'Copiar número de teléfono' : 'Copy phone number'} 
+        icon={<CopyIcon />} 
+        size={"sm"}
+        onClick={() => {
+          navigator.clipboard.writeText("+54 9 2236680041");
+          toast({
+            title: isSpanish ? "Número de teléfono copiado" : "Phone number copied",
+            status: "success",
+            duration: 2000,
+            isClosable: true,
+          });
+        }}
           />
           </Tooltip>
         </Flex>

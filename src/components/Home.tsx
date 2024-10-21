@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Text, VStack, HStack, IconButton, Tooltip } from '@chakra-ui/react';
+import { Box, Button, Text, VStack, HStack, IconButton, Tooltip, useColorModeValue } from '@chakra-ui/react';
 import { DownloadIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import { useLanguage } from '../context/LanguageProvider';
 import { FaAddressBook } from 'react-icons/fa';
@@ -11,8 +11,8 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
   const { isSpanish } = useLanguage();
 
-  const textColor = 'whiteAlpha.900';
-  const accentColor = 'pink.300';
+  const textColor = useColorModeValue("gray.700", "whiteAlpha.900");
+  const accentColor = useColorModeValue('pink.600', 'pink.300');
 
   const handleScrollToContact = () => {
     setSelectedSection(isSpanish ? 'Contacto' : 'Contact');
@@ -63,22 +63,23 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           {isSpanish ? 'Mejorando empresas a través de la digitalización.' : 'Helping businesses thrive through digitalization.'}
         </Text>
         <Text
-          fontSize={['md', 'lg', 'xl']}
+          fontStyle={'italic'}
+          fontSize={['md', 'lg', '2xl']}
           color={textColor}
-          fontWeight="light"
           mt={-4}
         >
           {isSpanish ? 'Viviendo en Mar del Plata, Argentina' : 'Based in Mar del Plata, Argentina'}
         </Text>
       </VStack>
 
-      <HStack spacing={4} mt={"auto"} alignItems="center">
+      <HStack spacing={5} mt={"auto"} alignItems="center">
         <Tooltip label={isSpanish ? 'Descargar CV' : 'Download CV'} placement="top">
           <span>
             <Button
               size={['md', 'lg']}
               boxShadow={'md'}
               colorScheme="pink"
+              fontFamily={'monospace'}
               leftIcon={<DownloadIcon />}
               _hover={{ bg: 'pink.300' }}
               _active={{ bg: 'pink.500' }}
@@ -102,6 +103,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
               variant="outline"
               boxShadow={'md'}
               colorScheme="pink"
+              fontFamily={'monospace'}
               rightIcon={<ExternalLinkIcon />}
               onClick={() => setSelectedSection('Projects' )}
             >

@@ -1,4 +1,4 @@
-import { Box, Image, HStack, Text, Link, Flex, Icon, Tooltip, useColorModeValue } from '@chakra-ui/react';
+import { Box, Image, HStack, Text, Link, Flex, Icon, Tooltip, useColorModeValue, Button } from '@chakra-ui/react';
 import { FaGithub, FaGithubAlt, FaLinkedin } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageProvider';
 import Yo from '../img/yo.png';
@@ -6,10 +6,10 @@ import "./btn-donate.css";
 
 const Sidebar = () => {
   const { isSpanish } = useLanguage();
-  
+
   // Estilos según el modo claro/oscuro
   const bgColor = useColorModeValue("gray.200", "gray.700");
-  const textColor = useColorModeValue("gray.800", "gray.300");
+  const textColor = useColorModeValue("gray.700", "whiteAlpha.900");
   const boxShadowColor = useColorModeValue("md", "lg");
 
   return (
@@ -172,9 +172,16 @@ const Sidebar = () => {
           </Tooltip>
         </HStack>
 
-        <button className="btn-donate">
+        <Button
+          variant="outline"
+          p={6}
+          w={"15vw"}
+          boxShadow={'md'}
+          colorScheme="pink"
+          fontSize={{ base: "sm", md: "md", lg: "lg" }}
+        >
           {isSpanish ? "Trabajemos Juntos" : "Work Together"}
-        </button>
+        </Button>
       </Flex>
     </Box>
   );

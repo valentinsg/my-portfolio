@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Heading, Text, List, ListItem, ListIcon, Link, Button, Image, Grid, Flex, Tooltip, Modal, ModalOverlay, ModalContent, ModalBody, ModalCloseButton, Avatar } from '@chakra-ui/react';
+import { Box, Heading, Text, List, ListItem, ListIcon, Link, Button, Image, Grid, Flex, Tooltip, Modal, ModalOverlay, ModalContent, ModalBody, ModalCloseButton, Avatar, useColorModeValue } from '@chakra-ui/react';
 import { useLanguage } from '../context/LanguageProvider';
 import { FaCheckCircle, FaGithub, FaLinkedin, FaPhone } from 'react-icons/fa';
 import { SiMailgun } from 'react-icons/si';
@@ -7,8 +7,10 @@ import Valentin from '../img/valentin.png';
 
 const Resume = () => {
   const { isSpanish } = useLanguage();
-  const accentColor = 'pink.300';
-  const textColor = 'gray.500';
+
+  const accentColor = useColorModeValue('pink.600', 'pink.300');
+  const headerColor = useColorModeValue("gray.700", "gray.100");
+  const textColor = useColorModeValue("gray.500", "whiteAlpha.900");
 
   const [showEmail, setShowEmail] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
@@ -31,7 +33,7 @@ const Resume = () => {
             <Image src={Valentin} boxSize="150px" objectFit="cover" />
           </Box>
         </Tooltip>
-        <Heading as="h1" size="2xl" m={4} color={"whiteAlpha.900"}>
+        <Heading as="h1" size="2xl" m={4} color={headerColor}>
           Valentín Sánchez Guevara
         </Heading>
         <Text fontSize="xl" color={textColor} letterSpacing="tight">
@@ -41,7 +43,7 @@ const Resume = () => {
         <Flex justifyContent="center" gap={8} m={4}>
           <Tooltip label={isSpanish ? "Mostrar correo electrónico" : "Show email"} aria-label="Email Tooltip">
             <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowEmail(!showEmail)}>
-              <SiMailgun size={"25px"} color='white' />
+              <SiMailgun size={"25px"} color={accentColor} />
               <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showEmail ? '300px' : '0'} transition="max-width 0.4s ease-out">
                 <Text>{showEmail ? 'sanchezguevaravalentin@gmail.com' : ''}</Text>
               </Box>
@@ -49,7 +51,7 @@ const Resume = () => {
           </Tooltip>
           <Tooltip label={isSpanish ? "Mostrar número de teléfono" : "Show phone number"} aria-label="Phone Tooltip">
             <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowPhone(!showPhone)}>
-              <FaPhone size={"25px"} color='white' />
+              <FaPhone size={"25px"} color={accentColor} />
               <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showPhone ? '200px' : '0'} transition="max-width 0.4s ease-out">
                 <Text>{showPhone ? '+54 9 2236680041' : ''}</Text>
               </Box>
