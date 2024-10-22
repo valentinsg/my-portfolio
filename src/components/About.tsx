@@ -17,7 +17,7 @@ const About = () => {
       {/* Columna principal: Título y Logros */}
 
       <Box mb={20} textAlign="center">
-        <Heading color={headerColor} as="h1" fontSize={["4xl", "6xl"]} lineHeight="1.1" mb={16}>
+        <Heading color={headerColor} as="h1" fontSize={["4xl", "7xl"]} lineHeight="1.1" mb={16} textAlign={"left"}>
           {isSpanish ? 'Resolviendo problemas complejos con un diseño simple' : 'Turning complex problems into simple design'}
         </Heading>
         {/* Logros */}

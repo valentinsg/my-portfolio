@@ -8,7 +8,7 @@ const Sidebar = () => {
   const { isSpanish } = useLanguage();
 
   // Estilos según el modo claro/oscuro
-  const bgColor = useColorModeValue("gray.200", "gray.700");
+  const bgColor = useColorModeValue("gray.100", "gray.700");
   const textColor = useColorModeValue("gray.700", "whiteAlpha.900");
   const boxShadowColor = useColorModeValue("md", "lg");
 
@@ -23,6 +23,7 @@ const Sidebar = () => {
       alignItems={"center"}
       position={{ base: "relative", md: "fixed" }}
       borderRadius={{ base: "0", md: "25px" }}
+      border={useColorModeValue('1px solid #ce3072', 'none')}
       p={{ base: 4, md: 2 }}
       boxShadow={{ base: "none", md: boxShadowColor }}
     >
@@ -70,12 +71,13 @@ const Sidebar = () => {
 
       <Box
         w="88%"
-        bg={useColorModeValue("gray.300", "gray.600")}
+        bg={useColorModeValue("transparent", "gray.600")}
         borderRadius="10px"
         p={3}
         mt={10}
         textAlign="left"
         boxShadow="md"
+        border={useColorModeValue('1px solid #ce3072', 'none')}
       >
         <Text
           fontSize={{ base: "sm", lg: "md" }}
@@ -99,12 +101,13 @@ const Sidebar = () => {
 
       <Box
         w="88%"
-        bg={useColorModeValue("gray.300", "gray.600")}
+        bg={useColorModeValue("transparent", "gray.600")}
         borderRadius="10px"
         p={3}
-        mt={6}
-        textAlign="center"
+        mt={10}
+        textAlign="left"
         boxShadow="md"
+        border={useColorModeValue('1px solid #ce3072', 'none')}
       >
         <Text
           fontSize={{ base: "sm", lg: "md" }}
@@ -130,16 +133,14 @@ const Sidebar = () => {
 
       <Flex flexDir={"column"} alignItems={"center"} mt={"auto"} mb={8}>
         <HStack spacing={6} mb={6}>
-          <Tooltip label={isSpanish ? "Mi GitHub" : "My GitHub"} aria-label={isSpanish ? "GitHub" : "GitHub"}>
-            <Link href="https://github.com/valentinsg" isExternal>
+          <Tooltip label={isSpanish ? "Mi GitHub" : "My GitHub"} aria-label={isSpanish ? "GitHub" : "GitHub"} >
+            <Link href="https://github.com/valentinsg" isExternal >
               <Icon
                 as={FaGithub}
                 w={12}
                 h={12}
                 borderRadius="15px"
                 p={1}
-                border="2px solid"
-                borderColor={useColorModeValue("gray.400", "gray.600")}
                 _hover={{
                   bgGradient: "linear(to-br, #ce3072, #414358)",
                   transform: "scale(1.1)",
@@ -147,6 +148,7 @@ const Sidebar = () => {
                   transition: "all 0.5s ease-in-out",
                 }}
                 transition="all 0.9s ease-in-out"
+              
               />
             </Link>
           </Tooltip>
@@ -158,8 +160,6 @@ const Sidebar = () => {
                 h={12}
                 borderRadius="15px"
                 p={1}
-                border="2px solid"
-                borderColor={useColorModeValue("gray.400", "gray.600")}
                 _hover={{
                   bgGradient: "linear(to-br, #414358, #ce3072)",
                   transform: "scale(1.1)",
@@ -176,7 +176,7 @@ const Sidebar = () => {
           <Button
             variant="outline"
             p={6}
-            w={"15vw"}
+            w={"16vw"}
             boxShadow={'md'}
             colorScheme="pink"
             fontSize={{ base: "sm", md: "md", lg: "lg" }}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Text, VStack, HStack, IconButton, Tooltip, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Text, VStack, IconButton, Tooltip, useColorModeValue, Stack } from '@chakra-ui/react';
 import { DownloadIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import { useLanguage } from '../context/LanguageProvider';
 import { FaAddressBook } from 'react-icons/fa';
@@ -24,18 +24,20 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
 
   return (
     <Box
-      minH="70vh"
+      minH={{base: "100vh", md: "70vh"}}
       w="full"
       ml={{ base: 0, md: 6 }}
       display="flex"
       flexDir="column"
-      alignItems="flex-start"
+      justifyContent={{base: "center" , md: "flex-start"}}
+      alignItems={{base: "center" , md: "flex-start"}}
     >
-      <VStack alignItems="flex-start" userSelect={"none"}>
+      <VStack alignItems={{base: "center" , md: "flex-start"}} textAlign={{base: "center", md: "left"}} userSelect={"none"}>
         <Text
           fontSize={['6xl', '7xl', '8xl', '9xl']}
           fontWeight="1000"
           color={textColor}
+          lineHeight={{base: 0.9, md: 0}}
         >
           {isSpanish ? 'Soy' : 'I am'}
         </Text>
@@ -43,13 +45,14 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           fontSize={['6xl', '7xl', '8xl', '9xl']}
           fontWeight="1000"
           color={textColor}
-          lineHeight={0.5}
+          lineHeight={{base: 0.9, md: 0.5}}
         >
           Valentín
         </Text>
         <Text
           fontSize={['6xl', '7xl', '8xl', '9xl']}
           fontWeight="1000"
+          lineHeight={{base: 0.9, md: 0}}
           color={textColor}
         >
           Sánchez Guevara
@@ -58,7 +61,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           fontSize={['xl', '2xl', '5xl']}
           color={accentColor}
           fontFamily={"monospace"}
-          mt={-12}
+          mt={{base: 0, md: -12}}
         >
           {isSpanish ? 'Mejorando empresas a través de la digitalización.' : 'Helping businesses thrive through digitalization.'}
         </Text>
@@ -72,7 +75,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
         </Text>
       </VStack>
 
-      <HStack spacing={5} mt={"auto"} alignItems="center">
+      <Stack spacing={{base: 6, md: 5}} mt={{base: "4", md:"auto"}} alignItems="center" direction={{base: "column", md: "row"}}>
         <Tooltip label={isSpanish ? 'Descargar CV' : 'Download CV'} placement="top">
           <span>
             <Button
@@ -126,7 +129,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
             _active={{ bg: 'pink.500' }}
           />
         </Tooltip>
-      </HStack>
+      </Stack>
     </Box>
   );
 };
