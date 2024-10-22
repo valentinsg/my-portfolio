@@ -10,7 +10,6 @@ const config: ThemeConfig = {
 const theme = extendTheme({
   config,
   fonts: {
-    
     // Actualizamos las fuentes a monospace
     heading: "monospace",
     body: "monospace",
