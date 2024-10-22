@@ -13,19 +13,19 @@ interface ProjectsContainerProps {
   url?: string;
 }
 
-const ProjectsContainer: React.FC<ProjectsContainerProps> = ({ 
-  bgImage, 
-  gifUrl, 
-  title, 
-  description, 
+const ProjectsContainer: React.FC<ProjectsContainerProps> = ({
+  bgImage,
+  gifUrl,
+  title,
+  description,
   technologies,
   url
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   const bgColor = useColorModeValue('gray.100', 'gray.800');
-  const titleColor = useColorModeValue('brand.600', 'brand.300');
-  const descriptionColor = useColorModeValue('gray.700', 'gray.300');
+  const textColor = useColorModeValue("gray.800", "whiteAlpha.900");
+
 
   return (
     <Box
@@ -55,7 +55,7 @@ const ProjectsContainer: React.FC<ProjectsContainerProps> = ({
         opacity={isHovered ? 0 : 1}
         transition="opacity 0.3s ease-in-out"
       />
-      
+
       {/* GIF que se muestra al hacer hover */}
       <Box
         as="img"
@@ -69,7 +69,7 @@ const ProjectsContainer: React.FC<ProjectsContainerProps> = ({
         opacity={isHovered ? 1 : 0}
         transition="opacity 0.3s ease-in-out"
       />
-      
+
       {/* Overlay para mejorar la legibilidad del texto */}
       <Box
         position="absolute"
@@ -80,39 +80,18 @@ const ProjectsContainer: React.FC<ProjectsContainerProps> = ({
         bg={isHovered ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.3)"}
         transition="background 0.3s ease-in-out"
       />
-      
+
       {/* Contenido del proyecto */}
       <Flex
-        direction="column"
-        justify="space-between"
         h="100%"
         p={6}
+        justifyContent="space-between" // Asegura que el contenido esté distribuido
+        alignItems="flex-end"
         position="relative"
         zIndex={1}
       >
-        <Box opacity={isHovered ? 0 : 1} transition="opacity 0.3s ease-in-out">
-          <Heading
-            as="h3"
-            size="lg"
-            fontFamily="'Press Start 2P', cursive"
-            color={titleColor}
-            textShadow="2px 2px 4px rgba(0,0,0,0.6)"
-            mb={2}
-          >
-            {title}
-          </Heading>
-          <Text
-            fontSize="md"
-            color={descriptionColor}
-            fontWeight="medium"
-            textShadow="1px 1px 2px rgba(0,0,0,0.6)"
-          >
-            {description}
-          </Text>
-        </Box>
-        
-        {/* Iconos de tecnologías */}
-        <Flex wrap="wrap" mt={4}>
+        {/* Iconos de tecnologías alineados a la izquierda */}
+        <Flex direction="row" align="flex-end" w={"50%"}>
           {technologies.map((tech, index) => (
             <Tooltip key={index} label={tech} placement="top">
               <Box>
@@ -127,6 +106,27 @@ const ProjectsContainer: React.FC<ProjectsContainerProps> = ({
               </Box>
             </Tooltip>
           ))}
+        </Flex>
+
+        {/* Título y descripción alineados a la derecha */}
+        <Flex flexDir={"column"} alignItems="flex-end" w={"85%"}>
+            <Heading
+            as="h3"
+            size="xl"
+            color={textColor}
+            textShadow={useColorModeValue("1px 3px 2px rgba(255,255,255,0.6)", "1px 4px 2px rgba(0,0,0,0.6)")}
+            >
+            {title}
+            </Heading>
+          <Text
+            fontSize="md"
+            textAlign={"right"}
+            color={textColor}
+            fontWeight="medium"
+            textShadow={useColorModeValue("1px 3px 2px rgba(255,255,255,0.6)", "1px 4px 2px rgba(0,0,0,0.6)")}
+          >
+            {description}
+          </Text>
         </Flex>
       </Flex>
     </Box>
@@ -161,7 +161,7 @@ const getIconForTechnology = (tech: string) => {
       return SiPostgresql;
     case 'git':
       return FaGitAlt;
-    case 'redux':	
+    case 'redux':
       return SiRedux;
     default:
       return FaReact;
