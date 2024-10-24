@@ -24,20 +24,21 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
 
   return (
     <Box
-      minH={{base: "100vh", md: "70vh"}}
-      w="full"
+      minH={{base: "100vh", md: "80vh"}}
+      w="100%"
       ml={{ base: 0, md: 6 }}
       display="flex"
       flexDir="column"
       justifyContent={{base: "center" , md: "flex-start"}}
       alignItems={{base: "center" , md: "flex-start"}}
     >
+      {/* #region Text Section  */}
       <VStack alignItems={{base: "center" , md: "flex-start"}} textAlign={{base: "center", md: "left"}} userSelect={"none"}>
         <Text
           fontSize={['6xl', '7xl', '8xl', '9xl']}
           fontWeight="1000"
           color={textColor}
-          lineHeight={{base: 0.9, md: 0}}
+          lineHeight={{base: 0.9, md: ""}}
         >
           {isSpanish ? 'Soy' : 'I am'}
         </Text>
@@ -45,14 +46,14 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           fontSize={['6xl', '7xl', '8xl', '9xl']}
           fontWeight="1000"
           color={textColor}
-          lineHeight={{base: 0.9, md: 0.5}}
+          lineHeight={{base: 0.9, md: ""}}
         >
           Valentín
         </Text>
         <Text
           fontSize={['6xl', '7xl', '8xl', '9xl']}
           fontWeight="1000"
-          lineHeight={{base: 0.9, md: 0}}
+          lineHeight={{base: 0.9, md: ""}}
           color={textColor}
         >
           Sánchez Guevara
@@ -61,7 +62,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           fontSize={['xl', '2xl', '5xl']}
           color={accentColor}
           fontFamily={"monospace"}
-          mt={{base: 0, md: -12}}
+          mt={{base: 0, md: -4}}
         >
           {isSpanish ? 'Mejorando empresas a través de la digitalización.' : 'Helping businesses thrive through digitalization.'}
         </Text>
@@ -74,7 +75,9 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           {isSpanish ? 'Viviendo en Mar del Plata, Argentina' : 'Based in Mar del Plata, Argentina'}
         </Text>
       </VStack>
+      {/* #endregion */}
 
+      {/* #region Buttons Section */}
       <Stack spacing={{base: 6, md: 5}} mt={{base: "4", md:"auto"}} alignItems="center" direction={{base: "column", md: "row"}}>
         <Tooltip label={isSpanish ? 'Descargar CV' : 'Download CV'} placement="top">
           <span>
@@ -115,7 +118,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           </span>
         </Tooltip>
 
-        {/* Nueva flecha que lleva a la sección de contacto */}
+        {/* New button to scroll to the contact section */}
         <Tooltip label={isSpanish ? 'Contactarme' : 'Scroll to Contact'} placement="top">
           <IconButton
             size="lg"
@@ -130,6 +133,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
           />
         </Tooltip>
       </Stack>
+      {/* #endregion */}
     </Box>
   );
 };

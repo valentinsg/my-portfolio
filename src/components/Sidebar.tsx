@@ -15,16 +15,17 @@ const Sidebar = () => {
   return (
     <Box
       as="aside"
-      w={{ base: "100vw", sm: "80vw", md: "22vw", lg: "21vw" }}
-      h={{ base: "auto", md: "90vh", lg: "90vh" }}
+      w={{ base: "100vw", sm: "80vw", md: "20vw", lg: "20vw" }}
       bgColor={bgColor}
       display="flex"
       flexDirection="column"
+      justifyContent={"center"}
       alignItems={"center"}
       position={{ base: "relative", md: "fixed" }}
       borderRadius={{ base: "0", md: "25px" }}
       border={useColorModeValue('1px solid #ce3072', 'none')}
-      p={{ base: 4, md: 2 }}
+      p={{ base: 4, md: 6 }}
+      my={"auto"}
       boxShadow={{ base: "none", md: boxShadowColor }}
     >
       <Flex
@@ -131,7 +132,7 @@ const Sidebar = () => {
         </Text>
       </Box>
 
-      <Flex flexDir={"column"} alignItems={"center"} mt={"auto"} mb={8}>
+      <Flex flexDir={"column"} alignItems={"center"} m={12} >
         <HStack spacing={6} mb={6}>
           <Tooltip label={isSpanish ? "Mi GitHub" : "My GitHub"} aria-label={isSpanish ? "GitHub" : "GitHub"} >
             <Link href="https://github.com/valentinsg" isExternal >
@@ -175,8 +176,7 @@ const Sidebar = () => {
         <Tooltip label={isSpanish ? "Ver como podemos trabajar" : "How we can work"} aria-label={isSpanish ? "Trabajemos Juntos" : "Work Together"}>
           <Button
             variant="outline"
-            p={6}
-            w={"16vw"}
+            mt={6}
             boxShadow={'md'}
             colorScheme="pink"
             fontSize={{ base: "sm", md: "md", lg: "lg" }}

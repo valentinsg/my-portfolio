@@ -1,6 +1,20 @@
-import React, { useState } from 'react';
-import { Box, useColorMode, useColorModeValue, IconButton, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, useDisclosure } from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
+import { 
+  Box, 
+  useColorMode, 
+  useColorModeValue,
+  IconButton,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  useDisclosure
+} from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+
+// #region Components Imports
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -9,43 +23,81 @@ import About from './components/About';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
 import { useLanguage } from './context/LanguageProvider';
+// #endregion
 
-function App() {
+const App = () => {
+  // #region Hooks & State
   const { isSpanish } = useLanguage();
   const [selectedSection, setSelectedSection] = useState('Home');
   const { colorMode, toggleColorMode } = useColorMode();
   const color = useColorModeValue('gray.900', 'gray.100');
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [, setScrolled] = useState(false);
+  // #endregion
 
-  const renderSection = () => {
-    switch (selectedSection) {
-      case isSpanish ? 'Inicio' : 'Home':
-        return <Home setSelectedSection={setSelectedSection} />;
-      case isSpanish ? 'Proyectos' : 'Projects':
-        return <Projects />;
-      case isSpanish ? 'Sobre Mí' : 'About Me':
-        return <About />;
-      case isSpanish ? 'Currículum' : 'Resume':
-        return <Resume />;
-      case isSpanish ? 'Contacto' : 'Contact':
-        return <Contact />;
-      default:
-        return <Home setSelectedSection={setSelectedSection} />;
-    }
+  // #region Effects
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  // #endregion
+
+  // #region Section Management
+  const sections = {
+    [isSpanish ? 'Inicio' : 'Home']: <Home setSelectedSection={setSelectedSection} />,
+    [isSpanish ? 'Proyectos' : 'Projects']: <Projects />,
+    [isSpanish ? 'Sobre Mí' : 'About Me']: <About />,
+    [isSpanish ? 'Currículum' : 'Resume']: <Resume />,
+    [isSpanish ? 'Contacto' : 'Contact']: <Contact />
   };
 
+  const handleSectionChange = (section: React.SetStateAction<string>) => {
+    setSelectedSection(section);
+    if (typeof section === 'string') {
+      const element = document.getElementById(`${section.toLowerCase()}-section`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+  // #endregion
+
   return (
-    <Box position="relative" minHeight="100vh">
-      <Box position="relative" zIndex={1} color={color} transition="all 0.3s ease-in-out">
-        <Box display={{ base: 'block', md: 'none' }} position="fixed" top={4} left={4} zIndex={20}>
+    <Box 
+      position="relative" 
+      minHeight="100vh"
+      className="app-container"
+    >
+      {/* Main Content Container */}
+      <Box 
+        position="relative" 
+        zIndex={1} 
+        color={color} 
+        transition="all 0.3s ease-in-out"
+      >
+        {/* Mobile Menu Button */}
+        <Box 
+          display={{ base: 'block', md: 'none' }} 
+          position="fixed" 
+          top={4} 
+          left={4} 
+          zIndex={20}
+        >
           <IconButton
             icon={<HamburgerIcon />}
             onClick={onOpen}
             variant="outline"
             aria-label="Open menu"
+            bg={useColorModeValue('white', 'gray.800')}
+            _hover={{ bg: useColorModeValue('gray.100', 'gray.700') }}
           />
         </Box>
 
+        {/* Mobile Drawer */}
         <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
           <DrawerOverlay>
             <DrawerContent>
@@ -55,7 +107,7 @@ function App() {
                 <Header
                   selectedSection={selectedSection}
                   setSelectedSection={(section) => {
-                    setSelectedSection(section);
+                    handleSectionChange(section);
                     onClose();
                   }}
                   colorMode={colorMode}
@@ -67,28 +119,49 @@ function App() {
           </DrawerOverlay>
         </Drawer>
 
-        <Box display="flex" flexDirection={{ base: 'column', md: 'row' }}>
-          <Box display={{ base: 'none', md: 'block' }} width={{ md: '21vw' }} mx={8} my={12}>
+        {/* Main Layout */}
+        <Box 
+          display="flex" 
+          flexDirection={{ base: 'column', md: 'row' }}
+          maxWidth="1440px"
+          px={{ base: 4, md: 12 }}
+        >
+          {/* Sidebar */}
+          <Box flexShrink={0} w={{ base: "100%", md: "22vw", lg: "20vw" }} m={8}>
             <Sidebar />
           </Box>
-          <Box flex={1} px={{ base: 4, md: 2 }} py={{ base: 6, md: 12 }}>
-            <Box display={{ base: 'none', md: 'block' }}>
+
+          {/* Main Content */}
+          <Box 
+            flex={1} 
+            m={4}
+            px={{ base: 4, md: 10 }} 
+          >
+            {/* Desktop Header */}
               <Header
                 selectedSection={selectedSection}
-                setSelectedSection={setSelectedSection}
+                setSelectedSection={handleSectionChange}
                 colorMode={colorMode}
                 toggleColorMode={toggleColorMode}
                 isMobile={false}
               />
-            </Box>
-            <Box mr={8}>
-              {renderSection()}
-            </Box>
+
+            {/* Sections */}
+            {Object.entries(sections).map(([key, component]) => (
+              <Box 
+                key={key}
+                id={`${key.toLowerCase()}-section`}
+                minHeight="100vh"
+                py={20}
+              >
+                {component}
+              </Box>
+            ))}
           </Box>
         </Box>
       </Box>
     </Box>
   );
-}
+};
 
 export default App;
