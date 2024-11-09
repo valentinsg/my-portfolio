@@ -76,12 +76,12 @@ const App: React.FC = () => {
           </DrawerOverlay>
         </Drawer>
 
-        <Box display="flex" flexDirection={{ base: 'column', md: 'row' }} px={{ base: 4, md: 12 }}>
-          <Flex flexShrink={0} w={{ base: "100%", md: "22vw", lg: "20vw" }} >
-            <Sidebar />
-          </Flex>
+        <Box display="flex" flexDirection={{ base: 'column', md: 'row' }} px={{ base: 4, md: 8 }}>
+        <Flex flexShrink={0} w={{ base: "100%", md: "280px", lg: "320px" }}>
+          <Sidebar />
+        </Flex>
 
-          <Box m={6} px={{ base: 4, md: 12 }}>
+          <Box p={8} display={"flex"} flexDir={"column"}  >
             <Header
               selectedSection={selectedSection}
               setSelectedSection={setSelectedSection}

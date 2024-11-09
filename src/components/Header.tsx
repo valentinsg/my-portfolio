@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, VStack, HStack, useColorModeValue, IconButton } from '@chakra-ui/react';
+import { Button, useColorModeValue, IconButton, Box, Flex } from '@chakra-ui/react';
 import { ExternalLinkIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useLanguage } from '../context/LanguageProvider';
 import { Menu, MenuButton, MenuList, MenuItem, Tooltip } from '@chakra-ui/react';
@@ -25,23 +25,37 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
     ? ['Inicio', 'Proyectos', 'Sobre Mí', 'Currículum', 'Contacto']
     : ['Home', 'Projects', 'About Me', 'Resume', 'Contact'];
 
-  const Container = isMobile ? VStack : HStack;
-
   return (
-    <HStack justify="space-between" alignItems="center" p={4} w="100%">
-      <Container spacing={4}>
+    <Flex
+      direction={{ base: "column", md: "row" }}
+      justify="space-between"
+      align={{ base: "stretch", md: "center" }}
+      gap={4}
+      w="100%"
+      maxW="1400px"
+      mx="auto"
+      px={4}
+    >
+      {/* Sección de navegación */}
+      <Flex
+        gap={2}
+        flex="1"
+        flexWrap="wrap"
+        justify={{ base: "center", md: "flex-start" }}
+      >
         {sections.map((section, index) => (
-          <Tooltip key={index} label={isSpanish ? `${section}` : `${section}`} fontSize="sm">
+          <Tooltip key={index} label={section} fontSize="sm">
             <Button
               onClick={() => setSelectedSection(section)}
               color={buttonColor}
               bg={selectedSection === section ? buttonActiveBg : buttonBg}
               fontFamily="monospace"
-              fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}
+              fontSize={{ base: 'xs', sm: 'sm', md: 'md' }}
+              px={{ base: 2, sm: 3, md: 4 }}
+              height={{ base: "32px", md: "45px" }}
+              minW={{ base: "auto", md: "auto" }}
               transition="all 0.3s ease-in-out"
-              borderRadius="8px"  
-              px={{ base: 4, md: 8 }}
-              width={isMobile ? '100%' : 'auto'}
+              borderRadius="8px"
               _hover={{ bg: buttonHoverBg }}
               _active={{ bg: buttonActiveBg }}
             >
@@ -49,14 +63,32 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
             </Button>
           </Tooltip>
         ))}
-      </Container>
+      </Flex>
 
-      <HStack spacing={4}>
-
-        <Tooltip label={isSpanish ? 'Cambiar idioma' : 'Change language'} fontSize="md">
+      {/* Sección de controles */}
+      <Flex
+        gap={2}
+        justify={{ base: "center", md: "flex-end" }}
+        align="center"
+        flexShrink={0}
+      >
+        <Tooltip label={isSpanish ? 'Cambiar idioma' : 'Change language'}>
           <Menu>
-            <MenuButton as={Button} fontFamily="monospace" color={buttonColor} bg={buttonBg} _hover={{ bg: buttonHoverBg }} fontSize={{ base: "sm", md: "md", lg: "lg" }} rightIcon={<ChevronDownIcon />}>
-              {isSpanish ? <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt="Argentina Flag" width="20" height="20" /> : <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="USA Flag" width="20" height="20" />}
+            <MenuButton
+              as={Button}
+              size={{ base: "sm", md: "md" }}
+              fontFamily="monospace"
+              color={buttonColor}
+              bg={buttonBg}
+              _hover={{ bg: buttonHoverBg }}
+              rightIcon={<ChevronDownIcon />}
+            >
+              <Box w="20px" h="20px" display="flex" justifyContent="center" alignItems="center">
+                {isSpanish ?
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt="Argentina Flag" /> :
+                  <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="USA Flag" />
+                }
+              </Box>
             </MenuButton>
             <MenuList>
               <MenuItem icon={<img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt="Argentina Flag" width="20" height="20" />} onClick={toggleLanguage}>
@@ -68,29 +100,28 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
             </MenuList>
           </Menu>
         </Tooltip>
+
         <IconButton
           aria-label="Dark Mode Toggle"
           icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
           onClick={toggleColorMode}
           bg={buttonBg}
-          fontSize={{ base: "sm", md: "md", lg: "lg" }}
+          size={{ base: "sm", md: "md" }}
           color={buttonColor}
           _hover={{ bg: buttonHoverBg }}
-          _active={{ bg: buttonActiveBg }}
         />
+
         <Button
           variant="outline"
-          boxShadow={'md'}
           colorScheme="pink"
-          fontSize={{ base: "sm", md: "md", lg: "lg" }}
-          px={{ base: 2, md: 4 }}
+          size={{ base: "sm", md: "md" }}
           rightIcon={<ExternalLinkIcon />}
           onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0aKsiCw2ol12PWw6vXoe4hlEkeje1TK5ldpY29MFj-cclKi8ALgE1peSmD7JCH4jYw5pay1Rx7', '_blank')}
         >
           {isSpanish ? 'Habla conmigo' : "Let's Talk"}
         </Button>
-      </HStack>
-    </HStack>
+      </Flex>
+    </Flex>
   );
 };
 

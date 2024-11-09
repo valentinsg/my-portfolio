@@ -24,7 +24,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
       w="100%"
       flexDir="column"
       px={{ base: 4, md: "auto" }}
-      py={{ base: 8, md: "auto" }}
+      m={6}
     >
       <VStack
         alignItems={{ base: "center", md: "flex-start" }}
