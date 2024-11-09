@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Text, VStack, IconButton, Tooltip, useColorModeValue, Stack } from '@chakra-ui/react';
+import { Flex, Button, Text, VStack, IconButton, Tooltip, useColorModeValue } from '@chakra-ui/react';
 import { DownloadIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import { useLanguage } from '../context/LanguageProvider';
 import { FaAddressBook } from 'react-icons/fa';
@@ -16,76 +16,53 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
 
   const handleScrollToContact = () => {
     setSelectedSection(isSpanish ? 'Contacto' : 'Contact');
-    const contactSection = document.getElementById('contact-section');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   return (
-    <Box
-      minH={{base: "100vh", md: "80vh"}}
+    <Flex
+      minH={{ base: "100vh", md: "85vh" }}
       w="100%"
-      ml={{ base: 0, md: 6 }}
-      display="flex"
       flexDir="column"
-      justifyContent={{base: "center" , md: "flex-start"}}
-      alignItems={{base: "center" , md: "flex-start"}}
+      px={{ base: 4, md: "auto" }}
+      py={{ base: 8, md: "auto" }}
     >
-      {/* #region Text Section  */}
-      <VStack alignItems={{base: "center" , md: "flex-start"}} textAlign={{base: "center", md: "left"}} userSelect={"none"}>
-        <Text
-          fontSize={['6xl', '7xl', '8xl', '9xl']}
-          fontWeight="1000"
-          color={textColor}
-          lineHeight={{base: 0.9, md: ""}}
-        >
+      <VStack
+        alignItems={{ base: "center", md: "flex-start" }}
+        textAlign={{ base: "center", md: "left" }}
+        userSelect="none"
+        spacing={2}
+      >
+        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7.5vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           {isSpanish ? 'Soy' : 'I am'}
         </Text>
-        <Text
-          fontSize={['6xl', '7xl', '8xl', '9xl']}
-          fontWeight="1000"
-          color={textColor}
-          lineHeight={{base: 0.9, md: ""}}
-        >
+        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7.5vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           Valentín
         </Text>
-        <Text
-          fontSize={['6xl', '7xl', '8xl', '9xl']}
-          fontWeight="1000"
-          lineHeight={{base: 0.9, md: ""}}
-          color={textColor}
-        >
+        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7.5vw' }}fontWeight="extrabold" color={textColor} lineHeight="1">
           Sánchez Guevara
         </Text>
-        <Text
-          fontSize={['xl', '2xl', '5xl']}
-          color={accentColor}
-          fontFamily={"monospace"}
-          mt={{base: 0, md: -4}}
-        >
+        <Text fontSize={{ base: 'lg', md: '2xl', lg: '2.3vw' }} color={accentColor} fontFamily="monospace" mt={-1}>
           {isSpanish ? 'Mejorando empresas a través de la digitalización.' : 'Helping businesses thrive through digitalization.'}
         </Text>
-        <Text
-          fontStyle={'italic'}
-          fontSize={['md', 'lg', '2xl']}
-          color={textColor}
-          mt={-4}
-        >
+        <Text mb={4} fontStyle="italic" fontSize={{ base: 'sm', md: 'md', lg: '1.3vw' }} color={textColor} mt={-2}>
           {isSpanish ? 'Viviendo en Mar del Plata, Argentina' : 'Based in Mar del Plata, Argentina'}
         </Text>
       </VStack>
-      {/* #endregion */}
 
-      {/* #region Buttons Section */}
-      <Stack spacing={{base: 6, md: 5}} mt={{base: "4", md:"auto"}} alignItems="center" direction={{base: "column", md: "row"}}>
+      <Flex
+        gap={{ base: 4, lg: 6 }}
+        mt={{ base: 4, md: "auto" }}
+        mb={{ base: 4, md: 8 }}
+        alignItems="center"
+        direction={{ base: "column", md: "row" }}
+      >
         <Tooltip label={isSpanish ? 'Descargar CV' : 'Download CV'} placement="top">
           <span>
             <Button
-              size={['md', 'lg']}
-              boxShadow={'md'}
+              size={{ base: 'sm', md: 'md', lg: 'lg' }}
+              boxShadow="md"
               colorScheme="pink"
-              fontFamily={'monospace'}
+              fontFamily="monospace"
               leftIcon={<DownloadIcon />}
               _hover={{ bg: 'pink.300' }}
               _active={{ bg: 'pink.500' }}
@@ -102,39 +79,38 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
             </Button>
           </span>
         </Tooltip>
+
         <Tooltip label={isSpanish ? 'Ver mis proyectos' : 'View my projects'} placement="top">
           <span>
             <Button
-              size={['md', 'lg']}
+              size={{ base: 'sm', md: 'md', lg: 'lg' }}
               variant="outline"
-              boxShadow={'md'}
+              boxShadow="md"
               colorScheme="pink"
-              fontFamily={'monospace'}
+              fontFamily="monospace"
               rightIcon={<ExternalLinkIcon />}
-              onClick={() => setSelectedSection('Projects' )}
+              onClick={() => setSelectedSection('Projects')}
             >
               {isSpanish ? 'Mis Trabajos' : 'View My Works'}
             </Button>
           </span>
         </Tooltip>
 
-        {/* New button to scroll to the contact section */}
         <Tooltip label={isSpanish ? 'Contactarme' : 'Scroll to Contact'} placement="top">
           <IconButton
-            size="lg"
+            size={{ base: 'md', md: 'lg' }}
             aria-label="Scroll to contact"
-            icon={<FaAddressBook />} 
+            icon={<FaAddressBook />}
             isRound
             onClick={handleScrollToContact}
             colorScheme="pink"
-            boxShadow={'md'}
+            boxShadow="md"
             _hover={{ bg: 'pink.300' }}
             _active={{ bg: 'pink.500' }}
           />
         </Tooltip>
-      </Stack>
-      {/* #endregion */}
-    </Box>
+      </Flex>
+    </Flex>
   );
 };
 

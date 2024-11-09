@@ -1,4 +1,4 @@
-import { Box, Image, HStack, Text, Link, Flex, Icon, Tooltip, useColorModeValue, Button } from '@chakra-ui/react';
+import { Box, Image, HStack, Text, Link, Flex, Icon, Tooltip, useColorModeValue, Button, Stack } from '@chakra-ui/react';
 import { FaGithub, FaGithubAlt, FaLinkedin } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageProvider';
 import Yo from '../img/yo.png';
@@ -13,179 +13,90 @@ const Sidebar = () => {
   const boxShadowColor = useColorModeValue("md", "lg");
 
   return (
-    <Box
-      as="aside"
-      w={{ base: "100vw", sm: "80vw", md: "20vw", lg: "20vw" }}
+    <Flex
       bgColor={bgColor}
-      display="flex"
       flexDirection="column"
-      justifyContent={"center"}
-      alignItems={"center"}
-      position={{ base: "relative", md: "fixed" }}
-      borderRadius={{ base: "0", md: "25px" }}
-      border={useColorModeValue('1px solid #ce3072', 'none')}
-      p={{ base: 4, md: 6 }}
-      my={"auto"}
+      alignItems="center"
+      position="fixed"
+      h={{ base: "auto", md: "92%" }} // Ajuste para pantallas pequeñas y grandes
+      w={{ base: "full", md: "22vw" }}
+      overflowY="auto"
+      p={4}
+      my={6}
+      gap={6} // Espaciado entre elementos
+      borderRadius={{ base: "0", md: "20px" }}
+      border={useColorModeValue("1px solid #ce3072", "none")}
       boxShadow={{ base: "none", md: boxShadowColor }}
     >
-      <Flex
-        flexDirection="row"
-        alignItems="center"
-        mt={4}
-        mr={6}
-        gap={2}
-      >
+      <Flex gap={2} alignItems="center" mt={6} flexDirection="row">
         <Icon
           as={FaGithubAlt}
-          w={{ base: 10, md: 14, lg: 14 }}
-          h={{ base: 10, md: 14, lg: 14 }}
+          w={{ base: 10, md: 14 }}
+          h={{ base: 10, md: 14 }}
           p={2}
           color={textColor}
         />
-        <Text
-          fontSize={{ base: 20, md: 22, lg: "xl" }}
-          color={textColor}
-          fontWeight={600}
-          fontFamily={"monospace"}
-        >
+        <Text color={textColor} fontWeight={600} fontSize={{ base: "lg", md: "xl" }} fontFamily={"monospace"}>
           Valentín Sánchez Guevara
         </Text>
       </Flex>
 
-      <Box
-        bg={useColorModeValue("gray.100", "gray.800")}
-        borderRadius={"25px"}
-        boxShadow="md"
-        w={"17vw"}
-        p={6}
-        mt={3}
-      >
+      <Box bg={useColorModeValue("gray.100", "gray.800")} borderRadius={"25px"} boxShadow="md" w={{ base: "80%", md: "90%" }} p={4}>
         <Image
-          m={"auto"}
-          mb={-6}
+          m="auto"
           src={Yo}
-          w={{ base: "50vw", md: "15vw", lg: "11vw" }}
+          w={{ base: "40vw", md: "15vw", lg: "11vw" }}
           borderRadius="15px"
           alt="Valentín Sánchez Guevara"
         />
       </Box>
 
-      <Box
-        w="88%"
-        bg={useColorModeValue("transparent", "gray.600")}
-        borderRadius="10px"
-        p={3}
-        mt={10}
-        textAlign="left"
-        boxShadow="md"
-        border={useColorModeValue('1px solid #ce3072', 'none')}
-      >
-        <Text
-          fontSize={{ base: "sm", lg: "md" }}
-          fontWeight="bold"
-          color={useColorModeValue("gray.700", "whiteAlpha.800")}
-          mb={1}
-          ml={3}
-        >
+      <Stack w="90%" bg={useColorModeValue("transparent", "gray.600")} borderRadius="10px" p={4} textAlign="left" boxShadow="md" border={useColorModeValue('1px solid #ce3072', 'none')}>
+        <Text fontWeight="bold" color={useColorModeValue("gray.700", "whiteAlpha.800")} fontSize={{ base: "sm", md: "md" }}>
           {isSpanish ? "Rol:" : "Role:"}
         </Text>
-        <Text
-          fontSize={{ base: "lg", lg: "xl" }}
-          color={textColor}
-          fontWeight={600}
-          fontFamily="monospace"
-          ml={3}
-        >
+        <Text color={textColor} fontWeight={600} fontSize={{ base: "md", md: "lg" }} fontFamily="monospace">
           {isSpanish ? "Frontend & Creativo" : "Frontend & Creative"}
         </Text>
-      </Box>
+      </Stack>
 
-      <Box
-        w="88%"
-        bg={useColorModeValue("transparent", "gray.600")}
-        borderRadius="10px"
-        p={3}
-        mt={10}
-        textAlign="left"
-        boxShadow="md"
-        border={useColorModeValue('1px solid #ce3072', 'none')}
-      >
-        <Text
-          fontSize={{ base: "sm", lg: "md" }}
-          fontWeight="bold"
-          color={useColorModeValue("gray.700", "whiteAlpha.800")}
-          textAlign={"left"}
-          mb={1}
-          ml={3}
-        >
+      <Stack w="90%" bg={useColorModeValue("transparent", "gray.600")} borderRadius="10px" p={4} textAlign="left" boxShadow="md" border={useColorModeValue('1px solid #ce3072', 'none')}>
+        <Text fontWeight="bold" color={useColorModeValue("gray.700", "whiteAlpha.800")} fontSize={{ base: "sm", md: "md" }}>
           {isSpanish ? "Ubicación:" : "Location:"}
         </Text>
-        <Text
-          fontSize={{ base: "lg", lg: "xl" }}
-          color={textColor}
-          align={"left"}
-          ml={3}
-          fontWeight={600}
-          fontFamily="monospace"
-        >
+        <Text color={textColor} fontWeight={600} fontSize={{ base: "md", md: "lg" }} fontFamily="monospace">
           Mar del Plata, Argentina
         </Text>
-      </Box>
+      </Stack>
 
-      <Flex flexDir={"column"} alignItems={"center"} m={12} >
-        <HStack spacing={6} mb={6}>
-          <Tooltip label={isSpanish ? "Mi GitHub" : "My GitHub"} aria-label={isSpanish ? "GitHub" : "GitHub"} >
-            <Link href="https://github.com/valentinsg" isExternal >
-              <Icon
-                as={FaGithub}
-                w={12}
-                h={12}
-                borderRadius="15px"
-                p={1}
-                _hover={{
-                  bgGradient: "linear(to-br, #ce3072, #414358)",
-                  transform: "scale(1.1)",
-                  borderColor: "#414358",
-                  transition: "all 0.5s ease-in-out",
-                }}
-                transition="all 0.9s ease-in-out"
-              
-              />
+      <Flex flexDirection="column" alignItems="center" mt="auto" mb={4} w="100%">
+        <HStack spacing={6} mb={4}>
+          <Tooltip label={isSpanish ? "Mi GitHub" : "My GitHub"}>
+            <Link href="https://github.com/valentinsg" isExternal>
+              <Icon as={FaGithub} w={10} h={10} p={1} _hover={{ transform: "scale(1.1)" }} transition="all 0.5s ease" />
             </Link>
           </Tooltip>
-          <Tooltip label={isSpanish ? "Ir a mi LinkedIn" : "Go to my LinkedIn"} aria-label={isSpanish ? "LinkedIn" : "LinkedIn"}>
+          <Tooltip label={isSpanish ? "Ir a mi LinkedIn" : "Go to my LinkedIn"}>
             <Link href="https://www.linkedin.com/in/valent%C3%ADn-s-761910200/" isExternal>
-              <Icon
-                as={FaLinkedin}
-                w={12}
-                h={12}
-                borderRadius="15px"
-                p={1}
-                _hover={{
-                  bgGradient: "linear(to-br, #414358, #ce3072)",
-                  transform: "scale(1.1)",
-                  borderColor: "#414358",
-                  transition: "all 0.5s ease-in-out",
-                }}
-                transition="all 0.9s ease-in-out"
-              />
+              <Icon as={FaLinkedin} w={10} h={10} p={1} _hover={{ transform: "scale(1.1)" }} transition="all 0.5s ease" />
             </Link>
           </Tooltip>
         </HStack>
 
-        <Tooltip label={isSpanish ? "Ver como podemos trabajar" : "How we can work"} aria-label={isSpanish ? "Trabajemos Juntos" : "Work Together"}>
+        <Tooltip label={isSpanish ? "Como podemos trabajar?" : "How we can work"}>
           <Button
             variant="outline"
-            mt={6}
-            boxShadow={'md'}
             colorScheme="pink"
-            fontSize={{ base: "sm", md: "md", lg: "lg" }}
+            fontFamily="monospace"
+            fontSize={{ base: "sm", md: "md" }}
+            p={6}
+            mb={2}
           >
             {isSpanish ? "Trabajemos Juntos" : "Work Together"}
           </Button>
         </Tooltip>
       </Flex>
-    </Box>
+    </Flex>
   );
 };
 
