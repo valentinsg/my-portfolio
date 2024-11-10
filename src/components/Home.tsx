@@ -25,6 +25,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
       flexDir="column"
       px={{ base: 4, md: "auto" }}
       m={6}
+      gap={20}
     >
       <VStack
         alignItems={{ base: "center", md: "flex-start" }}
@@ -32,13 +33,13 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
         userSelect="none"
         spacing={2}
       >
-        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7.5vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
+        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           {isSpanish ? 'Soy' : 'I am'}
         </Text>
-        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7.5vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
+        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           Valentín
         </Text>
-        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7.5vw' }}fontWeight="extrabold" color={textColor} lineHeight="1">
+        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7vw' }}fontWeight="extrabold" color={textColor} lineHeight="1">
           Sánchez Guevara
         </Text>
         <Text fontSize={{ base: 'lg', md: '2xl', lg: '2.3vw' }} color={accentColor} fontFamily="monospace" mt={-1}>
@@ -51,8 +52,6 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
 
       <Flex
         gap={{ base: 4, lg: 6 }}
-        mt={{ base: 4, md: "auto" }}
-        mb={{ base: 4, md: 8 }}
         alignItems="center"
         direction={{ base: "column", md: "row" }}
       >

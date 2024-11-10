@@ -13,11 +13,11 @@ const About = () => {
   const toast = useToast();
 
   return (
-    <Flex direction="column" p={[4, 10]} minH="100vh" color={textColor}>
+    <Flex direction="column" m={[4, 6]} minH="100vh" color={textColor}>
       {/* Columna principal: Título y Logros */}
 
       <Box mb={20} textAlign="center">
-        <Heading color={headerColor} as="h1" fontSize={["4xl", "7xl"]} lineHeight="1.1" mb={16} textAlign={"left"}>
+        <Heading color={headerColor} as="h1" fontSize={["4xl", "4.2vw"]} lineHeight="1.1" mb={16} textAlign={"left"}>
           {isSpanish ? 'Resolviendo problemas complejos con un diseño simple' : 'Turning complex problems into simple design'}
         </Heading>
         {/* Logros */}
@@ -59,11 +59,11 @@ const About = () => {
         </Text>
       </Box>
 
-      <HStack spacing={36} justifyContent={"center"} mt={20}>
+      <HStack spacing={30} justifyContent={"center"} mt={14}>
 
-        <Flex gap={6} alignItems={"center"}>
-          <Text fontSize="xl" fontFamily={"monospace"}>
-            <Text as="span" fontSize={"xl"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Correo: ' : 'Mail: '}</Text>
+        <Flex gap={8} alignItems={"center"}>
+          <Text fontSize="lg" fontFamily={"monospace"}>
+            <Text as="span" fontSize={"lg"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Correo: ' : 'Mail: '}</Text>
             sanchezguevaravalentin@gmail.com
           </Text>
           <Tooltip label={isSpanish ? 'Copiar Correo' : 'Copy Email'} aria-label={isSpanish ? 'Copiar Correo Tooltip' : 'Copy Email Tooltip'}>
@@ -84,9 +84,9 @@ const About = () => {
           </Tooltip>
         </Flex>
 
-        <Flex gap={6} alignItems={"center"}>
-          <Text fontSize="xl" fontFamily={"monospace"}>
-            <Text as="span" fontSize={"xl"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Teléfono: ' : 'Phone: '}</Text>
+        <Flex gap={8} alignItems={"center"}>
+          <Text fontSize="lg" fontFamily={"monospace"}>
+            <Text as="span" fontSize={"lg"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Teléfono: ' : 'Phone: '}</Text>
             +54 9 2236680041
           </Text>
           <Tooltip label={isSpanish ? 'Copiar número de teléfono' : 'Copy phone number'} aria-label={isSpanish ? 'Copiar número de teléfono Tooltip' : 'Copy Phone Number Tooltip'}>

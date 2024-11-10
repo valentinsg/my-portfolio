@@ -42,7 +42,7 @@ const App: React.FC = () => {
   }, [selectedSection]);
 
   return (
-    <Stack minHeight="100vh">
+    <Stack minHeight="100vh" >
       <Box zIndex={1} color={color} transition="all 0.3s ease-in-out">
         <Box display={{ base: 'block', md: 'none' }} position="fixed" top={6} left={4} zIndex={20}>
           <IconButton
@@ -81,7 +81,7 @@ const App: React.FC = () => {
           <Sidebar />
         </Flex>
 
-          <Box p={8} display={"flex"} flexDir={"column"}  >
+          <Box p={8} display={"flex"} flexDir={"column"} gap={12} >
             <Header
               selectedSection={selectedSection}
               setSelectedSection={setSelectedSection}

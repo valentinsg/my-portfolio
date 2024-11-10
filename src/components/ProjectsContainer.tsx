@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Heading, Text, useColorModeValue, Flex, Icon, Tooltip } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaPython, FaHtml5, FaCss3Alt, FaJsSquare, FaGitAlt } from 'react-icons/fa';
-import { SiTypescript, SiMongodb, SiPostgresql, SiRedux, SiChakraui, SiRust, SiSpringboot } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaPython, FaHtml5, FaCss3Alt, FaJsSquare, FaGitAlt} from 'react-icons/fa';
+import { SiTypescript, SiMongodb, SiPostgresql, SiRedux, SiChakraui, SiSpringboot } from 'react-icons/si';
+import { GiCrab } from "react-icons/gi";
 
 interface ProjectsContainerProps {
   bgImage?: string;
@@ -25,7 +26,6 @@ const ProjectsContainer: React.FC<ProjectsContainerProps> = ({
 
   const bgColor = useColorModeValue('gray.100', 'gray.800');
   const textColor = useColorModeValue("gray.800", "whiteAlpha.900");
-
 
   return (
     <Box
@@ -85,7 +85,7 @@ const ProjectsContainer: React.FC<ProjectsContainerProps> = ({
       <Flex
         h="100%"
         p={6}
-        justifyContent="space-between" // Asegura que el contenido esté distribuido
+        justifyContent="space-between"
         alignItems="flex-end"
         position="relative"
         zIndex={1}
@@ -140,7 +140,7 @@ const getIconForTechnology = (tech: string) => {
     case 'nodejs':
       return FaNodeJs;
     case 'rust':
-      return SiRust;
+      return GiCrab;
     case 'springboot':
       return SiSpringboot;
     case 'python':
