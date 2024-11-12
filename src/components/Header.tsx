@@ -19,11 +19,40 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
   const buttonBg = useColorModeValue('gray.200', 'gray.700');
   const buttonColor = useColorModeValue('gray.800', 'gray.300');
   const buttonHoverBg = useColorModeValue('gray.300', 'gray.600');
-  const buttonActiveBg = useColorModeValue('gray.400', 'gray.500');
+
+  const sectionConfig: { [key in 'Home' | 'Projects' | 'About Me' | 'Resume' | 'Contact' | 'Inicio' | 'Proyectos' | 'Sobre Mí' | 'Currículum' | 'Contacto']: string } = {
+    'Home': 'home',
+    'Projects': 'projects',
+    'About Me': 'about',
+    'Resume': 'resume',
+    'Contact': 'contact',
+    'Inicio': 'home',
+    'Proyectos': 'projects',
+    'Sobre Mí': 'about',
+    'Currículum': 'resume',
+    'Contacto': 'contact'
+  };
 
   const sections = isSpanish
     ? ['Inicio', 'Proyectos', 'Sobre Mí', 'Currículum', 'Contacto']
     : ['Home', 'Projects', 'About Me', 'Resume', 'Contact'];
+
+  const scrollToSection = (section: keyof typeof sectionConfig) => {
+    const sectionId = `${sectionConfig[section]}-section`;
+    const element = document.getElementById(sectionId);
+    
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      setSelectedSection(section);
+    }
+  };
 
   return (
     <Flex
@@ -36,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
       mx="auto"
       px={4}
     >
-      {/* Sección de navegación */}
+      {/* Navigation Section */}
       <Flex
         gap={2}
         flex="1"
@@ -46,9 +75,9 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
         {sections.map((section, index) => (
           <Tooltip key={index} label={section} fontSize="sm">
             <Button
-              onClick={() => setSelectedSection(section)}
+              onClick={() => scrollToSection(section as keyof typeof sectionConfig)}
               color={buttonColor}
-              bg={selectedSection === section ? buttonActiveBg : buttonBg}
+              bg={selectedSection === section ? buttonBg : buttonBg}
               fontFamily="monospace"
               fontSize={{ base: 'xs', sm: 'sm', md: 'md' }}
               px={{ base: 2, sm: 3, md: 4 }}
@@ -57,7 +86,6 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
               transition="all 0.3s ease-in-out"
               borderRadius="8px"
               _hover={{ bg: buttonHoverBg }}
-              _active={{ bg: buttonActiveBg }}
             >
               {section}
             </Button>
@@ -65,13 +93,14 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
         ))}
       </Flex>
 
-      {/* Sección de controles */}
+      {/* Controls Section */}
       <Flex
         gap={2}
         justify={{ base: "center", md: "flex-end" }}
         align="center"
         flexShrink={0}
       >
+        {/* Language Selector */}
         <Tooltip label={isSpanish ? 'Cambiar idioma' : 'Change language'}>
           <Menu>
             <MenuButton
@@ -101,6 +130,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
           </Menu>
         </Tooltip>
 
+        {/* Theme Toggle */}
         <IconButton
           aria-label="Dark Mode Toggle"
           icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
@@ -111,6 +141,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
           _hover={{ bg: buttonHoverBg }}
         />
 
+        {/* Contact Button */}
         <Button
           variant="outline"
           colorScheme="pink"

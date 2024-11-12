@@ -16,7 +16,11 @@ import emailjs from 'emailjs-com';
 import "./btn-donate.css";
 import { useLanguage } from '../context/LanguageProvider';
 
-const Contact = () => {
+interface ContactProps {
+  id: string;
+}
+
+const Contact: React.FC<ContactProps> = ({ id }) => {
   const { isSpanish } = useLanguage();
 
   // Estado para los datos del formulario
@@ -91,12 +95,12 @@ const Contact = () => {
   };
 
   // Colores para temas claro/oscuro
-  const headingColor = useColorModeValue("gray.700", "gray.100");
+  const headingColor = useColorModeValue("gray.700", "whiteAlpha.900");
   const inputBgColor = useColorModeValue('white.100', 'gray.700');
   const labelColor = useColorModeValue('gray.900', 'gray.200');
 
   return (
-    <VStack spacing={10} align="stretch" p={10}>
+    <VStack spacing={10} align="stretch" m={6} id={id} px={{ base: 4, md: "auto" }}>
       {/* Título del formulario */}
       <Heading size="3xl" color={headingColor} textAlign="left" mb={6}>
         {isSpanish ? "¡Contáctame directamente!" : "Get in Touch with Me!"}

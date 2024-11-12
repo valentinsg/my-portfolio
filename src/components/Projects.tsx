@@ -28,13 +28,17 @@ import SoftwareImage from '../img/smithii-software.jpg';
 import SoftwareGif from '../img/video-software.gif';
 import BusyLandingImage from '../img/busy-landing-image.jpg';
 
-const Projects = () => {
+interface ProjectsProps {
+  id: string;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ id }) => {
   const [filter, setFilter] = useState('all');
   const { isSpanish } = useLanguage();
 
   // Mejores contrastes para accesibilidad
-  const headerColor = useColorModeValue("gray.800", "gray.50");
-  const textColor = useColorModeValue("gray.700", "gray.100");
+  const headerColor = useColorModeValue("gray.700", "whiteAlpha.900");
+  const textColor = useColorModeValue("gray.700", "whiteAlpha.900");
   const menuBgColor = useColorModeValue("white", "gray.800");
   const menuHoverBgColor = useColorModeValue("gray.100", "gray.700");
   const badgeBgColor = useColorModeValue("pink.100", "pink.800");
@@ -111,17 +115,19 @@ const Projects = () => {
 
   return (
     <Box 
-      m={7}
+      id={id}
+      m={6}
       as="section" 
-      py={8} 
+      py={12} 
+      px={{ base: 4, md: "auto" }}
       aria-label={isSpanish ? "Sección de proyectos" : "Projects section"}
     >
       <Flex
         direction={{ base: "column", md: "row" }}
         align={{ base: "flex-start", md: "center" }}
         justify="space-between"
-        gap={4}
-        mb={8}
+        gap={6}
+        mb={10}
       >
         <Heading
           as="h2"

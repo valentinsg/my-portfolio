@@ -6,32 +6,44 @@ import { FaAddressBook } from 'react-icons/fa';
 
 interface HomeProps {
   setSelectedSection: (section: string) => void;
+  id: string;
 }
 
-const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
+const Home: React.FC<HomeProps> = ({ setSelectedSection, id }) => {
   const { isSpanish } = useLanguage();
 
   const textColor = useColorModeValue("gray.700", "whiteAlpha.900");
   const accentColor = useColorModeValue('pink.600', 'pink.300');
 
-  const handleScrollToContact = () => {
-    setSelectedSection(isSpanish ? 'Contacto' : 'Contact');
-  };
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(`${sectionId.toLowerCase()}-section`);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      setSelectedSection(sectionId);
+    }
+  };
   return (
     <Flex
+      id={id}
       minH={{ base: "100vh", md: "85vh" }}
       w="100%"
       flexDir="column"
       px={{ base: 4, md: "auto" }}
       m={6}
-      gap={20}
+      gap={12}
     >
       <VStack
         alignItems={{ base: "center", md: "flex-start" }}
         textAlign={{ base: "center", md: "left" }}
         userSelect="none"
-        spacing={2}
+        spacing={1}
       >
         <Text fontSize={{ base: '4xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           {isSpanish ? 'Soy' : 'I am'}
@@ -39,7 +51,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
         <Text fontSize={{ base: '4xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           Valentín
         </Text>
-        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7vw' }}fontWeight="extrabold" color={textColor} lineHeight="1">
+        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           Sánchez Guevara
         </Text>
         <Text fontSize={{ base: 'lg', md: '2xl', lg: '2.3vw' }} color={accentColor} fontFamily="monospace" mt={-1}>
@@ -88,7 +100,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
               colorScheme="pink"
               fontFamily="monospace"
               rightIcon={<ExternalLinkIcon />}
-              onClick={() => setSelectedSection('Projects')}
+              onClick={() => scrollToSection('Projects')}
             >
               {isSpanish ? 'Mis Trabajos' : 'View My Works'}
             </Button>
@@ -100,9 +112,9 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection }) => {
             size={{ base: 'md', md: 'lg' }}
             aria-label="Scroll to contact"
             icon={<FaAddressBook />}
-            isRound
-            onClick={handleScrollToContact}
+            onClick={() => scrollToSection('Contact')}
             colorScheme="pink"
+            variant={"outline"}
             boxShadow="md"
             _hover={{ bg: 'pink.300' }}
             _active={{ bg: 'pink.500' }}

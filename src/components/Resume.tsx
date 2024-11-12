@@ -5,7 +5,11 @@ import { FaCheckCircle, FaGithub, FaLinkedin, FaPhone } from 'react-icons/fa';
 import { SiMailgun } from 'react-icons/si';
 import Valentin from '../img/valentin.png';
 
-const Resume = () => {
+interface ResumeProps { 
+  id: string;
+}
+
+const Resume: React.FC<ResumeProps> = ({ id }) => {
   const { isSpanish } = useLanguage();
 
   const accentColor = useColorModeValue('pink.600', 'pink.300');
@@ -17,7 +21,7 @@ const Resume = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <Box p={8}>
+    <Box m={6} id={id} px={{ base: 4, md: "auto" }}>
       <Box textAlign="center" mb={16}>
         <Tooltip label={isSpanish ? "Mostrar imagen" : "Show image"} aria-label="Image Tooltip">
           <Box

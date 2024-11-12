@@ -8,19 +8,17 @@ const Sidebar = () => {
   const { isSpanish } = useLanguage();
   const bgColor = useColorModeValue("gray.100", "gray.700");
   const textColor = useColorModeValue("gray.700", "whiteAlpha.900");
-  const boxShadowColor = useColorModeValue("md", "lg");
-  
-  // Determine the max height based on viewport
+  const boxShadowColor = useColorModeValue("md", "md");
+
   const [maxHeight, setMaxHeight] = useState('95vh');
 
-  // Update max height on mount and window resize
   useEffect(() => {
     const updateHeight = () => {
       const vh = window.innerHeight;
-      const newMaxHeight = Math.min(vh * 0.95, 800); // Cap at 800px
+      const newMaxHeight = Math.min(vh * 0.95, 800); 
       setMaxHeight(`${newMaxHeight}px`);
     };
-    
+
     updateHeight();
     window.addEventListener('resize', updateHeight);
     return () => window.removeEventListener('resize', updateHeight);
@@ -32,7 +30,8 @@ const Sidebar = () => {
       top={4}
       maxHeight={maxHeight}
       height="auto"
-      w={{ base: "100%", md: "280px", lg: "320px" }}
+      maxH="92vh"
+      w={{ base: "100%", md: "280px", lg: "325px" }}
       sx={{
         "&::-webkit-scrollbar": {
           width: "8px",
@@ -67,126 +66,128 @@ const Sidebar = () => {
         border={useColorModeValue("1px solid #ce3072", "none")}
         boxShadow={{ base: "none", md: boxShadowColor }}
       >
-        <Flex alignItems="center" gap={1} mt={4} flexDirection="row">
+        <Flex alignItems="center" flexDirection="row" m={"auto"}>
           <Icon
             as={FaGithubAlt}
             w={{ base: 8, md: 10 }}
             h={{ base: 8, md: 10 }}
-            p={2}
+            p={1.5}
             color={textColor}
           />
-            <Text 
-            color={textColor} 
-            fontSize={{ base: "sm", md: "md", lg: "lg" }} 
+          <Text
+            color={textColor}
+            fontSize={{ base: "sm", md: "md", lg: "lg" }}
+            fontWeight={600}
             fontFamily="monospace"
             noOfLines={2}
-            textShadow="1px 1px 2px rgba(0, 0, 0, 0.5)"
-            >
+            textShadow="1px 1px 2px rgba(0, 0, 0, 0.2)"
+          >
             Valentín Sanchez Guevara
-            </Text>
+          </Text>
         </Flex>
 
-        <Box 
-          bg={useColorModeValue("gray.100", "gray.800")} 
-          borderRadius="25px" 
-          boxShadow="md" 
+        <Box
+          bg={useColorModeValue("gray.100", "gray.800")}
+          borderRadius="25px"
+          boxShadow="md"
           w="90%"
-          p={3}
+          p={6}
+          mb={"auto"}
         >
           <Image
             m="auto"
             src={Yo}
-            maxW={{ base: "150px", md: "180px" }}
+            maxW={{ base: "150px", md: "185px" }}
             w="100%"
             borderRadius="15px"
             alt="Valentín Sánchez Guevara"
           />
         </Box>
 
-        <Stack 
-          w="90%" 
-          spacing={2}
-          bg={useColorModeValue("transparent", "gray.600")} 
-          borderRadius="10px" 
-          p={3} 
-          textAlign="left" 
-          boxShadow="md" 
-          border={useColorModeValue('1px solid #ce3072', 'none')}
-        >
-          <Text 
-            fontWeight="bold" 
-            color={useColorModeValue("gray.700", "whiteAlpha.800")} 
-            fontSize={{ base: "xs", md: "sm" }}
+        <Flex flexDir={"column"} w={"90%"} gap={6} mb={"auto"}>
+          <Stack
+            spacing={1}
+            bg={useColorModeValue("transparent", "gray.600")}
+            borderRadius="10px"
+            p={3}
+            textAlign="left"
+            boxShadow="md"
+            border={useColorModeValue('1px solid #ce3072', 'none')}
           >
-            {isSpanish ? "Rol:" : "Role:"}
-          </Text>
-          <Text 
-            color={textColor} 
-            fontWeight={600} 
-            fontSize={{ base: "sm", md: "md" }} 
-            fontFamily="monospace"
-          >
-            {isSpanish ? "Frontend & Creativo" : "Frontend & Creative"}
-          </Text>
-        </Stack>
+            <Text
+              fontWeight="bold"
+              color={useColorModeValue("gray.700", "whiteAlpha.800")}
+              fontSize={{ base: "xs", md: "sm" }}
+            >
+              {isSpanish ? "Rol:" : "Role:"}
+            </Text>
+            <Text
+              color={textColor}
+              fontWeight={600}
+              fontSize={{ base: "sm", md: "md" }}
+              fontFamily="monospace"
+            >
+              {isSpanish ? "Frontend & Creativo" : "Frontend & Creative"}
+            </Text>
+          </Stack>
 
-        <Stack 
-          w="90%" 
-          spacing={2}
-          bg={useColorModeValue("transparent", "gray.600")} 
-          borderRadius="10px" 
-          p={3} 
-          textAlign="left" 
-          boxShadow="md" 
-          border={useColorModeValue('1px solid #ce3072', 'none')}
-        >
-          <Text 
-            fontWeight="bold" 
-            color={useColorModeValue("gray.700", "whiteAlpha.800")} 
-            fontSize={{ base: "xs", md: "sm" }}
+          <Stack
+            spacing={1}
+            bg={useColorModeValue("transparent", "gray.600")}
+            borderRadius="10px"
+            p={3}
+            textAlign="left"
+            boxShadow="md"
+            border={useColorModeValue('1px solid #ce3072', 'none')}
           >
-            {isSpanish ? "Ubicación:" : "Location:"}
-          </Text>
-          <Text 
-            color={textColor} 
-            fontWeight={600} 
-            fontSize={{ base: "sm", md: "md" }} 
-            fontFamily="monospace"
-          >
-            Mar del Plata, Argentina
-          </Text>
-        </Stack>
+            <Text
+              fontWeight="bold"
+              color={useColorModeValue("gray.700", "whiteAlpha.800")}
+              fontSize={{ base: "xs", md: "sm" }}
+            >
+              {isSpanish ? "Ubicación:" : "Location:"}
+            </Text>
+            <Text
+              color={textColor}
+              fontWeight={600}
+              fontSize={{ base: "sm", md: "md" }}
+              fontFamily="monospace"
+            >
+              Mar del Plata, Argentina
+            </Text>
+          </Stack>
+        </Flex>
 
-        <Flex 
-          flexDirection="column" 
-          alignItems="center" 
-          mt="auto" 
-          mb={3} 
+        <Flex
+          flexDirection="column"
+          alignItems="center"
+          m="auto"
+          mb={6}
           w="100%"
           gap={2}
         >
           <HStack spacing={4}>
             <Tooltip label={isSpanish ? "Mi GitHub" : "My GitHub"}>
               <Link href="https://github.com/valentinsg" isExternal>
-                <Icon 
-                  as={FaGithub} 
-                  w={{ base: 8, md: 9 }} 
-                  h={{ base: 8, md: 9 }} 
-                  p={1} 
-                  _hover={{ transform: "scale(1.1)" }} 
-                  transition="all 0.5s ease" 
+                <Icon
+                  as={FaGithub}
+                  w={{ base: 8, md: 12 }}
+                  h={{ base: 8, md: 12 }}
+                  p={1}
+                  _hover={{ transform: "scale(1.1)" }}
+                  transition="all 0.5s ease"
                 />
               </Link>
             </Tooltip>
             <Tooltip label={isSpanish ? "Ir a mi LinkedIn" : "Go to my LinkedIn"}>
               <Link href="https://www.linkedin.com/in/valent%C3%ADn-s-761910200/" isExternal>
-                <Icon 
-                  as={FaLinkedin} 
-                  w={{ base: 8, md: 9 }} 
-                  h={{ base: 8, md: 9 }} 
-                  p={1} 
-                  _hover={{ transform: "scale(1.1)" }} 
-                  transition="all 0.5s ease" 
+                <Icon
+                  as={FaLinkedin}
+                  w={{ base: 8, md: 12 }}
+                  h={{ base: 8, md: 12 }}
+                  p={1}
+                  _hover={{ transform: "scale(1.1)" }}
+                  transition="all 0.5s ease"
                 />
               </Link>
             </Tooltip>
@@ -198,8 +199,8 @@ const Sidebar = () => {
               colorScheme="pink"
               fontFamily="monospace"
               fontSize={{ base: "xs", md: "md" }}
-              size={{ base: "sm", md: "md" }}
-              p={{ base: 4, md: 6 }}
+              size={{ base: "sm", md: "lg" }}
+              p={{ base: 4, md: "auto" }}
             >
               {isSpanish ? "Trabajemos Juntos" : "Work Together"}
             </Button>

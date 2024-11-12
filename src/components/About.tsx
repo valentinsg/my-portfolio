@@ -3,17 +3,20 @@ import { Box, Flex, Text, Heading, HStack, Tooltip, IconButton, useColorModeValu
 import { CopyIcon } from '@chakra-ui/icons';
 import { useLanguage } from '../context/LanguageProvider';
 
-const About = () => {
+interface AboutProps {
+  id: string;
+}
+const About: React.FC<AboutProps> = ({ id }) => {
   const { isSpanish } = useLanguage();
 
-  const headerColor = useColorModeValue("gray.700", "gray.100");
-  const textColor = useColorModeValue("gray.500", "whiteAlpha.900");
+  const headerColor = useColorModeValue("gray.700", "whiteAlpha.900");
+  const textColor = useColorModeValue("gray.700", "whiteAlpha.900");
   const accentColor = useColorModeValue('pink.600', 'pink.300');
 
   const toast = useToast();
 
   return (
-    <Flex direction="column" m={[4, 6]} minH="100vh" color={textColor}>
+    <Flex direction="column" m={[4, 6]} minH="100vh" color={textColor} id={id} px={{ base: 4, md: "auto" }}>
       {/* Columna principal: Título y Logros */}
 
       <Box mb={20} textAlign="center">
@@ -77,6 +80,7 @@ const About = () => {
                   status: "success",
                   duration: 2000,
                   isClosable: true,
+                  colorScheme: "pink",
                 });
               }}
               aria-label={isSpanish ? 'Copiar Correo' : 'Copy Email'}
@@ -101,6 +105,7 @@ const About = () => {
                   status: "success",
                   duration: 2000,
                   isClosable: true,
+                  colorScheme: "pink",
                 });
               }}
             />
