@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Heading, Text, useColorModeValue, Flex, Icon, Tooltip } from '@chakra-ui/react';
+import { Box, Heading, useColorModeValue, Flex, Icon, Tooltip } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaPython, FaHtml5, FaCss3Alt, FaJsSquare, FaGitAlt} from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaPython, FaHtml5, FaCss3Alt, FaJsSquare, FaGitAlt } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiPostgresql, SiRedux, SiChakraui, SiSpringboot } from 'react-icons/si';
 import { GiCrab } from "react-icons/gi";
 
@@ -18,30 +18,32 @@ const ProjectsContainer: React.FC<ProjectsContainerProps> = ({
   bgImage,
   gifUrl,
   title,
-  description,
   technologies,
   url
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const bgColor = useColorModeValue('gray.100', 'gray.800');
-  const textColor = useColorModeValue("gray.800", "whiteAlpha.900");
+  const textColor = useColorModeValue("gray.700", "whiteAlpha.900");
 
   return (
     <Box
       as={motion.div}
       w="100%"
-      h={{ base: "300px", md: "375px" }}
+      h={{ base: "300px", md: "400px" }}
       bg={bgColor}
-      borderRadius="lg"
+      borderRadius="xl"
       boxShadow="lg"
       overflow="hidden"
       position="relative"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
+      transform={isHovered ? "scale(1.05)" : "scale(1)"}
+      transition="all 0.3s ease"
       onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
       cursor="pointer"
     >
+
       {/* Imagen de fondo estática */}
       <Box
         position="absolute"
@@ -77,57 +79,45 @@ const ProjectsContainer: React.FC<ProjectsContainerProps> = ({
         left="0"
         right="0"
         bottom="0"
-        bg={isHovered ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.3)"}
+        borderRadius="xl"
+        bg={isHovered ? "rgba(0,0,0,0.35)" : "rgba(0,0,0,0.5)"}
         transition="background 0.3s ease-in-out"
       />
 
       {/* Contenido del proyecto */}
       <Flex
         h="100%"
-        p={6}
-        justifyContent="space-between"
+        px={8}
+        py={4}
         alignItems="flex-end"
         position="relative"
         zIndex={1}
       >
         {/* Iconos de tecnologías alineados a la izquierda */}
-        <Flex direction="row" align="flex-end" w={"50%"}>
-          {technologies.map((tech, index) => (
-            <Tooltip key={index} label={tech} placement="top">
-              <Box>
-                <Icon
-                  as={getIconForTechnology(tech)}
-                  boxSize={6}
-                  mr={2}
-                  mb={2}
-                  color="white"
-                  filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.6))"
-                />
-              </Box>
-            </Tooltip>
-          ))}
-        </Flex>
+        {technologies.map((tech, index) => (
+          <Tooltip key={index} label={tech} placement="top">
+            <Box>
+              <Icon
+                as={getIconForTechnology(tech)}
+                boxSize={5}
+                mr={2}
+                mb={2}
+                color="whiteAlpha.800"
+              />
+            </Box>
+          </Tooltip>
+        ))}
 
         {/* Título y descripción alineados a la derecha */}
-        <Flex flexDir={"column"} alignItems="flex-end" w={"85%"}>
-            <Heading
-            as="h3"
-            size="xl"
-            color={textColor}
-            textShadow={useColorModeValue("1px 3px 2px rgba(255,255,255,0.6)", "1px 4px 2px rgba(0,0,0,0.6)")}
-            >
-            {title}
-            </Heading>
-          <Text
-            fontSize="md"
-            textAlign={"right"}
-            color={textColor}
-            fontWeight="medium"
-            textShadow={useColorModeValue("1px 3px 2px rgba(255,255,255,0.6)", "1px 4px 2px rgba(0,0,0,0.6)")}
-          >
-            {description}
-          </Text>
-        </Flex>
+        <Heading
+          as="h3"
+          size="lg"
+          color={textColor}
+          textAlign={"right"}
+          lineHeight={1}
+        >
+          {title}
+        </Heading>
       </Flex>
     </Box>
   );

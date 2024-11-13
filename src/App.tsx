@@ -107,7 +107,7 @@ const App: React.FC = () => {
         {/* Main Content */}
         <Box display="flex" flexDirection={{ base: 'column', md: 'row' }} px={{ base: 4, md: 8 }}>
           {/* Sidebar */}
-          <Flex flexShrink={0} w={{ base: "100%", md: "280px", lg: "325px" }}>
+          <Flex display={{ base: "none", md: "block" }} flexShrink={0} w={{ md: "280px", lg: "325px" }}>
             <Sidebar />
           </Flex>
 
@@ -131,7 +131,7 @@ const App: React.FC = () => {
 
           {/* Main Content Sections */}
           <Box p={8} display="flex" flexDir="column" gap={12}>
-            <header>
+            <Box display={{base: "none", md:"flex"}}>
               <Header
                 selectedSection={selectedSection}
                 setSelectedSection={setSelectedSection}
@@ -139,7 +139,7 @@ const App: React.FC = () => {
                 toggleColorMode={toggleColorMode}
                 isMobile={false}
               />
-            </header>
+            </Box>
 
             <Home id="home-section" setSelectedSection={setSelectedSection} />
             <Projects id="projects-section" />

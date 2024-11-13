@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
   const scrollToSection = (section: keyof typeof sectionConfig) => {
     const sectionId = `${sectionConfig[section]}-section`;
     const element = document.getElementById(sectionId);
-    
+
     if (element) {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
@@ -101,8 +101,8 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
         flexShrink={0}
       >
         {/* Language Selector */}
-        <Tooltip label={isSpanish ? 'Cambiar idioma' : 'Change language'}>
-          <Menu>
+        <Menu>
+          <Tooltip label={isSpanish ? 'Cambiar idioma' : 'Change language'}>
             <MenuButton
               as={Button}
               size={{ base: "sm", md: "md" }}
@@ -119,38 +119,42 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
                 }
               </Box>
             </MenuButton>
-            <MenuList>
-              <MenuItem icon={<img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt="Argentina Flag" width="20" height="20" />} onClick={toggleLanguage}>
-                Español
-              </MenuItem>
-              <MenuItem icon={<img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="USA Flag" width="20" height="20" />} onClick={toggleLanguage}>
-                English
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        </Tooltip>
+          </Tooltip>
+          <MenuList>
+            <MenuItem icon={<img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt="Argentina Flag" width="20" height="20" />} onClick={toggleLanguage}>
+              Español
+            </MenuItem>
+            <MenuItem icon={<img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="USA Flag" width="20" height="20" />} onClick={toggleLanguage}>
+              English
+            </MenuItem>
+          </MenuList>
+        </Menu>
 
         {/* Theme Toggle */}
-        <IconButton
-          aria-label="Dark Mode Toggle"
-          icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
-          onClick={toggleColorMode}
-          bg={buttonBg}
-          size={{ base: "sm", md: "md" }}
-          color={buttonColor}
-          _hover={{ bg: buttonHoverBg }}
-        />
+        <Tooltip label={isSpanish ? 'Cambiar modo' : 'Change mode'}>
+          <IconButton
+            aria-label="Dark Mode Toggle"
+            icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
+            onClick={toggleColorMode}
+            bg={buttonBg}
+            size={{ base: "sm", md: "md" }}
+            color={buttonColor}
+            _hover={{ bg: buttonHoverBg }}
+          />
+        </Tooltip>
 
         {/* Contact Button */}
-        <Button
-          variant="outline"
-          colorScheme="pink"
-          size={{ base: "sm", md: "md" }}
-          rightIcon={<ExternalLinkIcon />}
-          onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0aKsiCw2ol12PWw6vXoe4hlEkeje1TK5ldpY29MFj-cclKi8ALgE1peSmD7JCH4jYw5pay1Rx7', '_blank')}
-        >
-          {isSpanish ? 'Habla conmigo' : "Let's Talk"}
-        </Button>
+        <Tooltip label={isSpanish ? 'Agenda una reunión conmigo' : 'Schedule a meeting with me'}>
+          <Button
+            variant="outline"
+            colorScheme="pink"
+            size={{ base: "sm", md: "md" }}
+            rightIcon={<ExternalLinkIcon />}
+            onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0aKsiCw2ol12PWw6vXoe4hlEkeje1TK5ldpY29MFj-cclKi8ALgE1peSmD7JCH4jYw5pay1Rx7', '_blank')}
+          >
+            {isSpanish ? 'Habla conmigo' : "Let's Talk"}
+          </Button>
+        </Tooltip>
       </Flex>
     </Flex>
   );

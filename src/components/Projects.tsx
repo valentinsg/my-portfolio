@@ -53,7 +53,7 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
     md: "repeat(2, 1fr)",
     lg: "repeat(2, 1fr)"
   });
-  const gridGap = useBreakpointValue({ base: 8, md: 12, lg: 16 });
+  const gridGap = useBreakpointValue({ base: 8, md: 10, lg: 12 });
 
   const projectsData = [
     {
@@ -88,7 +88,7 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
         "Software development company specialized in web3 solutions and enterprise applications",
       technologies: ['React', 'TypeScript', 'ChakraUI', 'Redux', 'Spring Boot', 'MongoDB'],
       type: 'software',
-      category: isSpanish ? "Desarrollo Empresarial" : "Enterprise Development"
+      category: isSpanish ? "Software Empresarial" : "Enterprise Development"
     },
     {
       bgImage: BusyLandingImage,
@@ -98,7 +98,7 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
         "Interactive fashion brand landing page with dynamic visual features and optimized user experience",
       technologies: ['React', 'TypeScript', 'ChakraUI'],
       type: 'branding',
-      category: isSpanish ? "Diseño Web" : "Web Design"
+      category: isSpanish ? "Diseño/Web" : "Diseño/Web"
     }
   ];
 
@@ -110,15 +110,14 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
     { value: 'all', label: isSpanish ? 'Todos' : 'All' },
     { value: 'software', label: 'Software' },
     { value: 'branding', label: 'Branding' },
-    { value: 'content-strategist', label: isSpanish ? 'Estrategias de contenido' : 'Content Strategist' }
   ];
 
   return (
-    <Box 
+    <Box
       id={id}
       m={6}
-      as="section" 
-      py={12} 
+      as="section"
+      py={12}
       px={{ base: 4, md: "auto" }}
       aria-label={isSpanish ? "Sección de proyectos" : "Projects section"}
     >
@@ -175,8 +174,8 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
       <Grid
         templateColumns={gridColumns}
         gap={gridGap}
-        role="list"
         aria-label={isSpanish ? "Lista de proyectos" : "Projects list"}
+        role="list"
       >
         {filteredProjects.map((project, index) => (
           <Box
@@ -184,6 +183,7 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
             role="listitem"
             position="relative"
           >
+
             <Badge
               position="absolute"
               top={4}

@@ -201,6 +201,8 @@ const Sidebar = () => {
               fontSize={{ base: "xs", md: "md" }}
               size={{ base: "sm", md: "lg" }}
               p={{ base: 4, md: "auto" }}
+              w={{ base: "90%", md: "100%" }}
+              maxW="250px"
             >
               {isSpanish ? "Trabajemos Juntos" : "Work Together"}
             </Button>

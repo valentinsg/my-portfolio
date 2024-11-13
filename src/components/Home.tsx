@@ -116,8 +116,6 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection, id }) => {
             colorScheme="pink"
             variant={"outline"}
             boxShadow="md"
-            _hover={{ bg: 'pink.300' }}
-            _active={{ bg: 'pink.500' }}
           />
         </Tooltip>
       </Flex>
