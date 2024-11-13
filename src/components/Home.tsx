@@ -32,12 +32,13 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection, id }) => {
   return (
     <Flex
       id={id}
-      minH={{ base: "100vh", md: "85vh" }}
+      minH={{ base: "auto", md: "85vh" }}
       w="100%"
       flexDir="column"
-      px={{ base: 4, md: "auto" }}
-      m={6}
-      gap={12}
+      px={{ base: 0, md: "auto" }}
+      m={{base: 0, md: 6}}
+      gap={{base: 6, md:12}}
+      mt={{base: 6, md: "none"}}
     >
       <VStack
         alignItems={{ base: "center", md: "flex-start" }}
@@ -45,19 +46,19 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection, id }) => {
         userSelect="none"
         spacing={1}
       >
-        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
+        <Text fontSize={{ base: '5xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           {isSpanish ? 'Soy' : 'I am'}
         </Text>
-        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
+        <Text fontSize={{ base: '5xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           Valentín
         </Text>
-        <Text fontSize={{ base: '4xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
+        <Text fontSize={{ base: '5xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           Sánchez Guevara
         </Text>
-        <Text fontSize={{ base: 'lg', md: '2xl', lg: '2.3vw' }} color={accentColor} fontFamily="monospace" mt={-1}>
+        <Text fontSize={{ base: 'xl', md: '2xl', lg: '2.3vw' }} color={accentColor} fontFamily="monospace" mt={-1}>
           {isSpanish ? 'Mejorando empresas a través de la digitalización.' : 'Helping businesses thrive through digitalization.'}
         </Text>
-        <Text mb={4} fontStyle="italic" fontSize={{ base: 'sm', md: 'md', lg: '1.3vw' }} color={textColor} mt={-2}>
+        <Text mb={4} fontStyle="italic" fontSize={{ base: 'md', md: 'md', lg: '1.3vw' }} color={textColor} mt={-2}>
           {isSpanish ? 'Viviendo en Mar del Plata, Argentina' : 'Based in Mar del Plata, Argentina'}
         </Text>
       </VStack>
@@ -65,7 +66,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection, id }) => {
       <Flex
         gap={{ base: 4, lg: 6 }}
         alignItems="center"
-        direction={{ base: "column", md: "row" }}
+        direction={"row"}
       >
         <Tooltip label={isSpanish ? 'Descargar CV' : 'Download CV'} placement="top">
           <span>
@@ -109,7 +110,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection, id }) => {
 
         <Tooltip label={isSpanish ? 'Contactarme' : 'Scroll to Contact'} placement="top">
           <IconButton
-            size={{ base: 'md', md: 'lg' }}
+            size={{ base: 'sm', md: 'lg' }}
             aria-label="Scroll to contact"
             icon={<FaAddressBook />}
             onClick={() => scrollToSection('Contact')}

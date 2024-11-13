@@ -130,7 +130,7 @@ const App: React.FC = () => {
             </Slide>
 
           {/* Main Content Sections */}
-          <Box p={8} display="flex" flexDir="column" gap={12}>
+          <Box p={8} display="flex" flexDir="column" gap={{base: 2, md:12}}>
             <Box display={{base: "none", md:"flex"}}>
               <Header
                 selectedSection={selectedSection}

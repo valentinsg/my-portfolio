@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Text, Heading, HStack, Tooltip, IconButton, useColorModeValue, useToast } from '@chakra-ui/react';
+import { Box, Flex, Text, Heading, Stack, Tooltip, IconButton, useColorModeValue, useToast } from '@chakra-ui/react';
 import { CopyIcon } from '@chakra-ui/icons';
 import { useLanguage } from '../context/LanguageProvider';
 
@@ -16,15 +16,15 @@ const About: React.FC<AboutProps> = ({ id }) => {
   const toast = useToast();
 
   return (
-    <Flex direction="column" m={[4, 6]} minH="100vh" color={textColor} id={id} px={{ base: 4, md: "auto" }}>
+    <Flex direction="column" m={[4, 6]} minH="100vh" color={textColor} id={id} px={{ base: 0, md: "auto" }}>
       {/* Columna principal: Título y Logros */}
 
-      <Box mb={20} textAlign="center">
-        <Heading color={headerColor} as="h1" fontSize={["4xl", "4.2vw"]} lineHeight="1.1" mb={16} textAlign={"left"}>
+      <Box mb={20} textAlign={{ base: "left", md: "center" }}>
+        <Heading color={headerColor} as="h1" fontSize={["3xl", "4.2vw"]} lineHeight="1.1" mb={16} textAlign={"left"}>
           {isSpanish ? 'Resolviendo problemas complejos con un diseño simple' : 'Turning complex problems into simple design'}
         </Heading>
         {/* Logros */}
-        <Flex justify="space-between" mx={20}>
+        <Flex justify="space-between" mx={20} flexDir={{ base: "column", md: "row" }}>
           <Box textAlign="center">
             <Heading fontSize={["3xl", "6xl"]} color={accentColor}>100%</Heading>
             <Text fontSize="2xl">{isSpanish ? 'Soluciones Personalizadas' : 'Custom Solutions'}</Text>
@@ -62,9 +62,8 @@ const About: React.FC<AboutProps> = ({ id }) => {
         </Text>
       </Box>
 
-      <HStack spacing={30} justifyContent={"center"} mt={14}>
-
-        <Flex gap={8} alignItems={"center"}>
+      <Stack direction={{ base: "column", md: "row" }} spacing={30} justifyContent={"center"} mt={14}>
+        <Flex gap={8} alignItems={"center"} >
           <Text fontSize="lg" fontFamily={"monospace"}>
             <Text as="span" fontSize={"lg"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Correo: ' : 'Mail: '}</Text>
             sanchezguevaravalentin@gmail.com
@@ -112,7 +111,7 @@ const About: React.FC<AboutProps> = ({ id }) => {
           </Tooltip>
         </Flex>
 
-      </HStack>
+      </Stack>
     </Flex>
   );
 };
