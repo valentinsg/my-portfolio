@@ -59,17 +59,18 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
       direction={{ base: "column", md: "row" }}
       justify="space-between"
       align={{ base: "stretch", md: "center" }}
-      gap={4}
+      gap={6}
       w="100%"
       maxW="1400px"
       mx="auto"
     >
       {/* Navigation Section */}
       <Flex
-        gap={2}
+        gap={{base: 4, md: 2}}
         flex="1"
         flexWrap="wrap"
         justify={{ base: "center", md: "flex-start" }}
+        flexDir={{ base: "column", md: "row" }}
       >
         {sections.map((section, index) => (
           <Tooltip key={index} label={section} fontSize="sm">
@@ -78,9 +79,9 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
               color={buttonColor}
               bg={selectedSection === section ? buttonBg : buttonBg}
               fontFamily="monospace"
-              fontSize={{ base: 'xs', sm: 'sm', md: 'md' }}
+              fontSize={{ base: 'md', sm: 'sm', md: 'md' }}
               px={{ base: 2, sm: 3, md: 4 }}
-              height={{ base: "32px", md: "45px" }}
+              height={{ base: "35px", md: "45px" }}
               minW={{ base: "auto", md: "auto" }}
               transition="all 0.3s ease-in-out"
               borderRadius="8px"
@@ -97,6 +98,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
         gap={2}
         justify={{ base: "center", md: "flex-end" }}
         align="center"
+        flexDir={{base: "column", md: "row"}}
         flexShrink={0}
       >
         {/* Language Selector */}
@@ -147,7 +149,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
           <Button
             variant="outline"
             colorScheme="pink"
-            size={{ base: "sm", md: "md" }}
+            size={{ base: "md", md: "md" }}
             rightIcon={<ExternalLinkIcon />}
             onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0aKsiCw2ol12PWw6vXoe4hlEkeje1TK5ldpY29MFj-cclKi8ALgE1peSmD7JCH4jYw5pay1Rx7', '_blank')}
           >

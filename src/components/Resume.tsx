@@ -5,7 +5,7 @@ import { FaCheckCircle, FaGithub, FaLinkedin, FaPhone } from 'react-icons/fa';
 import { SiMailgun } from 'react-icons/si';
 import Valentin from '../img/valentin.png';
 
-interface ResumeProps { 
+interface ResumeProps {
   id: string;
 }
 
@@ -21,7 +21,7 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <Box m={6} id={id} px={{ base: 4, md: "auto" }}>
+    <Box m={{ base: 2, md: 6 }} id={id} px={{ base: 2, md: "auto" }} mt={{base: 20, md:"0"}}>
       <Box textAlign="center" mb={16}>
         <Tooltip label={isSpanish ? "Mostrar imagen" : "Show image"} aria-label="Image Tooltip">
           <Box
@@ -37,30 +37,32 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
             <Image src={Valentin} boxSize="150px" objectFit="cover" />
           </Box>
         </Tooltip>
-        <Heading as="h1" size="2xl" m={4} color={headerColor}>
+        <Heading as="h1" size={{ base: "md", md: "2xl" }} m={4} color={headerColor}>
           Valentín Sánchez Guevara
         </Heading>
-        <Text fontSize="xl" color={textColor} letterSpacing="tight">
+        <Text fontSize={{ base: "sm", md: "xl" }} color={textColor} letterSpacing={{ base: "", md: "tight" }}>
           {isSpanish ? "Desarrollador | Creativo | Emprendedor" : "Developer | Creative | Entrepreneur"}
         </Text>
 
         <Flex justifyContent="center" gap={8} m={4}>
-          <Tooltip label={isSpanish ? "Mostrar correo electrónico" : "Show email"} aria-label="Email Tooltip">
-            <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowEmail(!showEmail)}>
-              <SiMailgun size={"25px"} color={accentColor} />
-              <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showEmail ? '300px' : '0'} transition="max-width 0.4s ease-out">
-                <Text>{showEmail ? 'sanchezguevaravalentin@gmail.com' : ''}</Text>
-              </Box>
-            </Flex>
-          </Tooltip>
-          <Tooltip label={isSpanish ? "Mostrar número de teléfono" : "Show phone number"} aria-label="Phone Tooltip">
-            <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowPhone(!showPhone)}>
-              <FaPhone size={"25px"} color={accentColor} />
-              <Box ml={2} overflow="higut dden" whiteSpace="nowrap" maxWidth={showPhone ? '200px' : '0'} transition="max-width 0.4s ease-out">
-                <Text>{showPhone ? '+54 9 2236680041' : ''}</Text>
-              </Box>
-            </Flex>
-          </Tooltip>
+          <Box display={{base: "none", md:"flex"}} gap={6}>
+            <Tooltip label={isSpanish ? "Mostrar correo electrónico" : "Show email"} aria-label="Email Tooltip">
+              <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowEmail(!showEmail)}>
+                <SiMailgun size={"25px"} color={accentColor} />
+                <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showEmail ? '300px' : '0'} transition="max-width 0.4s ease-out">
+                  <Text>{showEmail ? 'sanchezguevaravalentin@gmail.com' : ''}</Text>
+                </Box>
+              </Flex>
+            </Tooltip>
+            <Tooltip label={isSpanish ? "Mostrar número de teléfono" : "Show phone number"} aria-label="Phone Tooltip">
+              <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowPhone(!showPhone)}>
+                <FaPhone size={"25px"} color={accentColor} />
+                <Box ml={2} overflow="higut dden" whiteSpace="nowrap" maxWidth={showPhone ? '200px' : '0'} transition="max-width 0.4s ease-out">
+                  <Text>{showPhone ? '+54 9 2236680041' : ''}</Text>
+                </Box>
+              </Flex>
+            </Tooltip>
+          </Box>
 
           <Tooltip label={isSpanish ? "Perfil de GitHub" : "GitHub Profile"} aria-label="GitHub Tooltip">
             <Link href="https://github.com/tu-usuario" isExternal>
@@ -75,41 +77,41 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
         </Flex>
       </Box>
 
-      <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+      <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }} gap={6}>
         <Box mb={10}>
-          <Heading color={accentColor} as="h2" fontSize="3xl" mb={6}>
+          <Heading color={accentColor} as="h2" fontSize={{base: "xl", md:"3xl"}} mb={6}>
             {isSpanish ? "Habilidades" : "Skills"}
           </Heading>
-          <Text fontSize="lg" color={textColor}>
+          <Text fontSize={{base: "md", md:"lg"}} color={textColor}>
             <strong>{isSpanish ? "Idiomas:" : "Languages:"}</strong> JavaScript, TypeScript, Python.
           </Text>
-          <Text fontSize="lg" color={textColor}>
+          <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
             <strong>{isSpanish ? "Librerias de UI:" : "UI Libraries:"}</strong> Chakra UI, Ionic, Bootstrap.
           </Text>
-          <Text fontSize="lg" color={textColor}>
+          <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
             <strong>{isSpanish ? "Frameworks / Librerias:" : "Frameworks / Libraries:"}</strong> React, Next.js, Redux.
           </Text>
-          <Text fontSize="lg" color={textColor}>
+          <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
             <strong>{isSpanish ? "Marketing y Comunicación:" : "Marketing and Communication:"}</strong> {isSpanish ? "Diseño, Marketing Digital y Estrategia de Contenidos, Community Manager y Presencia Digital" : "Design, Digital Marketing & Content Strategy, Community & Digital Engagement."}
           </Text>
-          <Text fontSize="lg" color={textColor}>
+          <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
             <strong>{isSpanish ? "Inglés:" : "English:"}</strong> B2.
           </Text>
 
           <Box mt={10}>
-            <Heading color={accentColor} as="h2" fontSize="3xl" mb={6}>
+            <Heading color={accentColor} as="h2" fontSize={{base: "xl", md:"3xl"}} mb={6}>
               {isSpanish ? "Educación" : "Education"}
             </Heading>
-            <Text fontSize="lg" color={textColor}>
+            <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
               <strong>{isSpanish ? "Bachiller en Ciencias Sociales:" : "Bachelor's Degree in Social Sciences:"}</strong>
             </Text>
-            <Text fontSize="lg" color={textColor}>
+            <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
               IEPM - EESN°42.
             </Text>
-            <Text fontSize="lg" color={textColor}>
+            <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
               <strong>{isSpanish ? "Técnico en Desarrollo de Software (INCOMPLETO):" : "Technical Degree in Software Development (UNFINISHED):"}</strong>
             </Text>
-            <Text fontSize="lg" color={textColor}>
+            <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
               UTN MDP.
             </Text>
           </Box>
@@ -122,7 +124,7 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
               mt={10}
               onClick={() => {
                 const link = document.createElement('a');
-                link.href = '/cv-valen.pdf';  
+                link.href = '/cv-valen.pdf';
                 link.download = 'Valentin_Sanchez_Guevara_Resume.pdf';
                 document.body.appendChild(link);
                 link.click();
@@ -135,11 +137,11 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
 
         <Box mb={10}>
           <Box mb={8}>
-            <Heading fontSize="2xl" color={accentColor}>
+            <Heading fontSize={{base: "xl", md:"2xl"}} color={accentColor} mb={6}>
               {isSpanish ? "Desarrollador Front-End JR. @Smithii (Remoto)" : "JR. Front-End Developer @Smithii (Remote)"}
             </Heading>
-            <Text fontSize="lg" color={textColor}>{isSpanish ? "Agosto 2023 - Septiembre 2024" : "August 2023 - September 2024"}</Text>
-            <Text fontSize="lg" color={textColor} mt={2}>
+            <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>{isSpanish ? "Agosto 2023 - Septiembre 2024" : "August 2023 - September 2024"}</Text>
+            <Text fontSize={{base: "md", md:"lg"}}  color={textColor} mt={2}>
               {isSpanish ? "Miembro fundador de un equipo que construye herramientas de gestión de criptomonedas y tokens. Contribuciones clave incluyen:" : "Founding member of a team building crypto and token management tools. Key contributions include:"}
             </Text>
             <List spacing={3} mt={2} color={textColor}>
@@ -158,12 +160,12 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
             </List>
           </Box>
 
-          <Box mb={8}>
-            <Heading fontSize="2xl" color={accentColor}>
+          <Box mb={8} mt={10}>
+            <Heading fontSize={{base: "xl", md:"2xl"}} color={accentColor} mb={6}>
               {isSpanish ? "Freelance" : "Freelance"}
             </Heading>
-            <Text fontSize="lg" color={textColor}>{isSpanish ? "Junio 2022 - Presente" : "June 2022 - Present"}</Text>
-            <Text fontSize="lg" color={textColor} mt={2}>
+            <Text fontSize={{base: "md", md:"lg"}} color={textColor}>{isSpanish ? "Junio 2022 - Presente" : "June 2022 - Present"}</Text>
+            <Text fontSize={{base: "md", md:"lg"}} color={textColor} mt={2}>
               {isSpanish ? "Entregué soluciones web personalizadas y servicios de consultoría para varias pequeñas empresas. Los resultados incluyen:" : "Delivered custom web solutions and consulting services for various small businesses. Key results include:"}
             </Text>
             <List spacing={3} mt={2} color={textColor}>

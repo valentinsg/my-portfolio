@@ -100,9 +100,9 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
   const labelColor = useColorModeValue('gray.900', 'gray.200');
 
   return (
-    <VStack spacing={10} align="stretch" m={6} id={id} px={{ base: 4, md: "auto" }}>
+    <VStack spacing={10} align="stretch" m={{ base: 2, md: 6 }}  id={id} px={{ base: 2, md: "auto" }}>
       {/* Título del formulario */}
-      <Heading size="3xl" color={headingColor} textAlign="left" mb={6}>
+      <Heading size={{base: "2xl", md:"3xl"}} color={headingColor} textAlign="left" mb={{ base: 2, md: 6 }}  >
         {isSpanish ? "¡Contáctame directamente!" : "Get in Touch with Me!"}
       </Heading>
 
@@ -203,7 +203,7 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
           <Button
             variant="outline"
             p={6}
-            w={"15vw"}
+            w={{base: "100%",md:"15vw"}}
             boxShadow={'md'}
             colorScheme="pink"
             fontSize={{ base: "sm", md: "md", lg: "lg" }}

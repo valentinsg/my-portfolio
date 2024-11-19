@@ -16,34 +16,34 @@ const About: React.FC<AboutProps> = ({ id }) => {
   const toast = useToast();
 
   return (
-    <Flex direction="column" m={[4, 6]} minH="100vh" color={textColor} id={id} px={{ base: 0, md: "auto" }}>
+    <Flex direction="column" m={[2, 6]} minH="100vh" color={textColor} id={id} px={{ base: 0, md: "auto" }}>
       {/* Columna principal: Título y Logros */}
 
       <Box mb={20} textAlign={{ base: "left", md: "center" }}>
-        <Heading color={headerColor} as="h1" fontSize={["3xl", "4.2vw"]} lineHeight="1.1" mb={16} textAlign={"left"}>
+        <Heading color={headerColor} as="h1" fontSize={["7vw", "4.2vw"]} lineHeight="1.1" mb={{base: 8, md:16}} textAlign={{ base: "center", md: "left" }}>
           {isSpanish ? 'Resolviendo problemas complejos con un diseño simple' : 'Turning complex problems into simple design'}
         </Heading>
         {/* Logros */}
-        <Flex justify="space-between" mx={20} flexDir={{ base: "column", md: "row" }}>
+        <Flex justify="space-between" mx={{base: 0, md: 20}} flexDir={{ base: "column", md: "row" }} gap={{base: 12 , md: "normal"}}>
           <Box textAlign="center">
-            <Heading fontSize={["3xl", "6xl"]} color={accentColor}>100%</Heading>
-            <Text fontSize="2xl">{isSpanish ? 'Soluciones Personalizadas' : 'Custom Solutions'}</Text>
+            <Heading fontSize={["5xl", "6xl"]} color={accentColor}>100%</Heading>
+            <Text fontSize={{base: "xl", md: "2xl"}}>{isSpanish ? 'Soluciones Personalizadas' : 'Custom Solutions'}</Text>
           </Box>
           <Box textAlign="center">
-            <Heading fontSize={["3xl", "6xl"]} color={accentColor}>2021</Heading>
-            <Text fontSize="2xl">{isSpanish ? 'Entregando Soluciones de Calidad Desde' : 'Delivering Quality Solutions Since'}</Text>
+            <Heading fontSize={["5xl", "6xl"]}color={accentColor}>2021</Heading>
+            <Text fontSize={{base: "xl", md: "2xl"}}>{isSpanish ? 'Entregando Soluciones de Calidad Desde' : 'Delivering Quality Solutions Since'}</Text>
           </Box>
           <Box textAlign="center">
-            <Heading fontSize={["3xl", "6xl"]} color={accentColor}>10+</Heading>
-            <Text fontSize="2xl">{isSpanish ? 'Proyectos Realizados' : 'Projects Done'}</Text>
+            <Heading fontSize={["5xl", "6xl"]} color={accentColor}>10+</Heading>
+            <Text fontSize={{base: "xl", md: "2xl"}}>{isSpanish ? 'Proyectos Realizados' : 'Projects Done'}</Text>
           </Box>
         </Flex>
       </Box>
 
       {/* Cuerpo principal: Biografía y Contacto */}
       {/* Columna izquierda: Biografía */}
-      <Box mb={[8, 0]}>
-        <Text fontSize={["lg", "xl"]} lineHeight="tall" textAlign="justify">
+      <Box mb={[6, 0]}>
+        <Text fontSize={["md", "xl"]} lineHeight="tall" textAlign="justify">
           {isSpanish ? (
             <>
               Desde que soy chico, siempre estuve en contacto con tecnología gracias al estudio de mi papá, y mi curiosidad por crear cosas comenzó en esa época. Inventaba historias, construía mundos en juegos y desde entonces le sumo mi toque creativo a todo lo que hago. <br /><br />
@@ -63,8 +63,8 @@ const About: React.FC<AboutProps> = ({ id }) => {
       </Box>
 
       <Stack direction={{ base: "column", md: "row" }} spacing={30} justifyContent={"center"} mt={14}>
-        <Flex gap={8} alignItems={"center"} >
-          <Text fontSize="lg" fontFamily={"monospace"}>
+        <Flex gap={8} alignItems={"center"}>
+          <Text fontSize={{base: "md", md:"lg"}}fontFamily={"monospace"}>
             <Text as="span" fontSize={"lg"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Correo: ' : 'Mail: '}</Text>
             sanchezguevaravalentin@gmail.com
           </Text>
@@ -88,7 +88,7 @@ const About: React.FC<AboutProps> = ({ id }) => {
         </Flex>
 
         <Flex gap={8} alignItems={"center"}>
-          <Text fontSize="lg" fontFamily={"monospace"}>
+          <Text fontSize={{base: "md", md:"lg"}} fontFamily={"monospace"}>
             <Text as="span" fontSize={"lg"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Teléfono: ' : 'Phone: '}</Text>
             +54 9 2236680041
           </Text>

@@ -32,27 +32,27 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection, id }) => {
   return (
     <Flex
       id={id}
-      minH={{ base: "auto", md: "85vh" }}
+      minH={{ base: "82vh", md: "85vh" }}
       w="100%"
       flexDir="column"
+      justifyContent={{base: "center", md: "normal"}}
       px={{ base: 0, md: "auto" }}
-      m={{base: 0, md: 6}}
+      m={{base: "auto", md: 6}}
       gap={{base: 6, md:12}}
-      mt={{base: 6, md: "none"}}
     >
       <VStack
-        alignItems={{ base: "center", md: "flex-start" }}
-        textAlign={{ base: "center", md: "left" }}
+        alignItems={{ base: "left", md: "flex-start" }}
+        textAlign={{ base: "left", md: "left" }}
         userSelect="none"
         spacing={1}
       >
-        <Text fontSize={{ base: '5xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
+        <Text fontSize={{ base: '7xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           {isSpanish ? 'Soy' : 'I am'}
         </Text>
-        <Text fontSize={{ base: '5xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
+        <Text  fontSize={{ base: '7xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
           Valentín
         </Text>
-        <Text fontSize={{ base: '5xl', md: '6xl', lg: '7vw' }} fontWeight="extrabold" color={textColor} lineHeight="1">
+        <Text  fontSize={{ base: '7xl', md: '6xl', lg: '7vw' }}  fontWeight="extrabold" color={textColor} lineHeight="1">
           Sánchez Guevara
         </Text>
         <Text fontSize={{ base: 'xl', md: '2xl', lg: '2.3vw' }} color={accentColor} fontFamily="monospace" mt={-1}>
@@ -64,7 +64,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection, id }) => {
       </VStack>
 
       <Flex
-        gap={{ base: 4, lg: 6 }}
+        gap={{ base: 2, lg: 6 }}
         alignItems="center"
         direction={"row"}
       >

@@ -105,7 +105,7 @@ const App: React.FC = () => {
         </Drawer>
 
         {/* Main Content */}
-        <Box display="flex" flexDirection={{ base: 'column', md: 'row' }} px={{ base: 4, md: 8 }}>
+        <Box display="flex" flexDirection={{ base: 'column', md: 'row' }} px={{ base: 4, md: 10 }}>
           {/* Sidebar */}
           <Flex display={{ base: "none", md: "block" }} flexShrink={0} w={{ md: "280px", lg: "325px" }}>
             <Sidebar />
