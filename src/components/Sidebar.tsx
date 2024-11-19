@@ -15,7 +15,7 @@ const Sidebar = () => {
   useEffect(() => {
     const updateHeight = () => {
       const vh = window.innerHeight;
-      const newMaxHeight = Math.min(vh * 0.95, 800); 
+      const newMaxHeight = Math.min(vh * 0.95, 825); 
       setMaxHeight(`${newMaxHeight}px`);
     };
 
@@ -27,11 +27,10 @@ const Sidebar = () => {
   return (
     <Box
       position="sticky"
-      top={4}
+      top={"3%"}
       maxHeight={maxHeight}
-      height="auto"
-      maxH="92vh"
-      w={{ base: "100%", md: "280px", lg: "325px" }}
+      height="100%"
+      w={{ base: "100%", md: "280px", lg: "335px" }}
       sx={{
         "&::-webkit-scrollbar": {
           width: "8px",

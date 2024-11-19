@@ -63,7 +63,6 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
       w="100%"
       maxW="1400px"
       mx="auto"
-      px={4}
     >
       {/* Navigation Section */}
       <Flex
