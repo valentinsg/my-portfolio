@@ -202,6 +202,8 @@ const Sidebar = () => {
               p={{ base: 4, md: "auto" }}
               w={{ base: "90%", md: "100%" }}
               maxW="250px"
+              onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0aKsiCw2ol12PWw6vXoe4hlEkeje1TK5ldpY29MFj-cclKi8ALgE1peSmD7JCH4jYw5pay1Rx7', '_blank')}
+
             >
               {isSpanish ? "Trabajemos Juntos" : "Work Together"}
             </Button>
