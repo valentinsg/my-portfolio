@@ -86,16 +86,22 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
             <strong>{isSpanish ? "Idiomas:" : "Languages:"}</strong> JavaScript, TypeScript, Python.
           </Text>
           <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
-            <strong>{isSpanish ? "Librerias de UI:" : "UI Libraries:"}</strong> Chakra UI, Ionic, Bootstrap.
+            <strong>{isSpanish ? "Librerias de UI:" : "UI Libraries:"}</strong> Chakra UI, Ionic, Tailwind.
           </Text>
           <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
-            <strong>{isSpanish ? "Frameworks / Librerias:" : "Frameworks / Libraries:"}</strong> React, Next.js, Redux.
+            <strong>{isSpanish ? "Frameworks / Librerias:" : "Frameworks / Libraries:"}</strong> React, Next.js, Redux, DJango.
+          </Text>
+          <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
+            <strong>{isSpanish ? "Base de datos:" : "Databases" }</strong> PostgreSQL.
+          </Text>
+          <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
+            <strong>{isSpanish ? "Devops:" : "Devops" }</strong> Vercel, Render, Hostinger.
           </Text>
           <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
             <strong>{isSpanish ? "Marketing y Comunicación:" : "Marketing and Communication:"}</strong> {isSpanish ? "Diseño, Marketing Digital y Estrategia de Contenidos, Community Manager y Presencia Digital" : "Design, Digital Marketing & Content Strategy, Community & Digital Engagement."}
           </Text>
           <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
-            <strong>{isSpanish ? "Inglés:" : "English:"}</strong> B2.
+            <strong>{isSpanish ? "Inglés:" : "English:"}</strong> B1.
           </Text>
 
           <Box mt={10}>

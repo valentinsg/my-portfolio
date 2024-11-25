@@ -126,7 +126,7 @@ const Sidebar = () => {
               fontSize={{ base: "sm", md: "md" }}
               fontFamily="monospace"
             >
-              {isSpanish ? "Frontend & Creativo" : "Frontend & Creative"}
+              {isSpanish ? "Full-Stack & Creativo" : "Full-Stack & Creative"}
             </Text>
           </Stack>
 
