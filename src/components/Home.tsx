@@ -117,6 +117,7 @@ const Home: React.FC<HomeProps> = ({ setSelectedSection, id }) => {
             colorScheme="pink"
             variant={"outline"}
             boxShadow="md"
+            display={{ base: 'none', md: 'inline' }}
           />
         </Tooltip>
       </Flex>

@@ -19,30 +19,30 @@ const About: React.FC<AboutProps> = ({ id }) => {
     <Flex direction="column" m={[2, 6]} minH="100vh" color={textColor} id={id} px={{ base: 0, md: "auto" }}>
       {/* Columna principal: Título y Logros */}
 
-      <Box mb={20} textAlign={{ base: "left", md: "center" }}>
-        <Heading color={headerColor} as="h1" fontSize={["7vw", "4.2vw"]} lineHeight="1.1" mb={{base: 8, md:16}} textAlign={{ base: "center", md: "left" }}>
+      <Box mb={16} textAlign={{ base: "left", md: "center" }}>
+        <Heading color={headerColor} as="h1" fontSize={["7vw", "4.2vw"]} lineHeight="1.1" mb={{ base: 10, md: 16 }} textAlign={{ base: "center", md: "left" }}>
           {isSpanish ? 'Resolviendo problemas complejos con un diseño simple' : 'Turning complex problems into simple design'}
         </Heading>
         {/* Logros */}
-        <Flex justify="space-between" mx={{base: 0, md: 20}} flexDir={{ base: "column", md: "row" }} gap={{base: 12 , md: "normal"}}>
+        <Flex justify="space-between" mx={{ base: 0, md: 20 }} flexDir={{ base: "column", md: "row" }} gap={{ base: 12, md: "normal" }}>
           <Box textAlign="center">
             <Heading fontSize={["5xl", "6xl"]} color={accentColor}>100%</Heading>
-            <Text fontSize={{base: "xl", md: "2xl"}}>{isSpanish ? 'Soluciones Personalizadas' : 'Custom Solutions'}</Text>
+            <Text fontSize={{ base: "xl", md: "2xl" }}>{isSpanish ? 'Soluciones Personalizadas' : 'Custom Solutions'}</Text>
           </Box>
           <Box textAlign="center">
-            <Heading fontSize={["5xl", "6xl"]}color={accentColor}>2021</Heading>
-            <Text fontSize={{base: "xl", md: "2xl"}}>{isSpanish ? 'Entregando Soluciones de Calidad Desde' : 'Delivering Quality Solutions Since'}</Text>
+            <Heading fontSize={["5xl", "6xl"]} color={accentColor}>2021</Heading>
+            <Text fontSize={{ base: "xl", md: "2xl" }}>{isSpanish ? 'Entregando Soluciones de Calidad Desde' : 'Delivering Quality Solutions Since'}</Text>
           </Box>
           <Box textAlign="center">
             <Heading fontSize={["5xl", "6xl"]} color={accentColor}>10+</Heading>
-            <Text fontSize={{base: "xl", md: "2xl"}}>{isSpanish ? 'Proyectos Realizados' : 'Projects Done'}</Text>
+            <Text fontSize={{ base: "xl", md: "2xl" }}>{isSpanish ? 'Proyectos Realizados' : 'Projects Done'}</Text>
           </Box>
         </Flex>
       </Box>
 
       {/* Cuerpo principal: Biografía y Contacto */}
       {/* Columna izquierda: Biografía */}
-      <Box mb={[6, 0]}>
+      <Box mb={[4, 0]}>
         <Text fontSize={["md", "xl"]} lineHeight="tall" textAlign="justify">
           {isSpanish ? (
             <>
@@ -62,10 +62,12 @@ const About: React.FC<AboutProps> = ({ id }) => {
         </Text>
       </Box>
 
-      <Stack direction={{ base: "column", md: "row" }} spacing={30} justifyContent={"center"} mt={14}>
-        <Flex gap={8} alignItems={"center"}>
-          <Text fontSize={{base: "md", md:"lg"}}fontFamily={"monospace"}>
-            <Text as="span" fontSize={"lg"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Correo: ' : 'Mail: '}</Text>
+      <Stack direction={{ base: "column", md: "row" }} spacing={{base: 6, md: 30}} justifyContent={"center"} mt={10}>
+        <Flex gap={{base: 4, md: 8}} alignItems={"center"}>
+          <Text fontSize={{ base: "md", md: "lg" }} fontFamily={"monospace"}>
+            <Text as="span" fontSize={"lg"} fontFamily={"monospace"} color={accentColor} display={{ base: "none", md: "inline" }}>
+              {isSpanish ? 'Correo: ' : 'Mail: '}
+            </Text>
             sanchezguevaravalentin@gmail.com
           </Text>
           <Tooltip label={isSpanish ? 'Copiar Correo' : 'Copy Email'} aria-label={isSpanish ? 'Copiar Correo Tooltip' : 'Copy Email Tooltip'}>
@@ -87,9 +89,11 @@ const About: React.FC<AboutProps> = ({ id }) => {
           </Tooltip>
         </Flex>
 
-        <Flex gap={8} alignItems={"center"}>
-          <Text fontSize={{base: "md", md:"lg"}} fontFamily={"monospace"}>
-            <Text as="span" fontSize={"lg"} fontFamily={"monospace"} color={accentColor}>{isSpanish ? 'Teléfono: ' : 'Phone: '}</Text>
+        <Flex gap={{base: 4, md: 8}} alignItems={"center"}>
+          <Text fontSize={{ base: "md", md: "lg" }} fontFamily={"monospace"}>
+            <Text as="span" fontSize={"lg"} fontFamily={"monospace"} color={accentColor} display={{ base: "none", md: "inline" }}>
+              {isSpanish ? 'Teléfono: ' : 'Phone: '}
+            </Text>
             +54 9 2236680041
           </Text>
           <Tooltip label={isSpanish ? 'Copiar número de teléfono' : 'Copy phone number'} aria-label={isSpanish ? 'Copiar número de teléfono Tooltip' : 'Copy Phone Number Tooltip'}>

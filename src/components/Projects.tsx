@@ -115,10 +115,10 @@ const Projects: React.FC<ProjectsProps> = ({ id }) => {
   return (
     <Box
       id={id}
-      m={[2, 6]} 
+      m={[0, 6]} 
       as="section"
       py={12}
-      px={{ base: 2, md: "auto" }}
+      px={{ base: 0, md: "auto" }}
       aria-label={isSpanish ? "Sección de proyectos" : "Projects section"}
     >
       <Flex

@@ -66,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
     >
       {/* Navigation Section */}
       <Flex
-        gap={{base: 4, md: 2}}
+        gap={{base: 3, md: 2}}
         flex="1"
         flexWrap="wrap"
         justify={{ base: "center", md: "flex-start" }}
@@ -96,7 +96,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
       {/* Controls Section */}
       <Flex
         gap={2}
-        justify={{ base: "center", md: "flex-end" }}
+        justify={{ base: "left", md: "flex-end" }}
         align="center"
         flexDir={{base: "column", md: "row"}}
         flexShrink={0}
@@ -138,7 +138,7 @@ const Header: React.FC<HeaderProps> = ({ selectedSection, setSelectedSection, co
             icon={colorMode === 'light' ? <SunIcon /> : <MoonIcon />}
             onClick={toggleColorMode}
             bg={buttonBg}
-            size={{ base: "sm", md: "md" }}
+            size={{ base: "md", md: "md" }}
             color={buttonColor}
             _hover={{ bg: buttonHoverBg }}
           />

@@ -21,8 +21,8 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <Box m={{ base: 2, md: 6 }} id={id} px={{ base: 2, md: "auto" }} mt={{base: 20, md:"0"}}>
-      <Box textAlign="center" mb={16}>
+    <Box m={{ base: 0, md: 6 }} id={id} px={{ base: 0, md: "auto" }} mt={{base: 20, md:"0"}}>
+      <Box textAlign="center" mb={{base: 10, md:16}}>
         <Tooltip label={isSpanish ? "Mostrar imagen" : "Show image"} aria-label="Image Tooltip">
           <Box
             border="2px solid pink"
@@ -37,18 +37,18 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
             <Image src={Valentin} boxSize="200px" objectFit="cover" />
           </Box>
         </Tooltip>
-        <Heading as="h1" size={{ base: "md", md: "2xl" }} m={4} color={headerColor}>
+        <Heading as="h1" size={{ base: "lg", md: "2xl" }} m={4} color={headerColor}>
           Valentín Sánchez Guevara
         </Heading>
-        <Text fontSize={{ base: "sm", md: "xl" }} color={textColor} letterSpacing={{ base: "", md: "tight" }}>
+        <Text fontSize={{ base: "md", md: "xl" }} color={textColor} letterSpacing={{ base: "", md: "tight" }}>
           {isSpanish ? "Desarrollador | Creativo | Emprendedor" : "Developer | Creative | Entrepreneur"}
         </Text>
 
-        <Flex justifyContent="center" gap={8} m={4}>
+        <Flex justifyContent="center" gap={8} m={{base: 8, md:4}}>
           <Box display={{base: "none", md:"flex"}} gap={6}>
             <Tooltip label={isSpanish ? "Mostrar correo electrónico" : "Show email"} aria-label="Email Tooltip">
               <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowEmail(!showEmail)}>
-                <SiMailgun size={"25px"} color={accentColor} />
+                <SiMailgun size={"30px"} color={accentColor} />
                 <Box ml={2} overflow="hidden" whiteSpace="nowrap" maxWidth={showEmail ? '300px' : '0'} transition="max-width 0.4s ease-out">
                   <Text>{showEmail ? 'sanchezguevaravalentin@gmail.com' : ''}</Text>
                 </Box>
@@ -56,7 +56,7 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
             </Tooltip>
             <Tooltip label={isSpanish ? "Mostrar número de teléfono" : "Show phone number"} aria-label="Phone Tooltip">
               <Flex alignItems="center" fontSize="lg" color={textColor} cursor="pointer" onClick={() => setShowPhone(!showPhone)}>
-                <FaPhone size={"25px"} color={accentColor} />
+                <FaPhone size={"30px"} color={accentColor} />
                 <Box ml={2} overflow="higut dden" whiteSpace="nowrap" maxWidth={showPhone ? '200px' : '0'} transition="max-width 0.4s ease-out">
                   <Text>{showPhone ? '+54 9 2236680041' : ''}</Text>
                 </Box>
@@ -66,12 +66,12 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
 
           <Tooltip label={isSpanish ? "Perfil de GitHub" : "GitHub Profile"} aria-label="GitHub Tooltip">
             <Link href="https://github.com/tu-usuario" isExternal>
-              <FaGithub size="30px" />
+              <FaGithub size="35px" />
             </Link>
           </Tooltip>
           <Tooltip label={isSpanish ? "Perfil de LinkedIn" : "LinkedIn Profile"} aria-label="LinkedIn Tooltip">
             <Link href="https://linkedin.com/in/tu-usuario" isExternal>
-              <FaLinkedin size="30px" />
+              <FaLinkedin size="35px" />
             </Link>
           </Tooltip>
         </Flex>
@@ -196,9 +196,9 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
         </Box>
       </Grid>
 
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} >
         <ModalOverlay />
-        <ModalContent w={"20vw"} bg="gray.500" borderRadius="80%" overflow="hidden">
+        <ModalContent w={{base: "75%",md: "20vw"}} bg="gray.500" borderRadius="80%" alignSelf={"center"}  overflow="hidden">
           <ModalCloseButton />
           <ModalBody p={0}>
             <Avatar size={"full"} src={Valentin} />
