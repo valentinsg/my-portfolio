@@ -206,7 +206,8 @@ const Contact: React.FC<ContactProps> = ({ id }) => {
             w={{base: "100%",md:"15vw"}}
             boxShadow={'md'}
             colorScheme="pink"
-            fontSize={{ base: "sm", md: "md", lg: "lg" }}
+            size={{ base: "sm", md: "lg" }}
+            fontSize={{ base: "xs", md: "md" }}
             isLoading={isSubmitting}
             type="submit"
             mt={6}

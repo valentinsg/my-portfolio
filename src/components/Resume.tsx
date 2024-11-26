@@ -3,7 +3,7 @@ import { Box, Heading, Text, List, ListItem, ListIcon, Link, Button, Image, Grid
 import { useLanguage } from '../context/LanguageProvider';
 import { FaCheckCircle, FaGithub, FaLinkedin, FaPhone } from 'react-icons/fa';
 import { SiMailgun } from 'react-icons/si';
-import Valentin from '../img/valentin.png';
+import Valentin from '../img/valen.png';
 
 interface ResumeProps {
   id: string;
@@ -34,7 +34,7 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
             cursor="pointer"
             onClick={() => setIsModalOpen(true)}
           >
-            <Image src={Valentin} boxSize="150px" objectFit="cover" />
+            <Image src={Valentin} boxSize="200px" objectFit="cover" />
           </Box>
         </Tooltip>
         <Heading as="h1" size={{ base: "md", md: "2xl" }} m={4} color={headerColor}>
@@ -92,13 +92,13 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
             <strong>{isSpanish ? "Frameworks / Librerias:" : "Frameworks / Libraries:"}</strong> React, Next.js, Redux, DJango.
           </Text>
           <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
-            <strong>{isSpanish ? "Base de datos:" : "Databases" }</strong> PostgreSQL.
+            <strong>{isSpanish ? "Base de datos:" : "Databases:" }</strong> PostgreSQL.
           </Text>
           <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
-            <strong>{isSpanish ? "Devops:" : "Devops" }</strong> Vercel, Render, Hostinger.
+            <strong>{isSpanish ? "Devops:" : "Devops:" }</strong> Vercel, Render, Hostinger.
           </Text>
           <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
-            <strong>{isSpanish ? "Marketing y Comunicación:" : "Marketing and Communication:"}</strong> {isSpanish ? "Diseño, Marketing Digital y Estrategia de Contenidos, Community Manager y Presencia Digital" : "Design, Digital Marketing & Content Strategy, Community & Digital Engagement."}
+            <strong>{isSpanish ? "Marketing y Comunicación:" : "Marketing and Communication:"}</strong> {isSpanish ? "Diseño, Marketing Digital y Estrategia de Contenidos, Community Manager" : "Design, Digital Marketing & Content Strategy"}
           </Text>
           <Text fontSize={{base: "md", md:"lg"}}  color={textColor}>
             <strong>{isSpanish ? "Inglés:" : "English:"}</strong> B1.
@@ -198,7 +198,7 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <ModalOverlay />
-        <ModalContent w={"17vw"} bg="gray.500" borderRadius="100%" overflow="hidden">
+        <ModalContent w={"20vw"} bg="gray.500" borderRadius="80%" overflow="hidden">
           <ModalCloseButton />
           <ModalBody p={0}>
             <Avatar size={"full"} src={Valentin} />
